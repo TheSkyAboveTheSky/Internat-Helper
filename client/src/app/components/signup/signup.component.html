@@ -1,0 +1,16 @@
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form (ngSubmit)="onSubmit()" class="form-signup">
+        <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+        <label for="inputName" class="sr-only">Full Name</label>
+        <input type="text" id="inputName" name="name" [(ngModel)]="name" class="form-control mb-2" placeholder="Full Name" required autofocus>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" name="email" [(ngModel)]="email" class="form-control mb-2" placeholder="Email address" required>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" name="password" [(ngModel)]="password" class="form-control mb-2" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+      </form>
+    </div>
+  </div>
+</div>
