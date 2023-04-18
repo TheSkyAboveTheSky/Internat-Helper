@@ -118,12 +118,21 @@
     "ora" "5.4.1"
     "rxjs" "6.6.7"
 
-"@angular/animations@^14.0.0", "@angular/animations@14.0.2":
+"@angular/animations@^14.0.0", "@angular/animations@>=7.0.0", "@angular/animations@14.0.2":
   "integrity" "sha512-F65G62clU+8tpYXkRGTeQ8nNlyUsviJp9fFTMFXZTm0EHUCiHB6PRf5vpp7edN0Hy+moG6rKt8VnKbraFqaO1g=="
   "resolved" "https://registry.npmjs.org/@angular/animations/-/animations-14.0.2.tgz"
   "version" "14.0.2"
   dependencies:
     "tslib" "^2.3.0"
+
+"@angular/cdk@7.0.0":
+  "integrity" "sha512-HX+gIJzST/Nu07ASg1XR583KSEmHI6kUbiSBdq0LqF3mIQgId5z3auBqQcXAgvB0Cg29+/38aj31hnoK/LswEQ=="
+  "resolved" "https://registry.npmjs.org/@angular/cdk/-/cdk-7.0.0.tgz"
+  "version" "7.0.0"
+  dependencies:
+    "tslib" "^1.7.1"
+  optionalDependencies:
+    "parse5" "^5.0.0"
 
 "@angular/cli@~14.0.2":
   "integrity" "sha512-cCQr5KMLlr7JER8CtrYLBTQUT4g22CTh3f0D9cdSjpBOhmEq62ZXApbmHNgPoHrTNub+7+FwANleIuqyN7nojg=="
@@ -151,7 +160,7 @@
     "uuid" "8.3.2"
     "yargs" "17.4.1"
 
-"@angular/common@^14.0.0", "@angular/common@14.0.2":
+"@angular/common@^14.0.0", "@angular/common@>=7.0.0", "@angular/common@14.0.2":
   "integrity" "sha512-vNZpun9ymZEDJ0CWskTZZqCbuCumgYxbsZgp9nALnRAJt3fK8fRFgIZTn7smEXvbStL4PvngnvESa/t9Jd4wMg=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-14.0.2.tgz"
   "version" "14.0.2"
@@ -181,7 +190,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/core@^14.0.0", "@angular/core@14.0.2":
+"@angular/core@^14.0.0", "@angular/core@>=7.0.0", "@angular/core@14.0.2":
   "integrity" "sha512-JR+xVuNjGYEP5mdm3iQykcRFjrhSKbN5yxKxlVdKpNtUsR2Yc9Nf180Y2+Oo6KabtywGedIBH/Xd6mhwQQv3vg=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-14.0.2.tgz"
   "version" "14.0.2"
@@ -194,6 +203,13 @@
   "version" "14.0.2"
   dependencies:
     "tslib" "^2.3.0"
+
+"@angular/material@^7.0.0":
+  "integrity" "sha512-HgHzHWsUvNiSpRmoOJqnH/TVb4Ki7sXxbWuw5OVKOKiBW6Gwvd29+cP4XauzH47wHMyvS9/HH8kj3gC72pLhJQ=="
+  "resolved" "https://registry.npmjs.org/@angular/material/-/material-7.0.0.tgz"
+  "version" "7.0.0"
+  dependencies:
+    "tslib" "^1.7.1"
 
 "@angular/platform-browser-dynamic@^14.0.0":
   "integrity" "sha512-KPGpfMBugXojQPrcqlZ8mNBMiUHkREszuVwnpvkuwrPSnygGNzj8HAdu1c1sTPX7uirhW6QEWGmwXFKURTmnwQ=="
@@ -4656,6 +4672,11 @@
   dependencies:
     "parse5" "^6.0.1"
 
+"parse5@^5.0.0":
+  "integrity" "sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug=="
+  "resolved" "https://registry.npmjs.org/parse5/-/parse5-5.1.1.tgz"
+  "version" "5.1.1"
+
 "parse5@^6.0.1":
   "integrity" "sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw=="
   "resolved" "https://registry.npmjs.org/parse5/-/parse5-6.0.1.tgz"
@@ -5992,6 +6013,11 @@
   "integrity" "sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A=="
   "resolved" "https://registry.npmjs.org/tree-kill/-/tree-kill-1.2.2.tgz"
   "version" "1.2.2"
+
+"tslib@^1.7.1":
+  "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
+  "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
+  "version" "1.14.1"
 
 "tslib@^1.9.0":
   "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
