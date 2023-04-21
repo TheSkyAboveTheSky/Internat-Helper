@@ -1,11 +1,18 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "3776ff21-23e6-412b-ab79-332ac40079a9"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-14-crud-example": {
+    "Angular13JwtAuth": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-14-crud-example",
+            "outputPath": "dist/Angular13JwtAuth",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-14-crud-example:build:production"
+              "browserTarget": "Angular13JwtAuth:build:production"
             },
             "development": {
-              "browserTarget": "angular-14-crud-example:build:development"
+              "browserTarget": "Angular13JwtAuth:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -75,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-14-crud-example:build"
+            "browserTarget": "Angular13JwtAuth:build"
           }
         },
         "test": {
@@ -98,7 +105,5 @@
       }
     }
   },
-  "cli": {
-    "analytics": "8ad2a256-a6d9-4be5-a27a-19b6b2f09646"
-  }
+  "defaultProject": "Angular13JwtAuth"
 }
