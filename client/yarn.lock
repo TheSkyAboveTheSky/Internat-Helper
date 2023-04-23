@@ -118,19 +118,19 @@
     "ora" "5.4.1"
     "rxjs" "6.6.7"
 
-"@angular/animations@^14.0.0", "@angular/animations@>=7.0.0", "@angular/animations@14.0.2":
+"@angular/animations@^14.0.0", "@angular/animations@^14.0.0 || ^15.0.0", "@angular/animations@14.0.2":
   "integrity" "sha512-F65G62clU+8tpYXkRGTeQ8nNlyUsviJp9fFTMFXZTm0EHUCiHB6PRf5vpp7edN0Hy+moG6rKt8VnKbraFqaO1g=="
   "resolved" "https://registry.npmjs.org/@angular/animations/-/animations-14.0.2.tgz"
   "version" "14.0.2"
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/cdk@7.0.0":
-  "integrity" "sha512-HX+gIJzST/Nu07ASg1XR583KSEmHI6kUbiSBdq0LqF3mIQgId5z3auBqQcXAgvB0Cg29+/38aj31hnoK/LswEQ=="
-  "resolved" "https://registry.npmjs.org/@angular/cdk/-/cdk-7.0.0.tgz"
-  "version" "7.0.0"
+"@angular/cdk@^14.1.2", "@angular/cdk@14.1.2":
+  "integrity" "sha512-hJMhQmWWXTgwUa51OvEUgSATduEILCmGXpbsvC+REMMOo9rTd3u+cfrJW9OKl7Weq86VhKQ0WSfbn3MVyhUVBg=="
+  "resolved" "https://registry.npmjs.org/@angular/cdk/-/cdk-14.1.2.tgz"
+  "version" "14.1.2"
   dependencies:
-    "tslib" "^1.7.1"
+    "tslib" "^2.3.0"
   optionalDependencies:
     "parse5" "^5.0.0"
 
@@ -160,7 +160,7 @@
     "uuid" "8.3.2"
     "yargs" "17.4.1"
 
-"@angular/common@^14.0.0", "@angular/common@>=7.0.0", "@angular/common@14.0.2":
+"@angular/common@^14.0.0", "@angular/common@^14.0.0 || ^15.0.0", "@angular/common@14.0.2":
   "integrity" "sha512-vNZpun9ymZEDJ0CWskTZZqCbuCumgYxbsZgp9nALnRAJt3fK8fRFgIZTn7smEXvbStL4PvngnvESa/t9Jd4wMg=="
   "resolved" "https://registry.npmjs.org/@angular/common/-/common-14.0.2.tgz"
   "version" "14.0.2"
@@ -190,26 +190,26 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/core@^14.0.0", "@angular/core@>=7.0.0", "@angular/core@14.0.2":
+"@angular/core@^14.0.0", "@angular/core@^14.0.0 || ^15.0.0", "@angular/core@14.0.2":
   "integrity" "sha512-JR+xVuNjGYEP5mdm3iQykcRFjrhSKbN5yxKxlVdKpNtUsR2Yc9Nf180Y2+Oo6KabtywGedIBH/Xd6mhwQQv3vg=="
   "resolved" "https://registry.npmjs.org/@angular/core/-/core-14.0.2.tgz"
   "version" "14.0.2"
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/forms@^14.0.0":
+"@angular/forms@^14.0.0", "@angular/forms@^14.0.0 || ^15.0.0":
   "integrity" "sha512-sOLes/B7YkRocZExsxi1H+OIBFbSpVB6+i8+6cQK2ZIwXQMxCZm95PL42rMqWEOJhEuVyR3U47bjA2G4eC3TKg=="
   "resolved" "https://registry.npmjs.org/@angular/forms/-/forms-14.0.2.tgz"
   "version" "14.0.2"
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/material@^7.0.0":
-  "integrity" "sha512-HgHzHWsUvNiSpRmoOJqnH/TVb4Ki7sXxbWuw5OVKOKiBW6Gwvd29+cP4XauzH47wHMyvS9/HH8kj3gC72pLhJQ=="
-  "resolved" "https://registry.npmjs.org/@angular/material/-/material-7.0.0.tgz"
-  "version" "7.0.0"
+"@angular/material@^14.1.2":
+  "integrity" "sha512-riDaeOFF+fzjOxeWlqtVAT7lHlqoyzxE24Z7r7qyYriU+EndfEfOv9XQFup5BkqvDvzN9My+1vI562caWM3nfQ=="
+  "resolved" "https://registry.npmjs.org/@angular/material/-/material-14.1.2.tgz"
+  "version" "14.1.2"
   dependencies:
-    "tslib" "^1.7.1"
+    "tslib" "^2.3.0"
 
 "@angular/platform-browser-dynamic@^14.0.0":
   "integrity" "sha512-KPGpfMBugXojQPrcqlZ8mNBMiUHkREszuVwnpvkuwrPSnygGNzj8HAdu1c1sTPX7uirhW6QEWGmwXFKURTmnwQ=="
@@ -218,7 +218,7 @@
   dependencies:
     "tslib" "^2.3.0"
 
-"@angular/platform-browser@^14.0.0", "@angular/platform-browser@14.0.2":
+"@angular/platform-browser@^14.0.0", "@angular/platform-browser@^14.0.0 || ^15.0.0", "@angular/platform-browser@14.0.2":
   "integrity" "sha512-FeBXo3GmJOGitBIKrpuZOfBpfDqMh4QqZZmHMIXunELgrG+a8XSoZZYwEgRNIOpxFduQnP2Qe6H6cYoVJfwcBg=="
   "resolved" "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-14.0.2.tgz"
   "version" "14.0.2"
@@ -6013,11 +6013,6 @@
   "integrity" "sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A=="
   "resolved" "https://registry.npmjs.org/tree-kill/-/tree-kill-1.2.2.tgz"
   "version" "1.2.2"
-
-"tslib@^1.7.1":
-  "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="
-  "resolved" "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
-  "version" "1.14.1"
 
 "tslib@^1.9.0":
   "integrity" "sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg=="

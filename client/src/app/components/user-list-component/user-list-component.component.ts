@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { MaterialModule } from 'src/app/Material.Module';
-import { MatTableDataSource } from '@angular/material/table';
 import { CommonModule } from '@angular/common';
+import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -12,12 +13,26 @@ import { CommonModule } from '@angular/common';
   standalone:true
 })
 export class UserListComponentComponent implements OnInit {
-  users = [{ name: '1' }, { name: '2' }, { nam: '3' }];
-  dataSource: any;
+  DataSource:any;
   constructor() {}
-
+  displayedColumns: string[] = ["name","action"];
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<any>(this.users);
+    this.getAllUsers();
   }
-  displayedColumns: string[] = ['ID', 'N°'];
+  getAllUsers():void {
+    this.DataSource = new MatTableDataSource([
+      {name: 'John', age: 30, email: 'john@example.com' },
+      {name: 'Mary', age: 25, email: 'mary@example.com' },
+      {name: 'Bob', age: 40, email: 'bob@example.com' },
+      {name: 'Bob', age: 40, email: 'bob@example.com' },
+      {name: 'Bob', age: 40, email: 'bob@example.com' },
+      {name: 'Bob', age: 40, email: 'bob@example.com' },
+      {name: 'Bob', age: 40, email: 'bob@example.com' },
+      {name: 'Bob', age: 40, email: 'bob@example.com' },
+      {name: 'Bob', age: 40, email: 'bob@example.com' },
+      {name: 'Bob', age: 40, email: 'bob@example.com' },
+    ]);
+    this.DataSource.paginator = this.paginator;
+  }
 }
