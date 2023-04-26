@@ -11,6 +11,26 @@ public class UserInfoResponse {
     private String email;
     private String name;
 
+    private String poste;
+
+    private String date;
+
+    public String getPoste() {
+        return poste;
+    }
+
+    public void setPoste(String poste) {
+        this.poste = poste;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getName() {
         return name;
     }
@@ -21,11 +41,13 @@ public class UserInfoResponse {
         this.name = name;
     }
 
-    public UserInfoResponse(String id, String username, String email, String name, Collection<? extends GrantedAuthority> authorities, List<String> roles) {
+    public UserInfoResponse(String id, String username, String email, String name, String poste, String date, Collection<? extends GrantedAuthority> authorities, List<String> roles) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.name = name;
+        this.poste = poste;
+        this.date = date;
         this.roles = roles;
     }
 

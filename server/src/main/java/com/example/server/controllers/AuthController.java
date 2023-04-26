@@ -2,6 +2,7 @@ package com.example.server.controllers;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -20,6 +21,7 @@ import com.example.server.security.jwt.JwtUtils;
 import com.example.server.security.services.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -27,11 +29,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -51,6 +49,22 @@ public class AuthController {
 
     @Autowired
     JwtUtils jwtUtils;
+
+    @PutMapping("/edit_profil/{username}")
+    public ResponseEntity<User> updateUser(@PathVariable("username") String username, @RequestBody User user) {
+        Optional<User> userData = userRepository.findByUsername(username);
+
+        if (userData.isPresent()) {
+            User _user = userData.get();
+            _user.setName(user.getName());
+            _user.setEmail(user.getEmail());
+            _user.setPoste(user.getPoste());
+            _user.setDate(user.getDate());
+            return new ResponseEntity<>(userRepository.save(_user), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -73,6 +87,8 @@ public class AuthController {
                         userDetails.getUsername(),
                         userDetails.getEmail(),
                         userDetails.getName(),
+                        userDetails.getPoste(),
+                        userDetails.getDate(),
                         userDetails.getAuthorities(),
                         roles));
     }

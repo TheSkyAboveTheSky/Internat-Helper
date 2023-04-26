@@ -23,6 +23,26 @@ public class UserDetailsImpl implements UserDetails {
 
     private String name;
 
+    private String poste;
+
+    private String date;
+
+    public String getPoste() {
+        return poste;
+    }
+
+    public void setPoste(String poste) {
+        this.poste = poste;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @JsonIgnore
     private String password;
 

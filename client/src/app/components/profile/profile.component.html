@@ -4,6 +4,11 @@
       <strong>{{ currentUser.username }}</strong> Profile
     </h3>
   </header>
+  <img
+    id="profile-img"
+    src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+    alt=""
+  />
   <p>
     <strong>Email:</strong>
     {{ currentUser.email }}
@@ -12,6 +17,16 @@
     <strong>Name:</strong>
     {{ currentUser.name }}
   </p>
+  <p>
+    <strong>Poste:</strong>
+    {{ currentUser.poste }}
+  </p>
+  <p>
+    <strong>Date de naissance:</strong>
+    {{ currentUser.date }}
+  </p>
+
+  <a href="/edit_profil">Edit Profil</a>
 </div>
 
 <ng-template #loggedOut> Please login. </ng-template>

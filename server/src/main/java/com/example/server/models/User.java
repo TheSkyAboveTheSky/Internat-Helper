@@ -1,5 +1,6 @@
 package com.example.server.models;
 
+import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,6 +43,29 @@ public class User {
     @NotBlank
     @Size(max = 120)
     private String password;
+
+
+    @Size(max = 120)
+    private String poste;
+
+    public String getPoste() {
+        return poste;
+    }
+
+    public void setPoste(String poste) {
+        this.poste = poste;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    @Size(max = 120)
+    private String date;
 
     @DBRef
     private Set<Role> roles = new HashSet<>();

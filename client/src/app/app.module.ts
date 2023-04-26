@@ -15,9 +15,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
-
-
+import { EditProfilComponent } from './components/edit_profil/edit_profil.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +27,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    EditProfilComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,9 +36,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpClientModule,
     UserListComponent,
     BrowserAnimationsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
