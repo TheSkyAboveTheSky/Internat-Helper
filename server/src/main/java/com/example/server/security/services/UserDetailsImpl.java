@@ -48,13 +48,15 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(String id, String username, String email, String name, String password,
+    public UserDetailsImpl(String id, String username, String email, String name, String password, String poste, String date,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.name = name;
         this.password = password;
+        this.poste = poste;
+        this.date = date;
         this.authorities = authorities;
     }
 
@@ -93,6 +95,8 @@ public class UserDetailsImpl implements UserDetails {
                 user.getEmail(),
                 user.getName(),
                 user.getPassword(),
+                user.getPoste(),
+                user.getDate(),
                 authorities);
     }
 

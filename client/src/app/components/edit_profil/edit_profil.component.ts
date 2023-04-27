@@ -28,6 +28,10 @@ export class EditProfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = getUser();
+    this.form.name = this.currentUser.name;
+    this.form.email = this.currentUser.email;
+    this.form.poste = this.currentUser.poste;
+    this.form.date = this.currentUser.date;
   }
 
   onSubmit(): void {
@@ -35,7 +39,7 @@ export class EditProfilComponent implements OnInit {
 
     this.editProfilService.editProfil(name, email, poste, date).subscribe({
       next: (data) => {
-        localStorage.setItem('user', data);
+        localStorage.setItem('user', JSON.stringify(data));
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
         this.reloadPage();

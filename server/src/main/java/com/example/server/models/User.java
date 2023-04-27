@@ -80,6 +80,15 @@ public class User {
         this.password = password;
     }
 
+    public User(String username, String email, String name, String password, String poste, String date) {
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.poste = poste;
+        this.date = date;
+    }
+
     public String getId() {
         return id;
     }
