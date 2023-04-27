@@ -4,24 +4,15 @@
       <strong>{{ currentUser.username }}</strong> Profile
     </h3>
   </header>
-<<<<<<< HEAD
   <img
     id="profile-img"
     src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
     alt=""
   />
-=======
-  <p>
-    <strong>Token:</strong>
-    {{ currentUser.accessToken.substring(0, 20) }} ...
-    {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
-  </p>
->>>>>>> origin
   <p>
     <strong>Email:</strong>
     {{ currentUser.email }}
   </p>
-<<<<<<< HEAD
   <p>
     <strong>Name:</strong>
     {{ currentUser.name }}
@@ -39,16 +30,3 @@
 </div>
 
 <ng-template #loggedOut> Please login. </ng-template>
-=======
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
-  </ul>
-</div>
-
-<ng-template #loggedOut>
-  Please login.
-</ng-template>
->>>>>>> origin
