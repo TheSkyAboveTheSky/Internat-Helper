@@ -1,17 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from 'src/app/services/token-storage/token-storage.service';
+
+function getUser() {
+  return JSON.parse(localStorage.getItem('user') || '');
+}
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
 
   currentUser: any;
 
-  constructor(private token: TokenStorageService) { }
+  constructor() {}
 
   ngOnInit(): void {
-    this.currentUser = this.token.getUser();
+    this.currentUser = getUser();
   }
 }

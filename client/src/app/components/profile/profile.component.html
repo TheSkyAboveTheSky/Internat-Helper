@@ -4,23 +4,29 @@
       <strong>{{ currentUser.username }}</strong> Profile
     </h3>
   </header>
-  <p>
-    <strong>Token:</strong>
-    {{ currentUser.accessToken.substring(0, 20) }} ...
-    {{ currentUser.accessToken.substr(currentUser.accessToken.length - 20) }}
-  </p>
+  <img
+    id="profile-img"
+    src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+    alt=""
+  />
   <p>
     <strong>Email:</strong>
     {{ currentUser.email }}
   </p>
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
-  </ul>
+  <p>
+    <strong>Name:</strong>
+    {{ currentUser.name }}
+  </p>
+  <p>
+    <strong>Poste:</strong>
+    {{ currentUser.poste }}
+  </p>
+  <p>
+    <strong>Date de naissance:</strong>
+    {{ currentUser.date }}
+  </p>
+
+  <a href="/edit_profil">Edit Profil</a>
 </div>
 
-<ng-template #loggedOut>
-  Please login.
-</ng-template>
+<ng-template #loggedOut> Please login. </ng-template>
