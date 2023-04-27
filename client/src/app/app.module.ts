@@ -15,7 +15,13 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
+<<<<<<< HEAD
 import { EditProfilComponent } from './components/edit_profil/edit_profil.component';
+=======
+
+
+
+>>>>>>> origin
 
 @NgModule({
   declarations: [
@@ -27,7 +33,10 @@ import { EditProfilComponent } from './components/edit_profil/edit_profil.compon
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+<<<<<<< HEAD
     EditProfilComponent,
+=======
+>>>>>>> origin
   ],
   imports: [
     BrowserModule,
@@ -36,9 +45,16 @@ import { EditProfilComponent } from './components/edit_profil/edit_profil.compon
     HttpClientModule,
     UserListComponent,
     BrowserAnimationsModule,
+<<<<<<< HEAD
     NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+=======
+    NoopAnimationsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+>>>>>>> origin
 })
 export class AppModule {}

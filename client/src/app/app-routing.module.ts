@@ -6,9 +6,15 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { BoardAdminComponent } from './components/board-admin/board-admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
+<<<<<<< HEAD
 import { EditProfilComponent } from './components/edit_profil/edit_profil.component';
 import { BoardModeratorComponent } from './components/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './components/board-user/board-user.component';
+=======
+import { BoardModeratorComponent } from './components/board-moderator/board-moderator.component';
+import { BoardUserComponent } from './components/board-user/board-user.component';
+
+>>>>>>> origin
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,12 +25,21 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
+<<<<<<< HEAD
   { path: 'users', component: UserListComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+=======
+  {path:'users',component:UserListComponent},
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
+>>>>>>> origin
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
+<<<<<<< HEAD
 export class AppRoutingModule {}
+=======
+export class AppRoutingModule { }
+>>>>>>> origin

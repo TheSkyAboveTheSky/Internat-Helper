@@ -9,10 +9,15 @@ const httpOptions = {
 };
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
+<<<<<<< HEAD
   constructor(private http: HttpClient) {}
+=======
+
+  constructor(private http:HttpClient) { }
+>>>>>>> origin
   login(username: string, password: string): Observable<any> {
     return this.http.post(
       AUTH_API + 'signin',
