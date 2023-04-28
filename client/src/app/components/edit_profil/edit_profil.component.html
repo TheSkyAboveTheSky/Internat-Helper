@@ -4,11 +4,8 @@
       <strong>{{ currentUser.username }}</strong> Profile
     </h3>
   </header>
-  <img
-    id="profile-img"
-    src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-    alt=""
-  />
+  <img id="profile-img" [src]="retrievedImage || '//ssl.gstatic.com/accounts/ui/avatar_2x.png'" alt="">
+
   <form action="javascript:void(0)" (submit)="onSubmit()" method="post">
     <p>
       <strong>Email:</strong>

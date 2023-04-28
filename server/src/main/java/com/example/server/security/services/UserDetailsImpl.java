@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import com.example.server.models.ImageModel;
 import com.example.server.models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,6 +27,16 @@ public class UserDetailsImpl implements UserDetails {
     private String poste;
 
     private String date;
+    
+    private byte[] picByte;
+
+    public byte[] getPicByte(){
+        return picByte;
+    }
+
+    private void setPicByte( byte[] picByte){
+        this.picByte = picByte;
+    }
 
     public String getPoste() {
         return poste;
@@ -49,7 +60,7 @@ public class UserDetailsImpl implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(String id, String username, String email, String name, String password, String poste, String date,
-                           Collection<? extends GrantedAuthority> authorities) {
+                           byte[] picByte , Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -57,6 +68,7 @@ public class UserDetailsImpl implements UserDetails {
         this.password = password;
         this.poste = poste;
         this.date = date;
+        this.picByte = picByte;
         this.authorities = authorities;
     }
 
@@ -97,6 +109,7 @@ public class UserDetailsImpl implements UserDetails {
                 user.getPassword(),
                 user.getPoste(),
                 user.getDate(),
+                user.getPicByte(),
                 authorities);
     }
 
@@ -152,4 +165,7 @@ public class UserDetailsImpl implements UserDetails {
         UserDetailsImpl user = (UserDetailsImpl) o;
         return Objects.equals(id, user.id);
     }
+    
+
+
 }

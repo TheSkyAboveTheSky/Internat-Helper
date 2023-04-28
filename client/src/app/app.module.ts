@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfilComponent } from './components/edit_profil/edit_profil.component';
+import  {EditImageComponent} from "./components/edit_image/edit_image.component";
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { EditProfilComponent } from './components/edit_profil/edit_profil.compon
     RegisterComponent,
     ProfileComponent,
     EditProfilComponent,
+    EditImageComponent,
   ],
   imports: [
     BrowserModule,

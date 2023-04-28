@@ -1,15 +1,13 @@
 package com.example.server.models;
 
-import java.sql.Date;
+import java.awt.*;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import jdk.jfr.Name;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -23,10 +21,23 @@ public class User {
     @Size(max = 20)
     private String username;
 
+    @Size(max = 500)
+    private byte[] picByte;
+
     @NotBlank
     @Size(max = 50)
     @Email
     private String email;
+
+    public byte[] getPicByte() {
+        return picByte;
+    }
+
+    public void setPicByte(byte[] picByte) {
+        this.picByte = picByte;
+    }
+
+
 
     public String getName() {
         return name;
@@ -47,6 +58,10 @@ public class User {
 
     @Size(max = 120)
     private String poste;
+
+
+
+
 
     public String getPoste() {
         return poste;
@@ -70,6 +85,9 @@ public class User {
     @DBRef
     private Set<Role> roles = new HashSet<>();
 
+
+    private ImageModel profileImage;
+
     public User() {
     }
 
@@ -87,6 +105,16 @@ public class User {
         this.password = password;
         this.poste = poste;
         this.date = date;
+    }
+
+    public User(String username, String email, String name, String password, String poste, String date,byte[] picByte ) {
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.poste = poste;
+        this.date = date;
+        this.picByte = picByte;
     }
 
     public String getId() {
@@ -127,5 +155,15 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+
+
+    public ImageModel getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(ImageModel profileImage) {
+        this.profileImage = profileImage;
     }
 }
