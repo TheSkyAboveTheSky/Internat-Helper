@@ -4,7 +4,7 @@ import { EditProfilService } from 'src/app/services/edit_profil/edit_profil.serv
 import { TokenStorageService } from 'src/app/services/token-storage/token-storage.service';
 
 function getUser() {
-  return JSON.parse(localStorage.getItem('user') || '');
+  return JSON.parse(localStorage.getItem('user') || '{}');
 }
 @Component({
   selector: 'app-edit_profil',

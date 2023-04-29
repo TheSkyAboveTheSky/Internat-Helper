@@ -11,26 +11,30 @@ import { MatPaginator } from '@angular/material/paginator';
   standalone:true
 })
 export class UserListComponent implements OnInit {
-  DataSource:any;
   constructor() {}
-  displayedColumns: string[] = ["name","action"];
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  displayedColumns: string[] = ["username","age","email","role","action"];
+  DataSource!:MatTableDataSource<any>;
+  @ViewChild('paginator') paginator!: MatPaginator;
   ngOnInit(): void {
     this.getAllUsers();
   }
   getAllUsers():void {
-    this.DataSource = new MatTableDataSource([
-      {name: 'John', age: 30, email: 'john@example.com' },
-      {name: 'Mary', age: 25, email: 'mary@example.com' },
-      {name: 'Bob', age: 40, email: 'bob@example.com' },
-      {name: 'Bob', age: 40, email: 'bob@example.com' },
-      {name: 'Bob', age: 40, email: 'bob@example.com' },
-      {name: 'Bob', age: 40, email: 'bob@example.com' },
-      {name: 'Bob', age: 40, email: 'bob@example.com' },
-      {name: 'Bob', age: 40, email: 'bob@example.com' },
-      {name: 'Bob', age: 40, email: 'bob@example.com' },
-      {name: 'Bob', age: 40, email: 'bob@example.com' },
-    ]);
+    const users = [
+      {Username: 'John1', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John2', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John3', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John4', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John5', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John6', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John7', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John8', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John9', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John10', age: 30, email: 'john@example.com' ,Role:"Admin"},
+      {Username: 'John11', age: 30, email: 'john@example.com' ,Role:"Admin"},
+    ];
+    this.DataSource = new MatTableDataSource(users);
+  }
+  ngAfterViewInit():void{
     this.DataSource.paginator = this.paginator;
   }
 
