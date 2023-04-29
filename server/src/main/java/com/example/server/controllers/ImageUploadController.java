@@ -21,7 +21,7 @@ import java.util.zip.Inflater;
 
 
 (origins = "http://localhost:4200")
-@RequestMapping(path = "image")
+(path = "image")
 public class ImageUploadController {
 
     @Autowired
