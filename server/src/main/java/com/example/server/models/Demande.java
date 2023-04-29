@@ -1,6 +1,9 @@
 package com.example.server.models;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
 
 @Document(collection = "demandes")
 public class Demande {
@@ -10,6 +13,8 @@ public class Demande {
             Traité
 
         }
+        @Id
+@GeneratedValue(strategy = GenerationType.AUTO)
         private long id;
         private String type;
         private Etat etat;

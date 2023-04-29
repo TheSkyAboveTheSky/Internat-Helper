@@ -4,29 +4,36 @@ import com.example.server.models.Demande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.server.services.DemandeService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/demandes")
+
 public class DemandeController {
     @Autowired
     private DemandeService demandeService;
-    @GetMapping("")
-    public ResponseEntity<List<Demande>> getDemandes(){
-        return new ResponseEntity<>( demandeService.getDemandes(), HttpStatus.OK);
-
-
-
+    @RequestMapping("/demandes")
+    public List<Demande>getDemandes(){
+        return  demandeService.getDemandes();
     }
     @RequestMapping("/demande/{id}")
     public Demande getDemande(@PathVariable long id) {
         return demandeService.getDemande(id);
+    }
+    @RequestMapping(method = RequestMethod.DELETE, value = "/demande/{id}")
+    public void deleteDemande(@PathVariable long id){
+        demandeService.deleteDemande(id);
+    }
+    @RequestMapping(method = RequestMethod.POST,  value="/demandes")
+    public void addDemande(@RequestBody Demande demande){
+        demandeService.addDemande(demande);
+
+    }
+    @RequestMapping(method = RequestMethod.PUT,value="/demande/{id}")
+    public void updateDemande(@RequestBody Demande demande,@PathVariable long id){
+        demandeService.updateDemande(demande,id);
     }
 }
 
