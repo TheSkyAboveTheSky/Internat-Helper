@@ -1,0 +1,49 @@
+<div  class="container p-5" >
+  <div  class="card p-2">
+    <div class=" row">
+      <div class=" col-6">
+  <form  #problemForm="ngForm" (ngSubmit)="addProblem(problemForm)">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Problem Name</mat-label>
+          <input matInput
+                 placeholder="Problem Name"
+                 [(ngModel)]="problem.problemName"
+          name ="problemName">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Problem Description</mat-label>
+          <textarea matInput  placeholder="Problem Description"
+                    [(ngModel)]="problem.problemDescription"
+                    name ="problemDescription"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Problem Room</mat-label>
+          <input matInput placeholder="Problem Room"
+                 placeholder="Problem Room"
+                 [(ngModel)]="problem.roomName"
+                 name ="problemRoom">
+        </mat-form-field>
+
+        <div align="end">
+          <button type="submit" mat-stroked-button color="primary" style ="margin-right: 5px ;" >  Add Problem</button>
+          <button   mat-stroked-button color="primary" >  Clear</button>
+
+        </div>
+  </form>
+        </div>
+
+
+      <div class=" col-6">
+        Image area
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</div>

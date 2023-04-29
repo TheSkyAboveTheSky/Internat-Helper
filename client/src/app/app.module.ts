@@ -17,6 +17,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfilComponent } from './components/edit_profil/edit_profil.component';
 import  {EditImageComponent} from "./components/edit_image/edit_image.component";
+import { AddNewPoblemComponent } from './components/add-new-poblem/add-new-poblem.component';
+import {MatInputModule} from "@angular/material/input";
+import { ProblemService } from './services/problem/problem.service';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import  {EditImageComponent} from "./components/edit_image/edit_image.component"
     ProfileComponent,
     EditProfilComponent,
     EditImageComponent,
+    AddNewPoblemComponent,
+    ProblemService,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import  {EditImageComponent} from "./components/edit_image/edit_image.component"
     UserListComponent,
     BrowserAnimationsModule,
     NoopAnimationsModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

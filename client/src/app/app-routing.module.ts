@@ -10,6 +10,7 @@ import { EditProfilComponent } from './components/edit_profil/edit_profil.compon
 import { BoardModeratorComponent } from './components/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './components/board-user/board-user.component';
 import  {EditImageComponent} from "./components/edit_image/edit_image.component";
+import {AddNewPoblemComponent} from "./components/add-new-poblem/add-new-poblem.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   { path: 'users', component: UserListComponent },
   {path :'edit_image' , component: EditImageComponent},
+  {path :'addNewProblem' , component: AddNewPoblemComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+
 ];
 
 @NgModule({
