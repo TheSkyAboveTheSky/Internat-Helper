@@ -1,29 +1,28 @@
-package com.example.server.models;
+package com.example.server.payload.request;
 
-
+import com.example.server.models.ImageProblem;
+import com.example.server.models.User;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import org.springframework.data.annotation.Id;
-import java.util.HashSet;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
-@Document(collection = "problems")
-public class Problem {
-    @Id
-    private String Id;
-
+public class AddProblemRequest {
+    @NotBlank
     private String name;
 
+    @NotBlank
     private String description;
 
+    @NotBlank
     private String roomName;
-    @DBRef
-    private User reportedBy;
+
 
     @DBRef
     private Set<ImageProblem> images ;
 
+    @DBRef
+    private User reportedBy;
 
 
     public User getReportedBy() {
@@ -33,8 +32,6 @@ public class Problem {
     public void setReportedBy(User reportedBy) {
         this.reportedBy = reportedBy;
     }
-
-
 
 
     public Set<ImageProblem> getImages() {
@@ -47,24 +44,11 @@ public class Problem {
 
 
 
-
-
-    @DBRef
-    private Set<Role> roles = new HashSet<>();
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String Id) {
-        this.Id = Id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String problemName) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -72,7 +56,7 @@ public class Problem {
         return description;
     }
 
-    public void setDescription(String problemDescription) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -86,17 +70,6 @@ public class Problem {
 
 
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 
-    public Problem(String name, String description, String roomName){
-        this.name = name;
-        this.description = description;
-        this.roomName = roomName;
-    }
 }

@@ -1,4 +1,4 @@
-<div  class="container p-5" >
+<div  class="container p-5"  *ngIf="currentUser" >
   <div  class="card p-2">
     <div class=" row">
       <div class=" col-6">
@@ -8,14 +8,14 @@
           <mat-label>Problem Name</mat-label>
           <input matInput
                  placeholder="Problem Name"
-                 [(ngModel)]="problem.problemName"
+                 [(ngModel)]="problem.name"
           name ="problemName">
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="w-100">
           <mat-label>Problem Description</mat-label>
           <textarea matInput  placeholder="Problem Description"
-                    [(ngModel)]="problem.problemDescription"
+                    [(ngModel)]="problem.description"
                     name ="problemDescription"></textarea>
         </mat-form-field>
 
@@ -26,7 +26,8 @@
                  [(ngModel)]="problem.roomName"
                  name ="problemRoom">
         </mat-form-field>
-
+        <strong>{{ problem.reportedBy.username }}</strong>
+        <strong>{{ currentUser.username }}</strong>
         <div align="end">
           <button type="submit" mat-stroked-button color="primary" style ="margin-right: 5px ;" >  Add Problem</button>
           <button   mat-stroked-button color="primary" >  Clear</button>
@@ -37,7 +38,40 @@
 
 
       <div class=" col-6">
-        Image area
+        <div>
+          <div class="dropzone">
+              <div class="text-wrapper">
+                <div class="centered">
+
+                  <a  (click)="selectFile.click()" class="browse-button">browse  </a>
+                    a file
+                </div>
+
+              </div>
+          </div>
+       <input type="file"  style="display:  none;" multiple value="select" #selectFile
+            (change)="onFileSelected($event)">
+       </div>
+        <div class="mt-5">
+          <div class="row">
+            <mat-grid-list cols="4" rowHeight="1:1">
+              <mat-grid-tile *ngFor="let file of problem.Images; let i = index" >
+                  <div style="position : relative">
+                       <span class ="btn-remove-image" (click)="removeImages(i)"> x </span>
+                       <img [src]="file.url"  width="100px" height="100px">
+
+                  </div>
+              </mat-grid-tile>
+
+
+            </mat-grid-list>
+
+
+
+          </div>
+
+
+        </div>
       </div>
 
     </div>

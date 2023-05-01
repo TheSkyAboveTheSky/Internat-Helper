@@ -1,22 +1,53 @@
 package com.example.server.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Document(collection = "images")
-public class ImageModel {
+public class ImageProblem {
+
+
     @Id
     private String id;
     private String name;
     private String type;
     private byte[] picByte;
 
-    public ImageModel() {
+
+
+    @DBRef
+    private Set<Problem> problems ;
+
+
+    @DBRef
+    private Set<Role> roles = new HashSet<>();
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Set<Problem> getProblems() {
+        return problems;
+    }
+
+    public void setProblems(Set<Problem> problems) {
+        this.problems = problems;
+    }
+
+    public ImageProblem() {
         super();
     }
 
-    public ImageModel(String name, String type, byte[] picByte) {
+    public ImageProblem(String name, String type, byte[] picByte) {
         this.name = name;
         this.type = type;
         this.picByte = picByte;
@@ -44,5 +75,13 @@ public class ImageModel {
 
     public void setPicByte(byte[] picByte) {
         this.picByte = picByte;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

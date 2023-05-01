@@ -60,13 +60,12 @@ public class AuthController {
 
         if (userData.isPresent()) {
             User _user = userData.get();
-            _user.setPicByte(user.getPicByte());
+
             return new ResponseEntity<>(userRepository.save(_user), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
     @PutMapping("/edit_profil/{username}")
     public ResponseEntity<User> updateUser(@PathVariable("username") String username, @RequestBody User user) {
         Optional<User> userData = userRepository.findByUsername(username);
@@ -82,6 +81,7 @@ public class AuthController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -95,6 +95,8 @@ public class AuthController {
 
         ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
 
+
+
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
@@ -106,7 +108,6 @@ public class AuthController {
                                         userDetails.getName(),
                                         userDetails.getPoste(),
                                         userDetails.getDate(),
-                        userDetails.getPicByte(),
                         userDetails.getAuthorities(),
                                         roles
                                         ));

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './components/user-list/user-list.component';
@@ -17,10 +17,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfilComponent } from './components/edit_profil/edit_profil.component';
 import  {EditImageComponent} from "./components/edit_image/edit_image.component";
-import { AddNewPoblemComponent } from './components/add-new-poblem/add-new-poblem.component';
+import { AddNewProblemComponent } from './components/add-new-problem/add-new-problem.component';
 import {MatInputModule} from "@angular/material/input";
 import { ProblemService } from './services/problem/problem.service';
-
+import { ShowProblemDetailsComponent } from './components/show-problem-details/show-problem-details.component';
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,8 +34,9 @@ import { ProblemService } from './services/problem/problem.service';
     ProfileComponent,
     EditProfilComponent,
     EditImageComponent,
-    AddNewPoblemComponent,
-    ProblemService,
+    AddNewProblemComponent,
+    ShowProblemDetailsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,8 @@ import { ProblemService } from './services/problem/problem.service';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatInputModule,
+    MatGridListModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

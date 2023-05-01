@@ -1,6 +1,5 @@
 package com.example.server.payload.response;
 
-import com.example.server.models.ImageModel;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
@@ -17,15 +16,7 @@ public class UserInfoResponse {
 
     private String date;
 
-    private byte[] picByte;
 
-    private byte[] getPicByte() {
-        return picByte;
-    }
-
-    private void setPicByte(byte[] picByte) {
-        this.picByte = picByte;
-    }
 
     public String getPoste() {
         return poste;
@@ -49,11 +40,12 @@ public class UserInfoResponse {
 
     private List<String> roles;
 
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public UserInfoResponse(String id, String username, String email, String name, String poste, String date, byte[] picByte, Collection<? extends GrantedAuthority> authorities, List<String> roles) {
+    public UserInfoResponse(String id, String username, String email, String name, String poste, String date, Collection<? extends GrantedAuthority> authorities, List<String> roles) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -61,7 +53,7 @@ public class UserInfoResponse {
         this.poste = poste;
         this.date = date;
         this.roles = roles;
-        this.picByte = picByte;
+
     }
 
     public String getId() {

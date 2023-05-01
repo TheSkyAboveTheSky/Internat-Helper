@@ -21,31 +21,19 @@ public class User {
     @Size(max = 20)
     private String username;
 
-    @Size(max = 500)
-    private byte[] picByte;
-
     @NotBlank
     @Size(max = 50)
     @Email
     private String email;
 
-    public byte[] getPicByte() {
-        return picByte;
-    }
+    @Size(max = 120)
+    private String date;
 
-    public void setPicByte(byte[] picByte) {
-        this.picByte = picByte;
-    }
+    @DBRef
+    private Set<Role> roles = new HashSet<>();
 
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @DBRef
+    private Set<Problem> problems;
 
     @NotBlank
     @Size(max = 50)
@@ -58,6 +46,27 @@ public class User {
 
     @Size(max = 120)
     private String poste;
+
+
+
+    public Set<Problem> getProblems() {
+        return problems;
+    }
+
+    public void setProblems(Set<Problem> problems) {
+        this.problems = problems;
+    }
+
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
 
 
@@ -79,14 +88,9 @@ public class User {
         this.date = date;
     }
 
-    @Size(max = 120)
-    private String date;
-
-    @DBRef
-    private Set<Role> roles = new HashSet<>();
 
 
-    private ImageModel profileImage;
+
 
     public User() {
     }
@@ -114,7 +118,7 @@ public class User {
         this.password = password;
         this.poste = poste;
         this.date = date;
-        this.picByte = picByte;
+
     }
 
     public String getId() {
@@ -159,11 +163,5 @@ public class User {
 
 
 
-    public ImageModel getProfileImage() {
-        return profileImage;
-    }
 
-    public void setProfileImage(ImageModel profileImage) {
-        this.profileImage = profileImage;
-    }
 }

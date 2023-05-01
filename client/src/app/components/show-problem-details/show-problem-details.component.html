@@ -1,0 +1,35 @@
+<div class="container mt-5">
+<table mat-table [dataSource]="problemDetails" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Problem Id">
+    <th mat-header-cell *matHeaderCellDef> Problem Id  </th>
+    <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Problem Name">
+    <th mat-header-cell *matHeaderCellDef> Problem Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Problem Description">
+    <th mat-header-cell *matHeaderCellDef> Problem Description </th>
+    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Problem roomName">
+    <th mat-header-cell *matHeaderCellDef> Problem roomName </th>
+    <td mat-cell *matCellDef="let element"> {{element.roomName}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Problem reportedBy">
+    <th mat-header-cell *matHeaderCellDef> Problem reportedBy </th>
+    <td mat-cell *matCellDef="let element"> {{element.reportedB}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+
