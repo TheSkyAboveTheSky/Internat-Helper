@@ -27,6 +27,14 @@
     <th mat-header-cell *matHeaderCellDef> Problem reportedBy </th>
     <td mat-cell *matCellDef="let element"> {{element.reportedB}} </td>
   </ng-container>
+  <ng-container matColumnDef="Images">
+    <th mat-header-cell *matHeaderCellDef> Images</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button color="primary" (click)="showImages(element)">
+        <mat-icon> images </mat-icon>
+      </button>
+    </td>
+  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

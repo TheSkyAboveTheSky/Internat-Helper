@@ -22,6 +22,10 @@ import {MatInputModule} from "@angular/material/input";
 import { ProblemService } from './services/problem/problem.service';
 import { ShowProblemDetailsComponent } from './components/show-problem-details/show-problem-details.component';
 import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from "@angular/material/button";
+import {MaterialModule} from "./Material.Module";
+import { ShowProblemImageDialogComponent } from './components/show-problem-image-dialog/show-problem-image-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +40,7 @@ import {MatTableModule} from '@angular/material/table';
     EditImageComponent,
     AddNewProblemComponent,
     ShowProblemDetailsComponent,
+    ShowProblemImageDialogComponent,
 
   ],
   imports: [
@@ -49,6 +54,9 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     MatGridListModule,
     MatTableModule,
+    MatButtonModule,
+    MaterialModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

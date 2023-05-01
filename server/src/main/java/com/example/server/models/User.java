@@ -32,8 +32,7 @@ public class User {
     @DBRef
     private Set<Role> roles = new HashSet<>();
 
-    @DBRef
-    private Set<Problem> problems;
+
 
     @NotBlank
     @Size(max = 50)
@@ -49,13 +48,6 @@ public class User {
 
 
 
-    public Set<Problem> getProblems() {
-        return problems;
-    }
-
-    public void setProblems(Set<Problem> problems) {
-        this.problems = problems;
-    }
 
 
 

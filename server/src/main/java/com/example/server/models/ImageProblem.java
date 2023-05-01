@@ -20,9 +20,6 @@ public class ImageProblem {
 
 
 
-    @DBRef
-    private Set<Problem> problems ;
-
 
     @DBRef
     private Set<Role> roles = new HashSet<>();
@@ -35,13 +32,6 @@ public class ImageProblem {
         this.id = id;
     }
 
-    public Set<Problem> getProblems() {
-        return problems;
-    }
-
-    public void setProblems(Set<Problem> problems) {
-        this.problems = problems;
-    }
 
     public ImageProblem() {
         super();

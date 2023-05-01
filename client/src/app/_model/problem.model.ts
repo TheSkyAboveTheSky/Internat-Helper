@@ -11,6 +11,7 @@ export interface User {
 }
 
 export interface  Problem {
+
   name : string,
   description : string,
   roomName : string,
