@@ -15,6 +15,7 @@ import com.example.server.payload.request.LoginRequest;
 import com.example.server.payload.request.SignupRequest;
 import com.example.server.payload.response.MessageResponse;
 import com.example.server.payload.response.UserInfoResponse;
+import com.example.server.repository.ImageRepository;
 import com.example.server.repository.RoleRepository;
 import com.example.server.repository.UserRepository;
 import com.example.server.security.jwt.JwtUtils;
@@ -45,11 +46,26 @@ public class AuthController {
     RoleRepository roleRepository;
 
     @Autowired
+    ImageRepository imageRepository;
+
+    @Autowired
     PasswordEncoder encoder;
 
     @Autowired
     JwtUtils jwtUtils;
 
+    @PutMapping("/edit_image/{username}")
+    public ResponseEntity<User> updateImage(@PathVariable("username") String username, @RequestBody User user) {
+        Optional<User> userData = userRepository.findByUsername(username);
+
+        if (userData.isPresent()) {
+            User _user = userData.get();
+
+            return new ResponseEntity<>(userRepository.save(_user), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
     @PutMapping("/edit_profil/{username}")
     public ResponseEntity<User> updateUser(@PathVariable("username") String username, @RequestBody User user) {
         Optional<User> userData = userRepository.findByUsername(username);
@@ -65,6 +81,7 @@ public class AuthController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -78,19 +95,22 @@ public class AuthController {
 
         ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
 
+
+
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
                 .body(new UserInfoResponse(userDetails.getId(),
-                        userDetails.getUsername(),
-                        userDetails.getEmail(),
-                        userDetails.getName(),
-                        userDetails.getPoste(),
-                        userDetails.getDate(),
+                                        userDetails.getUsername(),
+                                        userDetails.getEmail(),
+                                        userDetails.getName(),
+                                        userDetails.getPoste(),
+                                        userDetails.getDate(),
                         userDetails.getAuthorities(),
-                        roles));
+                                        roles
+                                        ));
     }
 
     @PostMapping("/signup")
