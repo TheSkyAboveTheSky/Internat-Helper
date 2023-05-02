@@ -43,6 +43,7 @@ public class User {
     private String password;
 
 
+
     @Size(max = 120)
     private String poste;
 
@@ -81,7 +82,9 @@ public class User {
     }
 
 
-
+    public User(String name) {
+        this.name = name;
+    }
 
 
     public User() {

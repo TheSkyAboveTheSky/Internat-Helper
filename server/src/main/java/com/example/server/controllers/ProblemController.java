@@ -35,14 +35,14 @@ public class ProblemController {
     UserRepository userRepository;
 
     @PostMapping(value = {"/addProblem"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE} )
-    public ResponseEntity<MessageResponse> addProblem(@Valid @RequestPart("problem") AddProblemRequest addProblemRequest , @RequestPart("imageFile") MultipartFile[] files) {
+    public ResponseEntity<MessageResponse> addProblem(@Valid @RequestPart("problem") AddProblemRequest addProblemRequest ,
+                                                      @RequestPart("imageFile") MultipartFile[] files,@RequestParam("reportedId") String userId) {
         Problem problem = new Problem(addProblemRequest.getName(), addProblemRequest.getDescription(), addProblemRequest.getRoomName());
 
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+        problem.setReportedBy(user);
 
 
-        User reportedBy = userRepository.findByUsername(addProblemRequest.getReportedBy().getUsername())
-                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
-        problem.setReportedBy(reportedBy);
 
         try{
             Set<ImageProblem> images = uploadImage(files);

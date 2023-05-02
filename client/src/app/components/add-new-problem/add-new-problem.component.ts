@@ -19,7 +19,7 @@ export class AddNewProblemComponent implements OnInit {
     name: "",
     description: "",
     roomName: "",
-    reportedBy: this.tokenStorageService.getUser(),
+    reportedBy:"",
     Images :[]
   };
 
@@ -29,12 +29,13 @@ export class AddNewProblemComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
-    this.problem.reportedBy =this.currentUser;
+    this.problem.reportedBy = this.currentUser.id;
   }
 
   addProblem(problemForm: NgForm) {
-     const problemFormData = this.prepareFormData(this.problem);
-    this.problem.reportedBy = this.currentUser;
+
+     this.problem.reportedBy = this.currentUser.id;
+    const problemFormData = this.prepareFormData(this.problem,this.problem.reportedBy );
     this.problemService.addProblem(problemFormData).subscribe(
       (response: Problem) => {
         console.log(response);
@@ -44,22 +45,25 @@ export class AddNewProblemComponent implements OnInit {
       }
     );
   }
-  prepareFormData( problem : Problem): FormData{
+  prepareFormData(problem: Problem, userId: string): FormData {
     const formData = new FormData();
     formData.append(
       'problem',
-      new Blob([ JSON.stringify(problem)], {type:'application/json'})
+      new Blob([JSON.stringify(problem)], {type: 'application/json'})
     );
-    for(var i = 0; i < problem.Images.length; i++){
+    for (let i = 0; i < problem.Images.length; i++) {
       formData.append(
         'imageFile',
         problem.Images[i].file,
         problem.Images[i].file.name
       );
     }
+    formData.append('reportedId', userId);
 
-    return formData
+    return formData;
+
   }
+
 
   onFileSelected(event :any) {
     if(event.target.files){

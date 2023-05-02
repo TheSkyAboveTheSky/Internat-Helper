@@ -17,19 +17,20 @@ export class ProblemService {
     private tokenStorageService: TokenStorageService
   ) {}
 
+  private httpOptions={
+     headers : new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+
+    }),
+  }
 
 
   public addProblem(problem: FormData) {
     const token = this.tokenStorageService.getToken();
-     console.log(token);
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ` + localStorage.getItem('jwtToken')
-
-    });
 
 
-    return this.httpClient.post<Problem>(PROBLEM_API, problem);
+
+    return this.httpClient.post<Problem>(PROBLEM_API, problem,this.httpOptions);
   }
   public getAllProducts(){
     return this.httpClient.get<Problem[]>(PROBLEM_API_LIST);

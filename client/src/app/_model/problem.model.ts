@@ -1,7 +1,7 @@
 import {FileHandle} from "./file-handle-model";
 
 export interface User {
-  id : string
+
   username : string
 
   email: string;
@@ -15,7 +15,7 @@ export interface  Problem {
   name : string,
   description : string,
   roomName : string,
-  reportedBy: User;
+  reportedBy: string;
   Images : FileHandle[],
 
 }
