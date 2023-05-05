@@ -31,6 +31,7 @@ public class Problem {
     }
 
     public void setReportedBy(User reportedBy) {
+
         this.reportedBy = reportedBy;
     }
 
@@ -64,9 +65,10 @@ public class Problem {
         return name;
     }
 
-    public void setName(String problemName) {
+    public void setName(String name) {
         this.name = name;
     }
+
 
     public String getDescription() {
         return description;

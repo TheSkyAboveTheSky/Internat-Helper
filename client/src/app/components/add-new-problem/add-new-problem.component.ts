@@ -19,8 +19,8 @@ export class AddNewProblemComponent implements OnInit {
     name: "",
     description: "",
     roomName: "",
-    reportedBy:"",
-    Images :[]
+    reportedById:"",
+    images :[]
   };
 
   currentUser: any;
@@ -29,40 +29,57 @@ export class AddNewProblemComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
-    this.problem.reportedBy = this.currentUser.id;
+    this.problem.reportedById = this.currentUser.id;
   }
 
   addProblem(problemForm: NgForm) {
 
-     this.problem.reportedBy = this.currentUser.id;
-    const problemFormData = this.prepareFormData(this.problem,this.problem.reportedBy );
+    this.problem.reportedById = this.currentUser.id;
+    const problemFormData = this.prepareFormData(this.problem );
     this.problemService.addProblem(problemFormData).subscribe(
       (response: Problem) => {
-        console.log(response);
+        problemForm.reset();
       },
       (error: HttpErrorResponse) => {
         console.log(error);
       }
     );
+    console.log(problemFormData)
+    console.log(this.problem)
+    console.log(this.problem.images)
+    console.log((problemFormData))
+
   }
-  prepareFormData(problem: Problem, userId: string): FormData {
+   prepareFormData(problem: Problem): FormData {
     const formData = new FormData();
     formData.append(
-      'problem',
-      new Blob([JSON.stringify(problem)], {type: 'application/json'})
+      'name',
+      problem.name
     );
-    for (let i = 0; i < problem.Images.length; i++) {
+    formData.append(
+      'description',
+      problem.description
+    );
+    formData.append(
+      'reportedById',
+      problem.reportedById
+    );
+    formData.append(
+      'roomName',
+      problem.roomName
+    );
+
+    for (let i = 0; i < problem.images.length; i++) {
       formData.append(
-        'imageFile',
-        problem.Images[i].file,
-        problem.Images[i].file.name
+        'images',
+        problem.images[i].file,
+        problem.images[i].file.name
       );
     }
-    formData.append('reportedId', userId);
 
     return formData;
-
   }
+
 
 
   onFileSelected(event :any) {
@@ -75,15 +92,16 @@ export class AddNewProblemComponent implements OnInit {
             window.URL.createObjectURL(file)
           )
         }
-        this.problem.Images.push(fileHandle);
+        this.problem.images.push(fileHandle);
 
 
     }
 
+
   }
 
   removeImages(i: number) {
-    this.problem.Images.splice(i,1);
+    this.problem.images.splice(i,1);
 
   }
 }

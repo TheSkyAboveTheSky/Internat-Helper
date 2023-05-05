@@ -19,7 +19,7 @@ export class ProblemService {
 
   private httpOptions={
      headers : new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'multipart/form-data;boundary=-----------------------------11887677487242941112636961470',
 
     }),
   }
@@ -27,7 +27,6 @@ export class ProblemService {
 
   public addProblem(problem: FormData) {
     const token = this.tokenStorageService.getToken();
-
 
 
     return this.httpClient.post<Problem>(PROBLEM_API, problem,this.httpOptions);
