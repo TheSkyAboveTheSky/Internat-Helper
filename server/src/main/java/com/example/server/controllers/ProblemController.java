@@ -44,12 +44,14 @@ public class ProblemController {
 
 
         Problem problem = new Problem(addProblemRequest.getName(), addProblemRequest.getDescription(), addProblemRequest.getRoomName());
+                /*
 
-
-        User user = userRepository.findById(addProblemRequest.getReportedById()).orElse(null);
+       User user = userRepository.findById(addProblemRequest.getReportedById()).orElse(null);
         if (user != null) {
             problem.setReportedBy(user);
-        }
+        }*/
+
+
         try {
             List<MultipartFile> files = addProblemRequest.getImages();
             Set<ImageProblem> images = uploadImage(files);

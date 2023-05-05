@@ -50,7 +50,7 @@ export class AddNewProblemComponent implements OnInit {
     console.log((problemFormData))
 
   }
-   prepareFormData(problem: Problem): FormData {
+  prepareFormData(problem: Problem): FormData {
     const formData = new FormData();
     formData.append(
       'name',
@@ -84,15 +84,15 @@ export class AddNewProblemComponent implements OnInit {
 
   onFileSelected(event :any) {
     if(event.target.files){
-        const file = event.target.files[0];
+      const file = event.target.files[0];
 
-        const fileHandle : FileHandle= {
-          file: file,
-          url: this.sanitizer.bypassSecurityTrustUrl(
-            window.URL.createObjectURL(file)
-          )
-        }
-        this.problem.images.push(fileHandle);
+      const fileHandle : FileHandle= {
+        file: file,
+        url: this.sanitizer.bypassSecurityTrustUrl(
+          window.URL.createObjectURL(file)
+        )
+      }
+      this.problem.images.push(fileHandle);
 
 
     }
