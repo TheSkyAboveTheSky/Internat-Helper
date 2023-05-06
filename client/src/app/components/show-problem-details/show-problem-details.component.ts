@@ -7,6 +7,7 @@ import { ShowProblemImageDialogComponent } from '../show-problem-image-dialog/sh
 import { ImageProcessingService } from '../../image-processing.service';
 import { map } from 'rxjs/operators';
 import {pipe} from "rxjs";
+import {ProblemDetails} from "../../_model/ProblemDetails.model";
 
 @Component({
   selector: 'app-show-problem-details',
@@ -15,8 +16,8 @@ import {pipe} from "rxjs";
 })
 export class ShowProblemDetailsComponent implements OnInit {
 
-  problemDetails: Problem[] = [];
-  displayedColumns: string[] = ['Problem Id', 'Problem Name', 'Problem Description', 'Problem roomName', 'Problem reportedBy', 'Images'];
+  problemDetails: ProblemDetails[] = [];
+  displayedColumns: string[] = ['Problem Id', 'Problem Name', 'Problem Description', 'Problem roomName', 'Problem reportedByname', 'Images'];
 
   constructor(
     private problemService: ProblemService,
@@ -30,10 +31,10 @@ export class ShowProblemDetailsComponent implements OnInit {
 
   getAllProblems(): void {
     console.log();
-    this.problemService.getAllProducts().pipe(
-      map((problems: Problem[]) => problems.map((problem: Problem) => this.imageProcessingService.createImages(problem)))
+    this.problemService.getAllProblems().pipe(
+      map((problems: ProblemDetails[]) => problems.map((problem: ProblemDetails) => this.imageProcessingService.createImages(problem)))
     ).subscribe(
-      (problemsWithImages: Problem[]) => {
+      (problemsWithImages: ProblemDetails[]) => {
         console.log(problemsWithImages);
         this.problemDetails = problemsWithImages;
       },

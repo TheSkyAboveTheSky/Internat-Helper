@@ -19,7 +19,7 @@ export class AddNewProblemComponent implements OnInit {
     name: "",
     description: "",
     roomName: "",
-    reportedById:"",
+    reportedBy: "",
     images :[]
   };
 
@@ -29,12 +29,12 @@ export class AddNewProblemComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
-    this.problem.reportedById = this.currentUser.id;
+
   }
 
   addProblem(problemForm: NgForm) {
 
-    this.problem.reportedById = this.currentUser.id;
+    this.problem.reportedBy = this.currentUser.id;
     const problemFormData = this.prepareFormData(this.problem );
     this.problemService.addProblem(problemFormData).subscribe(
       (response: Problem) => {
@@ -62,7 +62,7 @@ export class AddNewProblemComponent implements OnInit {
     );
     formData.append(
       'reportedById',
-      problem.reportedById
+      problem.reportedBy
     );
     formData.append(
       'roomName',

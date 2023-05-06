@@ -1,5 +1,6 @@
 package com.example.server.controllers;
 
+import com.example.server.dto.ProblemDTO;
 import com.example.server.models.ImageProblem;
 import com.example.server.models.Problem;
 import com.example.server.models.User;
@@ -8,6 +9,7 @@ import com.example.server.payload.response.MessageResponse;
 import com.example.server.repository.ImageRepository;
 import com.example.server.repository.ProblemRepository;
 import com.example.server.repository.UserRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import java.util.*;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -40,24 +39,23 @@ public class ProblemController {
 
 
     @PostMapping(value = {"/addProblem"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public Problem addProblem(@ModelAttribute AddProblemRequest addProblemRequest) {
+    public ProblemDTO addProblem(@ModelAttribute AddProblemRequest addProblemRequest) {
 
 
         Problem problem = new Problem(addProblemRequest.getName(), addProblemRequest.getDescription(), addProblemRequest.getRoomName());
-                /*
 
-       User user = userRepository.findById(addProblemRequest.getReportedById()).orElse(null);
-        if (user != null) {
-            problem.setReportedBy(user);
-        }*/
+       User user = userRepository.findById(addProblemRequest.getReportedById())
+               .orElseThrow(() -> new RuntimeException("user with id:" + addProblemRequest.getReportedById() + "does not exist"));
+
+        problem.setReportedBy(user);
 
 
         try {
             List<MultipartFile> files = addProblemRequest.getImages();
-            Set<ImageProblem> images = uploadImage(files);
-            problem.setImages(images);
+            problem.setImages(uploadImage(files));
             problemRepository.save(problem);
-            return problem;
+
+            return new ProblemDTO(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy().getId(),problem.getReportedBy().getName());
         } catch (IOException e) {
             System.out.println(e.getMessage());
             return null;
@@ -67,34 +65,41 @@ public class ProblemController {
     @PostMapping(value = "/addImage", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> addImage(@ModelAttribute AddProblemRequest addProblemRequest) throws IOException {
         // Enregistrez les images dans la base de données
-        Set<ImageProblem> images = uploadImage(addProblemRequest.getImages());
+        List<ImageProblem> images = uploadImage(addProblemRequest.getImages());
         imageRepository.saveAll(images);
         return ResponseEntity.ok().body("File(s) received successfully");
     }
 
-    public Set<ImageProblem> uploadImage(List<MultipartFile> files) throws IOException {
-        Set<ImageProblem> imageProblems = new HashSet<>();
+
+
+    public List<ImageProblem> uploadImage(List<MultipartFile> files) throws IOException {
+        List<ImageProblem> imageProblems = new ArrayList<>();
         if (files != null) {
             for (MultipartFile file : files) {
-                ImageProblem imageProblem = new ImageProblem(
-                        file.getOriginalFilename(),
-                        file.getContentType(),
-                        file.getBytes()
+                imageProblems.add(
+                        new ImageProblem(
+                                file.getOriginalFilename(),
+                                file.getContentType(),
+                                file.getBytes()
+                        )
                 );
-                imageProblems.add(imageProblem);
             }
         }
-        imageRepository.saveAll(imageProblems);
-        return new HashSet<>(imageRepository.findAll());
+
+        return imageRepository.saveAll(imageProblems);
     }
 
 
 
     @GetMapping({"/getAllProblems"})
-    public List<Problem> getAllProblems() {
-        return problemRepository.findAll();
+    public List<ProblemDTO> getAllProblems() {
+        List<ProblemDTO> problemDTOS = new ArrayList<>();
+        List<Problem> problems = problemRepository.findAll();
 
-
+        for (Problem problem : problems){
+            problemDTOS.add(new ProblemDTO(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy().getId(),problem.getReportedBy().getName()));
+        }
+  return  problemDTOS;
     }
 
     @GetMapping({"/getAllImages"})

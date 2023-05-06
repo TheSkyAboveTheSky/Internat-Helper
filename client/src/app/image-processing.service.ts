@@ -3,6 +3,7 @@ import { Problem } from './_model/problem.model';
 
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import {FileHandle} from "./_model/file-handle-model";
+import {ProblemDetails} from "./_model/ProblemDetails.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ImageProcessingService {
 
   constructor(private sanitizer: DomSanitizer) { }
 
-  public createImages(problem: Problem): Problem {
+  public createImages(problem: ProblemDetails): ProblemDetails {
     const problemImages: any[] = problem.images || [];
     const problemImagesToFileHandle: FileHandle[] = [];
 
@@ -28,7 +29,7 @@ export class ImageProcessingService {
       problemImagesToFileHandle.push(finalFileHandle);
 
     }
-    const problemWithImages: Problem = { ...problem, images: problemImagesToFileHandle };
+    const problemWithImages: ProblemDetails = { ...problem, images: problemImagesToFileHandle };
     return problemWithImages;
   }
 

@@ -7,7 +7,7 @@ export interface  Problem {
   name : string,
   description : string,
   roomName : string,
-  reportedById: string;
+  reportedBy: string;
   images : FileHandle[],
 
 }
