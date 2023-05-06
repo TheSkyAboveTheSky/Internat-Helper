@@ -14,8 +14,12 @@ public class Role {
 
     }
 
+
     public Role(ERole name) {
         this.name = name;
+    }
+    public Role(String name) {
+        this.name = ERole.valueOf(name);
     }
 
     public String getId() {

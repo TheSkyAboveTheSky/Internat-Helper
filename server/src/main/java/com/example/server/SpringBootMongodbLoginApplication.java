@@ -10,4 +10,5 @@ public class SpringBootMongodbLoginApplication {
         SpringApplication.run(SpringBootMongodbLoginApplication.class, args);
     }
 
+
 }

@@ -9,6 +9,9 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfilComponent } from './components/edit_profil/edit_profil.component';
 import { BoardModeratorComponent } from './components/board-moderator/board-moderator.component';
 import { BoardUserComponent } from './components/board-user/board-user.component';
+import  {EditImageComponent} from "./components/edit_image/edit_image.component";
+import { AddNewProblemComponent} from "./components/add-new-problem/add-new-problem.component";
+import {ShowProblemDetailsComponent} from "./components/show-problem-details/show-problem-details.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,7 +23,10 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
   { path: 'users', component: UserListComponent },
+  {path :'edit_image' , component: EditImageComponent},
+  {path :'addNewProblem' , component: AddNewProblemComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {path :'showProblemDetails' , component: ShowProblemDetailsComponent},
 ];
 
 @NgModule({
