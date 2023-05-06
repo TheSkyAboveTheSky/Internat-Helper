@@ -14,3 +14,10 @@ mat-radio-group mat-radio-button{
 .button-row button{
   margin: 5px;
 }
+.btn-dialog-close{
+  width:45px;
+  min-width: 0px !important;
+  height: 40px;
+  padding: 0px !important;
+  margin-left: 80%;
+}

@@ -60,8 +60,8 @@ export class UserListComponent implements OnInit {
   onCreate() {
     const config: MatDialogConfig = new MatDialogConfig();
     config.autoFocus = true;
-    config.width = '60%';
-    config.height = '40%';
+    config.width = '80%';
+    config.height = '60%';
     this.dialog.open(UserAddFormComponent, config);
   }
   onEdit(row: any) {
