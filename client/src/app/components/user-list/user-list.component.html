@@ -8,7 +8,12 @@
   <table mat-table
     [dataSource]="DataSource"
     class="table table-hover table-striped table-sm">
-
+    <ng-container matColumnDef="icon">
+      <th mat-header-cell class="table-dark"
+        *matHeaderCellDef>#</th>
+      <td mat-cell
+        *matCellDef="let element;let i =index;"> {{i+1}} </td>
+    </ng-container>
     <ng-container matColumnDef="username">
       <th mat-header-cell class="table-dark"
         *matHeaderCellDef>Username</th>
