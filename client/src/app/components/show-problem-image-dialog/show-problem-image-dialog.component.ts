@@ -9,6 +9,7 @@ import {FileHandle} from "../../_model/file-handle-model";
 })
 export class ShowProblemImageDialogComponent implements OnInit {
 
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any ) { }
 
   ngOnInit(): void {

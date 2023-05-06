@@ -1,13 +1,14 @@
 package com.example.server.payload.request;
 
 import com.example.server.models.ImageProblem;
-import com.example.server.models.User;
-import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 import java.util.Set;
 
 public class AddProblemRequest {
+    private  String Id;
     @NotBlank
     private String name;
 
@@ -17,32 +18,20 @@ public class AddProblemRequest {
     @NotBlank
     private String roomName;
 
+    private List<MultipartFile> images;
 
-    @DBRef
-    private Set<ImageProblem> images ;
+    private String reportedById;
 
-    @DBRef
-    private User reportedBy;
-
-
-    public User getReportedBy() {
-        return reportedBy;
-    }
-
-    public void setReportedBy(User reportedBy) {
-        this.reportedBy = reportedBy;
-    }
+    public AddProblemRequest() {}
 
 
-    public Set<ImageProblem> getImages() {
-        return images;
-    }
-
-    public void setImages(Set<ImageProblem> images) {
+    public AddProblemRequest(String name, String description, String roomName, List<MultipartFile> images, String reportedById) {
+        this.name = name;
+        this.description = description;
+        this.roomName = roomName;
         this.images = images;
+        this.reportedById = reportedById;
     }
-
-
 
     public String getName() {
         return name;
@@ -68,8 +57,19 @@ public class AddProblemRequest {
         this.roomName = roomName;
     }
 
+    public List<MultipartFile> getImages() {
+        return images;
+    }
 
+    public void setImages(List<MultipartFile> images) {
+        this.images = images;
+    }
 
+    public String getReportedById() {
+        return reportedById;
+    }
 
-
+    public void setReportedById(String reportedById) {
+        this.reportedById = reportedById;
+    }
 }

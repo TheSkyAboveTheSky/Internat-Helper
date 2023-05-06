@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {ProblemService} from "../../services/problem/problem.service";
-import {Problem} from "../../_model/problem.model";
-import {HttpErrorResponse} from "@angular/common/http";
-import {MatDialog} from "@angular/material/dialog";
-import {ShowProblemImageDialogComponent} from "../show-problem-image-dialog/show-problem-image-dialog.component";
-import {ImageProcessingService} from "../../image-processing.service";
-import {map} from "rxjs";
+import { ProblemService } from '../../services/problem/problem.service';
+import { Problem } from '../../_model/problem.model';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { ShowProblemImageDialogComponent } from '../show-problem-image-dialog/show-problem-image-dialog.component';
+import { ImageProcessingService } from '../../image-processing.service';
+import { map } from 'rxjs/operators';
+import {pipe} from "rxjs";
+import {ProblemDetails} from "../../_model/ProblemDetails.model";
 
 @Component({
   selector: 'app-show-problem-details',
@@ -14,36 +16,46 @@ import {map} from "rxjs";
 })
 export class ShowProblemDetailsComponent implements OnInit {
 
- problemDetails : Problem[] = [];
-  displayedColumns :string[]=['Problem Id' , 'Problem Name' , 'Problem Description' , 'Problem roomName','Problem reportedBy','Images'];
-  constructor( private problemService : ProblemService , public imagesDialog: MatDialog , private  imageProcessingServices:ImageProcessingService) { }
+  problemDetails: ProblemDetails[] = [];
+  displayedColumns: string[] = ['Problem Id', 'Problem Name', 'Problem Description', 'Problem roomName', 'Problem reportedByname', 'Images'];
 
+  constructor(
+    private problemService: ProblemService,
+    public imagesDialog: MatDialog,
+    private imageProcessingService: ImageProcessingService
+  ) {}
 
   ngOnInit(): void {
     this.getAllProblems();
   }
-public getAllProblems(){
-    this.problemService.getAllProducts()
-      .pipe(
-        map((x:Problem[],i) => x.map((problem :Problem) =>this.imageProcessingServices.createImages(problem)) )
-      ).subscribe(
-      (resp: Problem[]) =>{
-        console.log(resp);
-        this.problemDetails=resp;
-      },(error:HttpErrorResponse) =>{
+
+  getAllProblems(): void {
+    console.log();
+    this.problemService.getAllProblems().pipe(
+      map((problems: ProblemDetails[]) => problems.map((problem: ProblemDetails) => this.imageProcessingService.createImages(problem)))
+    ).subscribe(
+      (problemsWithImages: ProblemDetails[]) => {
+        console.log(problemsWithImages);
+        this.problemDetails = problemsWithImages;
+      },
+      (error: HttpErrorResponse) => {
         console.log(error);
       }
-    )
-}
+    );
+  }
 
-  showImages(problem : Problem) {
+
+  showImages(problem: Problem): void {
     console.log(problem);
-    this.imagesDialog.open(ShowProblemImageDialogComponent,{
-      data:{images : problem.Images,
+    console.log(problem.images);
+    this.imagesDialog.open(ShowProblemImageDialogComponent, {
+      data: {
+        images: problem.images
       },
+
       height: '500px',
-      width : '800px'
-    })
+      width: '800px'
+    });
 
   }
 }
