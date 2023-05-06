@@ -1,29 +1,61 @@
 <h2 class="title">Users Table</h2>
 <div class="container">
+    <div class="search-div">
+    <button mat-raised-button >
+      <mat-icon>add</mat-icon>Create
+    </button>
+  </div>
   <table mat-table
     [dataSource]="DataSource"
-    class="mat-elevation-z8">
-
-    <ng-container matColumnDef="name">
-      <th mat-header-cell
-        *matHeaderCellDef>No.</th>
+    class="table table-hover table-striped table-sm">
+    <ng-container matColumnDef="icon">
+      <th mat-header-cell class="table-dark"
+        *matHeaderCellDef>#</th>
       <td mat-cell
-        *matCellDef="let element;let i =index;"> {{element.name}} </td>
+        *matCellDef="let element;let i =index;"> {{i+1}} </td>
     </ng-container>
-    <ng-container matColumnDef="action">
-      <th mat-header-cell
-      *matHeaderCellDef> Action </th>
+    <ng-container matColumnDef="username">
+      <th mat-header-cell class="table-dark"
+        *matHeaderCellDef>Username</th>
       <td mat-cell
+        *matCellDef="let element;let i =index;"> {{element.Username}} </td>
+    </ng-container>
+    <ng-container matColumnDef="age">
+      <th mat-header-cell class="table-dark"
+        *matHeaderCellDef>Age</th>
+      <td mat-cell
+        *matCellDef="let element;let i =index;"> {{element.age}} </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell class="table-dark"
+        *matHeaderCellDef>Email</th>
+      <td mat-cell
+        *matCellDef="let element;let i =index;"> {{element.email}} </td>
+    </ng-container>
+    <ng-container matColumnDef="role">
+      <th mat-header-cell class="table-dark"
+        *matHeaderCellDef>Role</th>
+      <td mat-cell
+        *matCellDef="let element;let i =index;"> <span class="badge badge-primary">{{element.Role}}</span> </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell class="table-dark"
+      *matHeaderCellDef> Actions </th>
+      <td mat-cell 
       *matCellDef="let element">
       <a mat-icon-button
+      class="btn"
       style="color: orange;">
           <mat-icon>remove_red_eye</mat-icon>
         </a>
         <a mat-icon-button
-        style="color: green;margin: 1rem;">
+        class="btn"
+        style="color: green">
         <mat-icon>update</mat-icon>
         </a>
         <a mat-icon-button
+        class="btn"
         style="color: red;">
           <mat-icon>delete</mat-icon>
         </a>
@@ -34,6 +66,6 @@
     <tr mat-row
       *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  <mat-paginator [length]="20" [pageSize]="5" [pageSizeOptions]="[1,2,3,5]" aria-label="Select page" showFirstLastButtons
+  <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[1,2,3,5,10]" aria-label="Select page" showFirstLastButtons
   ></mat-paginator>
 </div>
