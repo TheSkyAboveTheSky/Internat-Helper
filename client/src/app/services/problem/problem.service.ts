@@ -4,6 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Problem } from '../../_model/problem.model';
 import { TokenStorageService } from '../token-storage/token-storage.service';
 
+import {ProblemDetails} from "../../_model/ProblemDetails.model";
+
+
 
 const PROBLEM_API = 'http://localhost:8080/api/problem/addProblem';
 const PROBLEM_API_LIST = 'http://localhost:8080/api/problem/getAllProblems';
@@ -17,12 +20,13 @@ export class ProblemService {
     private tokenStorageService: TokenStorageService
   ) {}
 
-  private httpOptions={
-     headers : new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
 
-    }),
-  }
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'multipart/form-data'
+    })
+  };
+
 
 
   public addProblem(problem: FormData) {
@@ -30,9 +34,10 @@ export class ProblemService {
 
 
 
-    return this.httpClient.post<Problem>(PROBLEM_API, problem,this.httpOptions);
+    return this.httpClient.post<Problem>(PROBLEM_API, problem);
   }
-  public getAllProducts(){
-    return this.httpClient.get<Problem[]>(PROBLEM_API_LIST);
+  public getAllProblems(){
+    return this.httpClient.get<ProblemDetails[]>(PROBLEM_API_LIST);
+
   }
 }
