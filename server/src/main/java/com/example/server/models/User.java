@@ -1,15 +1,13 @@
 package com.example.server.models;
 
-import java.sql.Date;
+import java.awt.*;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import jdk.jfr.Name;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -28,13 +26,13 @@ public class User {
     @Email
     private String email;
 
-    public String getName() {
-        return name;
-    }
+    @Size(max = 120)
+    private String date;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @DBRef
+    private Set<Role> roles = new HashSet<>();
+
+
 
     @NotBlank
     @Size(max = 50)
@@ -45,8 +43,27 @@ public class User {
     private String password;
 
 
+
     @Size(max = 120)
     private String poste;
+
+
+
+
+
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+
 
     public String getPoste() {
         return poste;
@@ -64,11 +81,11 @@ public class User {
         this.date = date;
     }
 
-    @Size(max = 120)
-    private String date;
 
-    @DBRef
-    private Set<Role> roles = new HashSet<>();
+    public User(String name) {
+        this.name = name;
+    }
+
 
     public User() {
     }
@@ -87,6 +104,16 @@ public class User {
         this.password = password;
         this.poste = poste;
         this.date = date;
+    }
+
+    public User(String username, String email, String name, String password, String poste, String date,byte[] picByte ) {
+        this.username = username;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.poste = poste;
+        this.date = date;
+
     }
 
     public String getId() {
@@ -127,5 +154,14 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                '}';
     }
 }

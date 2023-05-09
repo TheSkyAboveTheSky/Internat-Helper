@@ -3,6 +3,9 @@ import { MaterialModule } from 'src/app/Material.Module';
 import { CommonModule } from '@angular/common';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
+import { UserAddFormComponent } from '../user-forms/user-add-form/user-add-form.component';
+import { UserEditFormComponent } from '../user-forms/user-edit-form/user-edit-form.component';
 @Component({
   selector: 'app-user-list',
   imports: [CommonModule, MaterialModule],
@@ -11,13 +14,13 @@ import { MatPaginator } from '@angular/material/paginator';
   standalone:true
 })
 export class UserListComponent implements OnInit {
-  constructor() {}
-  displayedColumns: string[] = ["username","age","email","role","action"];
+  constructor(private dialog:MatDialog) {}
+  displayedColumns: string[] = ["icon","username","age","email","role","action"];
+  DataSource!:MatTableDataSource<any>;
   @ViewChild('paginator') paginator!: MatPaginator;
   ngOnInit(): void {
     this.getAllUsers();
   }
-  DataSource!:MatTableDataSource<any>;
   getAllUsers():void {
     const users = [
       {Username: 'John1', age: 30, email: 'john@example.com' ,Role:"Admin"},
@@ -36,6 +39,20 @@ export class UserListComponent implements OnInit {
   }
   ngAfterViewInit():void{
     this.DataSource.paginator = this.paginator;
+  }
+  onCreate() {
+    const config: MatDialogConfig = new MatDialogConfig();
+    config.autoFocus = true;
+    config.width = '60%';
+    config.height = '40%';
+    this.dialog.open(UserAddFormComponent,config);
+  }
+  onEdit(row:any) {
+    const config: MatDialogConfig = new MatDialogConfig();
+    config.autoFocus = true;
+    config.width = '60%';
+    config.height = '40%';
+    this.dialog.open(UserEditFormComponent,config);
   }
 
 }

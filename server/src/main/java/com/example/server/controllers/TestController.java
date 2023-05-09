@@ -21,6 +21,12 @@ public class TestController {
         return "User Content.";
     }
 
+    @GetMapping("/problem")
+    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public String problemAccess() {
+        return "User Content.";
+    }
+
     @GetMapping("/mod")
     @PreAuthorize("hasRole('MODERATOR')")
     public String moderatorAccess() {

@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class UserInfoResponse {
+
     private String id;
     private String username;
     private String email;
@@ -14,6 +15,8 @@ public class UserInfoResponse {
     private String poste;
 
     private String date;
+
+
 
     public String getPoste() {
         return poste;
@@ -37,6 +40,7 @@ public class UserInfoResponse {
 
     private List<String> roles;
 
+
     public void setName(String name) {
         this.name = name;
     }
@@ -49,6 +53,7 @@ public class UserInfoResponse {
         this.poste = poste;
         this.date = date;
         this.roles = roles;
+
     }
 
     public String getId() {
@@ -78,4 +83,6 @@ public class UserInfoResponse {
     public List<String> getRoles() {
         return roles;
     }
+
+
 }

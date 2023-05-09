@@ -4,7 +4,7 @@ import { EditProfilService } from 'src/app/services/edit_profil/edit_profil.serv
 import { TokenStorageService } from 'src/app/services/token-storage/token-storage.service';
 
 function getUser() {
-  return JSON.parse(localStorage.getItem('user') || '');
+  return JSON.parse(localStorage.getItem('user') || '{}');
 }
 @Component({
   selector: 'app-edit_profil',
@@ -25,6 +25,7 @@ export class EditProfilComponent implements OnInit {
   ) {}
 
   currentUser: any;
+  retrievedImage: any;
 
   ngOnInit(): void {
     this.currentUser = getUser();
@@ -32,6 +33,15 @@ export class EditProfilComponent implements OnInit {
     this.form.email = this.currentUser.email;
     this.form.poste = this.currentUser.poste;
     this.form.date = this.currentUser.date;
+    this.getImageUrl();
+  }
+  getImageUrl(): void {
+    if (this.currentUser.picByte) {
+      const imageType = this.currentUser.picType === 'image/jpeg' ? 'jpeg' : 'png';
+      const imageBlob = new Blob([this.currentUser.picByte], { type: `image/${imageType}` });
+      const imageUrl = URL.createObjectURL(imageBlob);
+      this.retrievedImage = imageUrl;
+    }
   }
 
   onSubmit(): void {
