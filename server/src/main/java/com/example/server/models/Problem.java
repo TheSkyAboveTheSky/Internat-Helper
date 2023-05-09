@@ -12,7 +12,7 @@ import java.util.Set;
 @Document(collection = "problems")
 public class Problem {
     @Id
-    private String Id;
+    private String id;
 
     private String name;
 
@@ -26,6 +26,18 @@ public class Problem {
     @DBRef
     private List<ImageProblem> images ;
     private String state ;
+
+
+    public Problem(String id, String name, String description, String roomName, List<ImageProblem> images, User reportedBy, String state) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.roomName = roomName;
+        this.images = images;
+        this.reportedBy = reportedBy;
+        this.state = state;
+    }
+
 
     public String getState() {
         return state;
@@ -63,11 +75,11 @@ public class Problem {
     private Set<Role> roles = new HashSet<>();
 
     public String getId() {
-        return Id;
+        return id;
     }
 
     public void setId(String Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     public String getName() {
@@ -105,9 +117,16 @@ public class Problem {
         this.roles = roles;
     }
 
-    public Problem(String name, String description, String roomName,String state){
+    public Problem(String name, String description, String roomName, String state){
         this.name = name;
         this.description = description;
         this.roomName = roomName;
-        this.state= state;    }
+        this.state= state;
+        this.reportedBy = reportedBy;
+        this.images = images;
+
+    }
+
+    public Problem() {
+    }
 }
