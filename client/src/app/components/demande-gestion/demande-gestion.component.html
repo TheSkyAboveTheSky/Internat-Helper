@@ -1,0 +1,21 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">chambre</th>
+        <th scope="col">type</th>
+        <th scope="col">contenu</th>
+        <th scope="col">etat</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let demande of demandes ">
+
+        <th scope="row">{{demande.id}}</th>
+        <td>{{demande.chambre}}</td>
+        <td>{{demande.type}}</td>
+        <td>{{demande.contenu}}</td>
+        <td>{{demande.etat}}</td>
+      </tr>
+    </tbody>
+  </table>

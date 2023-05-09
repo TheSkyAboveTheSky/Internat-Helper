@@ -14,9 +14,14 @@ import java.util.List;
 public class DemandeController {
     @Autowired
     private DemandeService demandeService;
+
     @RequestMapping("/demandes")
     public List<Demande>getDemandes(){
         return  demandeService.getDemandes();
+
+
+
+
     }
     @RequestMapping("/demande/{id}")
     public Demande getDemande(@PathVariable long id) {

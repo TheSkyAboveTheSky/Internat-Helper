@@ -16,7 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfilComponent } from './components/edit_profil/edit_profil.component';
-import { DemandeGestionComponent } from './demande-gestion/demande-gestion.component';
+import { DemandeGestionComponent } from './components/demande-gestion/demande-gestion.component';
 
 @NgModule({
   declarations: [
