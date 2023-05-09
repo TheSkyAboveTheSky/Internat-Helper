@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ProblemService } from '../../services/problem/problem.service';
 import { Problem } from '../../_model/problem.model';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,12 +10,14 @@ import { map } from 'rxjs/operators';
 import {pipe} from "rxjs";
 import {ProblemDetails} from "../../_model/ProblemDetails.model";
 
+
 @Component({
   selector: 'app-show-problem-details',
   templateUrl: './show-problem-details.component.html',
   styleUrls: ['./show-problem-details.component.css']
 })
 export class ShowProblemDetailsComponent implements OnInit {
+
 
   problemDetails: ProblemDetails[] = [];
   displayedColumns: string[] = ['Problem Id', 'Problem Name', 'Problem Description', 'Problem roomName', 'Problem reportedByname', 'Images'];
@@ -28,6 +31,7 @@ export class ShowProblemDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProblems();
   }
+
 
   getAllProblems(): void {
     console.log();
@@ -56,6 +60,7 @@ export class ShowProblemDetailsComponent implements OnInit {
       height: '500px',
       width: '800px'
     });
+
 
   }
 }

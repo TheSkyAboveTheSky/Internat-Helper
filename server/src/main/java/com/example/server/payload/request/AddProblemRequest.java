@@ -1,6 +1,7 @@
 package com.example.server.payload.request;
 
 import com.example.server.models.ImageProblem;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
@@ -9,6 +10,7 @@ import java.util.Set;
 
 public class AddProblemRequest {
     private  String Id;
+
     @NotBlank
     private String name;
 
@@ -17,6 +19,7 @@ public class AddProblemRequest {
 
     @NotBlank
     private String roomName;
+
 
     private List<MultipartFile> images;
 
@@ -32,6 +35,7 @@ public class AddProblemRequest {
         this.images = images;
         this.reportedById = reportedById;
     }
+
 
     public String getName() {
         return name;
@@ -57,6 +61,7 @@ public class AddProblemRequest {
         this.roomName = roomName;
     }
 
+
     public List<MultipartFile> getImages() {
         return images;
     }
@@ -73,3 +78,4 @@ public class AddProblemRequest {
         this.reportedById = reportedById;
     }
 }
+

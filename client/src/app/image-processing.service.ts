@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { Problem } from './_model/problem.model';
 
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -9,6 +10,7 @@ import {ProblemDetails} from "./_model/ProblemDetails.model";
   providedIn: 'root'
 })
 export class ImageProcessingService {
+
 
   constructor(private sanitizer: DomSanitizer) { }
 
@@ -34,13 +36,16 @@ export class ImageProcessingService {
   }
 
   private dataURItoBlob(picBytes: string, imageType: string): Blob {
+
     const byteString = window.atob(picBytes);
     const arrayBuffer = new ArrayBuffer(byteString.length);
     const int8Array = new Uint8Array(arrayBuffer);
     for (let i = 0; i < byteString.length; i++) {
       int8Array[i] = byteString.charCodeAt(i);
     }
+
     const blob = new Blob([int8Array], { type: imageType });
+
     return blob;
   }
 }

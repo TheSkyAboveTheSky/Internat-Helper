@@ -2,6 +2,7 @@
   <div  class="card p-2">
     <div class=" row">
       <div class=" col-6">
+
         <form  #problemForm="ngForm" (ngSubmit)="addProblem(problemForm)"  enctype="multipart/form-data" >
 
           <mat-form-field appearance="outline">
@@ -41,6 +42,7 @@
       <div class=" col-6">
         <div>
           <div class="dropzone">
+
             <div class="text-wrapper">
               <div class="centered">
 
@@ -62,6 +64,7 @@
                   <img [src]="file.url"  width="100px" height="100px">
 
                 </div>
+
               </mat-grid-tile>
 
 

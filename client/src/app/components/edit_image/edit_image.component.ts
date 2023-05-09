@@ -4,7 +4,9 @@ import { EditImageService } from 'src/app/services/edit_image/edit_image.service
 import { TokenStorageService } from 'src/app/services/token-storage/token-storage.service';
 
 function getUser() {
+
   return JSON.parse(localStorage.getItem('user') || '{}');
+
 }
 
 @Component({

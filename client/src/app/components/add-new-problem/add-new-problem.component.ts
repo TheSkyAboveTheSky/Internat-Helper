@@ -19,8 +19,10 @@ export class AddNewProblemComponent implements OnInit {
     name: "",
     description: "",
     roomName: "",
+
     reportedBy: "",
     images :[]
+
   };
 
   currentUser: any;
@@ -30,20 +32,25 @@ export class AddNewProblemComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.tokenStorageService.getUser();
 
+    this.problem.reportedBy = this.currentUser.id;
+
   }
 
   addProblem(problemForm: NgForm) {
+
 
     this.problem.reportedBy = this.currentUser.id;
     const problemFormData = this.prepareFormData(this.problem );
     this.problemService.addProblem(problemFormData).subscribe(
       (response: Problem) => {
         problemForm.reset();
+
       },
       (error: HttpErrorResponse) => {
         console.log(error);
       }
     );
+
     console.log(problemFormData)
     console.log(this.problem)
     console.log(this.problem.images)
@@ -95,13 +102,16 @@ export class AddNewProblemComponent implements OnInit {
       this.problem.images.push(fileHandle);
 
 
+
     }
+
 
 
   }
 
   removeImages(i: number) {
     this.problem.images.splice(i,1);
+
 
   }
 }
