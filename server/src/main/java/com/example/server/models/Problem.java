@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import org.springframework.data.annotation.Id;
 import java.util.HashSet;
+
 import java.util.List;
 import java.util.Set;
 
@@ -24,7 +25,9 @@ public class Problem {
     private User reportedBy;
 
     @DBRef
+
     private List<ImageProblem> images ;
+
 
 
 
@@ -40,11 +43,13 @@ public class Problem {
 
 
 
+
     public List<ImageProblem> getImages() {
         return images;
     }
 
     public void setImages(List<ImageProblem> images) {
+
         this.images = images;
     }
 
@@ -67,9 +72,11 @@ public class Problem {
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }
+
 
 
     public String getDescription() {

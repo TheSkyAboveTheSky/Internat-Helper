@@ -1,4 +1,5 @@
 <div class="container mt-5">
+
   <table mat-table [dataSource]="problemDetails" class="mat-elevation-z8">
 
     <ng-container matColumnDef="Problem Id">
@@ -41,3 +42,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
+

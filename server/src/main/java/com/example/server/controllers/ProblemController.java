@@ -1,15 +1,18 @@
 package com.example.server.controllers;
 
+
 import com.example.server.dto.ProblemDTO;
 import com.example.server.models.ImageProblem;
 import com.example.server.models.Problem;
 import com.example.server.models.User;
 import com.example.server.payload.request.AddProblemRequest;
 import com.example.server.payload.response.MessageResponse;
+
 import com.example.server.repository.ImageRepository;
 import com.example.server.repository.ProblemRepository;
 import com.example.server.repository.UserRepository;
 import org.springframework.data.domain.Sort;
+
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+
 import java.util.*;
 
 
@@ -33,6 +37,7 @@ public class ProblemController {
 
     @Autowired
     UserRepository userRepository;
+
 
     @Autowired
     ImageRepository imageRepository;
@@ -105,6 +110,7 @@ public class ProblemController {
     @GetMapping({"/getAllImages"})
     public List<ImageProblem> getAllImages() {
         return imageRepository.findAll();
+
 
 
     }
