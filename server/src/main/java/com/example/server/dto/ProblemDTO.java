@@ -24,6 +24,15 @@ public class ProblemDTO {
 
     private String reportedById;
     private String reportedByname;
+    private String state;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public String getReportedById() {
         return reportedById;
@@ -93,9 +102,10 @@ public class ProblemDTO {
         this.roomName = roomName;
         this.images = images;
 
+
     }
 
-    public ProblemDTO(String id, String name, String description, String roomName, List<ImageProblem> images, String reportedById, String reportedByname) {
+    public ProblemDTO(String id, String name, String description, String roomName, List<ImageProblem> images, String reportedById, String reportedByname,String state) {
         Id = id;
         this.name = name;
         this.description = description;
@@ -103,6 +113,7 @@ public class ProblemDTO {
         this.images = images;
         this.reportedById = reportedById;
         this.reportedByname = reportedByname;
+        this.state = state;
     }
 }
 

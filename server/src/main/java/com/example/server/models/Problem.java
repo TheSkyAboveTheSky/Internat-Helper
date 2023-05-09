@@ -25,8 +25,15 @@ public class Problem {
 
     @DBRef
     private List<ImageProblem> images ;
+    private String state ;
 
+    public String getState() {
+        return state;
+    }
 
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public User getReportedBy() {
         return reportedBy;
@@ -98,9 +105,9 @@ public class Problem {
         this.roles = roles;
     }
 
-    public Problem(String name, String description, String roomName){
+    public Problem(String name, String description, String roomName,String state){
         this.name = name;
         this.description = description;
         this.roomName = roomName;
-    }
+        this.state= state;    }
 }

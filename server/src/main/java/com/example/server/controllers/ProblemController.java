@@ -10,12 +10,14 @@ import com.example.server.repository.ImageRepository;
 import com.example.server.repository.ProblemRepository;
 import com.example.server.repository.UserRepository;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
 import java.io.IOException;
@@ -42,7 +44,7 @@ public class ProblemController {
     public ProblemDTO addProblem(@ModelAttribute AddProblemRequest addProblemRequest) {
 
 
-        Problem problem = new Problem(addProblemRequest.getName(), addProblemRequest.getDescription(), addProblemRequest.getRoomName());
+        Problem problem = new Problem(addProblemRequest.getName(), addProblemRequest.getDescription(), addProblemRequest.getRoomName(),"Non completé");
 
        User user = userRepository.findById(addProblemRequest.getReportedById())
                .orElseThrow(() -> new RuntimeException("user with id:" + addProblemRequest.getReportedById() + "does not exist"));
@@ -55,7 +57,7 @@ public class ProblemController {
             problem.setImages(uploadImage(files));
             problemRepository.save(problem);
 
-            return new ProblemDTO(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy().getId(),problem.getReportedBy().getName());
+            return new ProblemDTO(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy().getId(),problem.getReportedBy().getName(),problem.getState());
         } catch (IOException e) {
             System.out.println(e.getMessage());
             return null;
@@ -97,7 +99,7 @@ public class ProblemController {
         List<Problem> problems = problemRepository.findAll();
 
         for (Problem problem : problems){
-            problemDTOS.add(new ProblemDTO(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy().getId(),problem.getReportedBy().getName()));
+            problemDTOS.add(new ProblemDTO(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy().getId(),problem.getReportedBy().getName(),problem.getState()));
         }
   return  problemDTOS;
     }
@@ -107,5 +109,15 @@ public class ProblemController {
         return imageRepository.findAll();
 
 
+    }
+    @PutMapping ("/{id}")
+    public ProblemDTO updateProblemState(@PathVariable String id, @RequestBody String newState) {
+        Problem problem = problemRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        problem.setState(newState);
+        problemRepository.save(problem);
+        return new ProblemDTO(problem.getId(), problem.getName(), problem.getDescription(), problem.getRoomName(),
+                problem.getImages(), problem.getReportedBy().getId(), problem.getReportedBy().getName(),
+                problem.getState());
     }
 }
