@@ -12,11 +12,4 @@ public class SpringBootMongodbLoginApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringBootMongodbLoginApplication.class, args);
     }
-
-    @Bean
-    public CommandLineRunner commandLineRunner (UserRepository userRepository) {
-        return (String[] args) -> {
-            System.out.println(userRepository.findAll());
-        };
-    }
 }

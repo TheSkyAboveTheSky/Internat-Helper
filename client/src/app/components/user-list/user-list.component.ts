@@ -14,7 +14,9 @@ import { UserEditFormComponent } from '../user-forms/user-edit-form/user-edit-fo
   standalone:true
 })
 export class UserListComponent implements OnInit {
+
   constructor(private dialog:MatDialog) {}
+
   displayedColumns: string[] = ["icon","username","age","email","role","action"];
   DataSource!:MatTableDataSource<any>;
   @ViewChild('paginator') paginator!: MatPaginator;
