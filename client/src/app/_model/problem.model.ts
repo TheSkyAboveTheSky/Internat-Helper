@@ -17,6 +17,6 @@ export interface  Problem {
   description : string,
   roomName : string,
   reportedBy: string;
-  Images : FileHandle[],
+  images : FileHandle[],
 
 }
