@@ -1,12 +1,7 @@
 <div class="col-md-12">
   <div
     class="card card-container"
-    style="
-      width: 351.777778px;
-      height: 351.777778px;
-      margin-left: auto;
-      margin-right: auto;
-    "
+    style="width: 300px; height: 300px; margin-left: auto; margin-right: auto"
   >
     <img
       id="profile-img"
@@ -20,6 +15,27 @@
       #f="ngForm"
       novalidate
     >
+      <div class="form-group">
+        <label for="Rôle">Rôle</label>
+        <select
+          type="text"
+          class="form-control"
+          name="poste"
+          [(ngModel)]="form.poste"
+          required
+          minlength="3"
+          maxlength="20"
+          #poste="ngModel"
+        >
+          <option value="" disabled selected>Select your option</option>
+          <option value="etudiant">Etudiant</option>
+          <option value="ouvrier">Ouvrier</option>
+        </select>
+        <div class="alert-danger" *ngIf="username.errors && f.submitted">
+          <div *ngIf="username.errors['required']">Choisir une</div>
+        </div>
+      </div>
+
       <div class="form-group">
         <label for="username">Username</label>
         <input

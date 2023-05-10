@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { TokenStorageService } from './services/token-storage/token-storage.service';
-import {O} from "@angular/cdk/keycodes";
-
-
+import { O } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +13,9 @@ export class AppComponent {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-  isUser= false;
-
-
+  isUser = false;
+  isStudent = false;
+  isOuvrier = false;
 
   constructor(private tokenStorageService: TokenStorageService) {}
 
@@ -29,11 +27,17 @@ export class AppComponent {
       console.log(`Bienvenue, ${this.username}!`);
     }
 
-
-
     if (this.isLoggedIn) {
+      if (
+        JSON.parse(localStorage.getItem('user') || '{}')['poste'] == 'etudiant'
+      ) {
+        this.isStudent = true;
+      } else {
+        this.isOuvrier = true;
+      }
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
+
       this.isUser = this.roles.includes('ROLE_USER');
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
