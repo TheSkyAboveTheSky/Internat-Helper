@@ -17,6 +17,19 @@ public class SignupRequest {
     @Size(max = 50)
     private String name;
 
+    public String getPoste() {
+        return poste;
+    }
+
+    public void setPoste(String poste) {
+        this.poste = poste;
+    }
+
+    @NotBlank
+    @Size(max = 50)
+    private String poste;
+
+
     public void setRoles(Set<String> roles) {
         this.roles = roles;
     }

@@ -4,14 +4,14 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-
   form: any = {
     username: null,
     email: null,
     name: null,
+    poste: null,
     password: null,
   };
   isSuccessful = false;
@@ -23,19 +23,20 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
-    const { username, email, name, password } = this.form;
+    const { username, email, name, poste, password } = this.form;
 
-    this.authService.register(username, email, name, password).subscribe({
-      next: (data) => {
-        console.log(data);
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-      },
-      error: (err) => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
-      },
-    });
+    this.authService
+      .register(username, email, name, poste, password)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+        },
+        error: (err) => {
+          this.errorMessage = err.error.message;
+          this.isSignUpFailed = true;
+        },
+      });
   }
-
 }

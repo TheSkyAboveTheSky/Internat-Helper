@@ -9,7 +9,7 @@ const httpOptions = {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
@@ -28,6 +28,7 @@ export class AuthService {
     username: string,
     email: string,
     name: string,
+    poste: string,
     password: string
   ): Observable<any> {
     return this.http.post(
@@ -36,6 +37,7 @@ export class AuthService {
         username,
         email,
         name,
+        poste,
         password,
       },
       httpOptions
