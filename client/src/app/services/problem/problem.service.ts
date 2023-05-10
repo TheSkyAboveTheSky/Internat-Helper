@@ -10,6 +10,7 @@ import {ProblemDetails} from "../../_model/ProblemDetails.model";
 
 const PROBLEM_API = 'http://localhost:8080/api/problem/addProblem';
 const PROBLEM_API_LIST = 'http://localhost:8080/api/problem/all';
+const UPDATE_PROBLEM_API = "http://localhost:8080/api/problem";
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +27,11 @@ export class ProblemService {
       'Content-Type': 'multipart/form-data'
     })
   };
+  private httpOptionsState = {
+    headers: new HttpHeaders({
+      'Content-Type': 'text/plain'
+    })
+  };
 
 
 
@@ -39,5 +45,17 @@ export class ProblemService {
   public getAllProblems(){
     return this.httpClient.get<ProblemDetails[]>(PROBLEM_API_LIST);
 
+  }
+  public updateProblem(id:String,data:String)
+  {
+    return this.httpClient.put<Problem>(`${UPDATE_PROBLEM_API}/${id}`, data)
+    .subscribe(
+      (response: Problem) => {
+        console.log(response);
+      },
+      (error: any) => {
+        alert(error);
+      }
+    );
   }
 }

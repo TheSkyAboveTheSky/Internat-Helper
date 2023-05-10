@@ -1,5 +1,4 @@
 <div class="container mt-5">
-
   <table mat-table [dataSource]="problemDetails" class="mat-elevation-z8">
 
     <ng-container matColumnDef="Problem Id">
@@ -25,7 +24,7 @@
       <td mat-cell *matCellDef="let element"> {{element.roomName}} </td>
     </ng-container>
     <ng-container matColumnDef="Problem reportedByname">
-      <th mat-header-cell *matHeaderCellDef> Problem roomName </th>
+      <th mat-header-cell *matHeaderCellDef> Problem reportedByname </th>
       <td mat-cell *matCellDef="let element"> {{element.reportedByname}} </td>
     </ng-container>
 
@@ -37,9 +36,19 @@
         </button>
       </td>
     </ng-container>
+    <ng-container matColumnDef="Situation">
+      <th mat-header-cell *matHeaderCellDef>State</th>
+      <td mat-cell *matCellDef="let element">
+        <select [(ngModel)]="selectedOption[element.id]" (change)="onStateChange(element.id)">
+          <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+        </select>
+      </td>
+    </ng-container>
+    
+    
+    
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 </div>
-

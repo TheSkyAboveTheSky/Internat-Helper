@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ProblemService } from '../../services/problem/problem.service';
 import { Problem } from '../../_model/problem.model';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -24,6 +23,7 @@ export class ShowProblemDetailsComponent implements OnInit {
     'Problem roomName',
     'Problem reportedByname',
     'Images',
+    'Situation'
   ];
 
   constructor(
@@ -35,15 +35,20 @@ export class ShowProblemDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProblems();
   }
+  initializeDefaultSelectedOptions(): void {
+    for (const problem of this.problemDetails) {
+      this.selectedOption[problem.id] = problem.state;
+    }
+    console.log(this.selectedOption);
+  }
 
   getAllProblems(): void {
-    console.log();
     this.problemService
       .getAllProblems()
       .pipe(
         map((problems: ProblemDetails[]) =>
           problems.map((problem: ProblemDetails) =>
-            this.imageProcessingService.createImages(problem)
+          this.imageProcessingService.createImages(problem)
           )
         )
       )
@@ -51,6 +56,7 @@ export class ShowProblemDetailsComponent implements OnInit {
         (problemsWithImages: ProblemDetails[]) => {
           console.log(problemsWithImages);
           this.problemDetails = problemsWithImages;
+          this.initializeDefaultSelectedOptions();
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -70,4 +76,18 @@ export class ShowProblemDetailsComponent implements OnInit {
       width: '800px',
     });
   }
+  onStateChange(problemId: string): void {
+    const selectedState = this.selectedOption[problemId];
+    try{
+      this.problemService.updateProblem(problemId,selectedState);
+    }catch(error){
+      alert(error);
+    }
+
+  }
+  
+  options = ['Non completé', 'En cours', 'Completé'];
+  selectedOption: any = [];
+  mongoUrl = 'mongodb://localhost:27017/mydatabase';
+  collectionName = 'mycollection';
 }

@@ -8,7 +8,8 @@ export interface ProblemDetails{
   roomName :string,
   images : FileHandle[],
   repotedById : string,
-  reportedByname : string
+  reportedByname : string,
+  state:string,
 }
 
 

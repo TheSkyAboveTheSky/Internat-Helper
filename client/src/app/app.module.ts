@@ -26,10 +26,8 @@ import {MatButtonModule} from "@angular/material/button";
 import {MaterialModule} from "./Material.Module";
 import { ShowProblemImageDialogComponent } from './components/show-problem-image-dialog/show-problem-image-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
-
 import { UserAddFormComponent } from './components/user-forms/user-add-form/user-add-form.component';
 import { UserEditFormComponent } from './components/user-forms/user-edit-form/user-edit-form.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +43,6 @@ import { UserEditFormComponent } from './components/user-forms/user-edit-form/us
     AddNewProblemComponent,
     ShowProblemDetailsComponent,
     ShowProblemImageDialogComponent,
-
   ],
   imports: [
     BrowserModule,
