@@ -1,28 +1,21 @@
 package com.example.server.controllers;
 
-
-import com.example.server.dto.ProblemDTO;
 import com.example.server.models.ImageProblem;
 import com.example.server.models.Problem;
 import com.example.server.models.User;
 import com.example.server.payload.request.AddProblemRequest;
-import com.example.server.payload.response.MessageResponse;
-
 import com.example.server.repository.ImageRepository;
 import com.example.server.repository.ProblemRepository;
 import com.example.server.repository.UserRepository;
-import org.springframework.data.domain.Sort;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
-import javax.validation.Valid;
 import java.io.IOException;
-
 import java.util.*;
 
 
@@ -38,19 +31,18 @@ public class ProblemController {
     @Autowired
     UserRepository userRepository;
 
-
     @Autowired
     ImageRepository imageRepository;
 
 
     @PostMapping(value = {"/addProblem"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ProblemDTO addProblem(@ModelAttribute AddProblemRequest addProblemRequest) {
+    public Problem addProblem(@ModelAttribute AddProblemRequest addProblemRequest) {
 
 
-        Problem problem = new Problem(addProblemRequest.getName(), addProblemRequest.getDescription(), addProblemRequest.getRoomName());
+        Problem problem = new Problem(addProblemRequest.getName(), addProblemRequest.getDescription(), addProblemRequest.getRoomName(),"Non completé");
 
-       User user = userRepository.findById(addProblemRequest.getReportedById())
-               .orElseThrow(() -> new RuntimeException("user with id:" + addProblemRequest.getReportedById() + "does not exist"));
+        User user = userRepository.findById(addProblemRequest.getReportedById())
+                .orElseThrow(() -> new RuntimeException("user with id:" + addProblemRequest.getReportedById() + "does not exist"));
 
         problem.setReportedBy(user);
 
@@ -60,7 +52,7 @@ public class ProblemController {
             problem.setImages(uploadImage(files));
             problemRepository.save(problem);
 
-            return new ProblemDTO(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy().getId(),problem.getReportedBy().getName());
+            return new Problem(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy(),problem.getState());
         } catch (IOException e) {
             System.out.println(e.getMessage());
             return null;
@@ -96,15 +88,10 @@ public class ProblemController {
 
 
 
-    @GetMapping({"/getAllProblems"})
-    public List<ProblemDTO> getAllProblems() {
-        List<ProblemDTO> problemDTOS = new ArrayList<>();
-        List<Problem> problems = problemRepository.findAll();
+    @GetMapping({"/all"})
+    public List<Problem> getAllProblems() {
 
-        for (Problem problem : problems){
-            problemDTOS.add(new ProblemDTO(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy().getId(),problem.getReportedBy().getName()));
-        }
-  return  problemDTOS;
+        return problemRepository.findAll();
     }
 
     @GetMapping({"/getAllImages"})
@@ -112,6 +99,18 @@ public class ProblemController {
         return imageRepository.findAll();
 
 
-
+    }
+    @PutMapping ("/{id}")
+    public Problem updateProblemState(@PathVariable String id, @RequestBody String newState) {
+        Problem problem = problemRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        problem.setState(newState);
+        problemRepository.save(problem);
+        return problem;
+    }
+    @GetMapping("/{id}")
+    public Optional<Problem> getProblem(@PathVariable String id)
+    {
+        return problemRepository.findById(id);
     }
 }

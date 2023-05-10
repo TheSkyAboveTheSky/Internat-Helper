@@ -9,7 +9,7 @@ import {ProblemDetails} from "../../_model/ProblemDetails.model";
 
 
 const PROBLEM_API = 'http://localhost:8080/api/problem/addProblem';
-const PROBLEM_API_LIST = 'http://localhost:8080/api/problem/getAllProblems';
+const PROBLEM_API_LIST = 'http://localhost:8080/api/problem/all';
 
 @Injectable({
   providedIn: 'root',

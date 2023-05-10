@@ -21,7 +21,7 @@ export class AddNewProblemComponent implements OnInit {
     roomName: '',
 
     reportedBy: '',
-    Images: [],
+    images: [],
   };
 
   currentUser: any;
@@ -57,7 +57,7 @@ export class AddNewProblemComponent implements OnInit {
 
     console.log(problemFormData);
     console.log(this.problem);
-    console.log(this.problem.Images);
+    console.log(this.problem.images);
     console.log(problemFormData);
   }
   prepareFormData(problem: Problem): FormData {
@@ -67,11 +67,11 @@ export class AddNewProblemComponent implements OnInit {
     formData.append('reportedById', problem.reportedBy);
     formData.append('roomName', problem.roomName);
 
-    for (let i = 0; i < problem.Images.length; i++) {
+    for (let i = 0; i < problem.images.length; i++) {
       formData.append(
         'images',
-        problem.Images[i].file,
-        problem.Images[i].file.name
+        problem.images[i].file,
+        problem.images[i].file.name
       );
     }
 
@@ -88,11 +88,11 @@ export class AddNewProblemComponent implements OnInit {
           window.URL.createObjectURL(file)
         ),
       };
-      this.problem.Images.push(fileHandle);
+      this.problem.images.push(fileHandle);
     }
   }
 
   removeImages(i: number) {
-    this.problem.Images.splice(i, 1);
+    this.problem.images.splice(i, 1);
   }
 }

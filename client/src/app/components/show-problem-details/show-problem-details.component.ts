@@ -60,10 +60,10 @@ export class ShowProblemDetailsComponent implements OnInit {
 
   showImages(problem: Problem): void {
     console.log(problem);
-    console.log(problem.Images);
+    console.log(problem.images);
     this.imagesDialog.open(ShowProblemImageDialogComponent, {
       data: {
-        images: problem.Images,
+        images: problem.images,
       },
 
       height: '500px',
