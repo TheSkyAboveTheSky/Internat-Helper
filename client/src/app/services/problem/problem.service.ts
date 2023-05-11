@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { Problem } from '../../_model/problem.model';
 import { TokenStorageService } from '../token-storage/token-storage.service';
-
-import {ProblemDetails} from "../../_model/ProblemDetails.model";
+import { Problem } from 'src/app/models/problem';
+import { ProblemDetails } from 'src/app/models/problem';
 
 
 

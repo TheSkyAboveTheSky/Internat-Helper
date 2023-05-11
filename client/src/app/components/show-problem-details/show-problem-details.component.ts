@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ProblemService } from '../../services/problem/problem.service';
-import { Problem } from '../../_model/problem.model';
+import { Problem } from 'src/app/models/problem';
+import { ProblemDetails } from 'src/app/models/problem';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { ShowProblemImageDialogComponent } from '../show-problem-image-dialog/show-problem-image-dialog.component';
-import { ImageProcessingService } from '../../image-processing.service';
+import { ImageProcessingService } from '../../services/image-processing/image-processing.service';
 import { map } from 'rxjs/operators';
-import { pipe } from 'rxjs';
-import { ProblemDetails } from '../../_model/ProblemDetails.model';
+
 
 @Component({
   selector: 'app-show-problem-details',

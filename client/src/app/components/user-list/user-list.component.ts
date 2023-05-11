@@ -8,6 +8,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserAddFormComponent } from '../user-forms/user-add-form/user-add-form.component';
 import { UserEditFormComponent } from '../user-forms/user-edit-form/user-edit-form.component';
 import { FormsModule } from '@angular/forms';
+import { UserService } from 'src/app/services/user/user.service';
 @Component({
   selector: 'app-user-list',
   imports: [CommonModule, MaterialModule,FormsModule],
@@ -16,7 +17,10 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
 })
 export class UserListComponent implements OnInit {
-  constructor(private dialog: MatDialog) {}
+  users:any;
+  constructor
+    (private dialog: MatDialog,
+    private userService:UserService ) {}
   displayedColumns: string[] = [
     'icon',
     'username',
@@ -34,29 +38,32 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllUsers();
   }
-  async getAllUsers(): Promise<any> {
-    const users = [
-      { Username: 'John 1', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-      { Username: 'John 2', age: 32, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-      { Username: 'John 3', age: 27, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-      { Username: 'John 4', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'homme',Poste:'Technicien'},
-      { Username: 'John 5', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'femme',Poste:'Technicien'},
-      { Username: 'John 6', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-      { Username: 'John 7', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-      { Username: 'John 8', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-      { Username: 'John 9', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-      { Username: 'John 10', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-      { Username: 'John 11', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-      { Username: 'John 12', age: 30, email: 'john@example.com', Role: 'Admin' ,Gender:'Male',Poste:'Technicien'},
-    ];
-    this.DataSource = new MatTableDataSource(users);
+  getAllUsers(): void {
+    this.userService.getAllUsers().subscribe((response) =>{
+      this.users = response;
+      this.DataSource = new MatTableDataSource(this.users);
+      this.DataSource.sort = this.sorter;
+      this.DataSource.paginator = this.paginator;
+    },
+    (error)=> console.log(error)
+    );
 
   }
-  ngAfterViewInit(): void {
-    this.DataSource.sort = this.sorter;
-    this.DataSource.paginator = this.paginator;
+  calculateAge(dateOfBirth: string): number {
+    const today: Date = new Date(); 
+    const birthDate: Date = new Date(dateOfBirth); 
+    let age: number = today.getFullYear() - birthDate.getFullYear(); // 
+    const hasBirthdayPassed: boolean =
+      today.getMonth() > birthDate.getMonth() ||
+      (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
 
+    if (!hasBirthdayPassed) {
+      age--;
+    }
+
+    return age;
   }
+  
   onCreate() {
     const config: MatDialogConfig = new MatDialogConfig();
     config.autoFocus = true;

@@ -18,10 +18,10 @@
           <mat-error *ngIf="myForm.controls['email'].errors?.['email']">Invalid email form</mat-error>
         </mat-form-field>
          
-        <label for="poste">Poste : </label>
-        <mat-radio-group formControlName="poste">
-          <mat-radio-button value="Technicien">Technicien</mat-radio-button>
-          <mat-radio-button value="CHOBABA">Chobaab</mat-radio-button>
+        <label for="gender">Gender : </label>
+        <mat-radio-group formControlName="gender">
+          <mat-radio-button value="homme">Homme</mat-radio-button>
+          <mat-radio-button value="femme">Femme</mat-radio-button>
         </mat-radio-group>
 
 
@@ -29,12 +29,6 @@
     </mat-grid-tile>
     <mat-grid-tile>
       <div class="controles-container">
-
-        <label for="gender">Gender : </label>
-        <mat-radio-group formControlName="gender">
-          <mat-radio-button value="homme">Homme</mat-radio-button>
-          <mat-radio-button value="femme">Femme</mat-radio-button>
-        </mat-radio-group>
 
           <mat-form-field>
             <mat-select formControlName="roles" placeholder="Roles">
@@ -44,6 +38,14 @@
               </ng-container>
             </mat-select>
           </mat-form-field>
+
+          <div *ngIf="myForm.controls['roles'].value === 'MOD'">
+            <label for="poste">Poste : </label>
+            <mat-radio-group formControlName="poste">
+              <mat-radio-button value="Technicien">Technicien</mat-radio-button>
+              <mat-radio-button value="Plombier">Plombier</mat-radio-button>
+            </mat-radio-group>
+          </div>
  
           <mat-form-field>
             <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Birthday" />

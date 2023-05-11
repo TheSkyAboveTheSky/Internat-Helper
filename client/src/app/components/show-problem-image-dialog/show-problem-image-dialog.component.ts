@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FileHandle} from "../../_model/file-handle-model";
+import { FileHandle } from 'src/app/models/file-handler';
 
 @Component({
   selector: 'app-show-problem-image-dialog',

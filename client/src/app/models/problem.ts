@@ -1,6 +1,13 @@
-import {FileHandle} from "./file-handle-model";
-import {User} from "./User.model";
+import { FileHandle } from "./file-handler";
+export interface  Problem {
 
+  name : string,
+  description : string,
+  roomName : string,
+  reportedBy: string;
+  images : FileHandle[],
+
+}
 export interface ProblemDetails{
   id :string,
   name: string,
@@ -11,5 +18,3 @@ export interface ProblemDetails{
   reportedByname : string,
   state:string,
 }
-
-

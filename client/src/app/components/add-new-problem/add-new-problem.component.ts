@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Problem } from '../../_model/problem.model';
+import { Problem } from 'src/app/models/problem';
 import { NgForm } from '@angular/forms';
 import { ProblemService } from '../../services/problem/problem.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FileHandle } from '../../_model/file-handle-model';
+import { FileHandle } from 'src/app/models/file-handler';
 import { TokenStorageService } from 'src/app/services/token-storage/token-storage.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';

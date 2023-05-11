@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-
-import { Problem } from './_model/problem.model';
-
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import {FileHandle} from "./_model/file-handle-model";
-import {ProblemDetails} from "./_model/ProblemDetails.model";
+import { Problem } from 'src/app/models/problem';
+import { ProblemDetails } from 'src/app/models/problem';
+import { FileHandle } from 'src/app/models/file-handler';
 
 @Injectable({
   providedIn: 'root'
