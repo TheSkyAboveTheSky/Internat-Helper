@@ -1,4 +1,92 @@
 <mat-toolbar>
-  <span>New User : </span>
-  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabindex="1"><mat-icon>clear</mat-icon></button>
+  <span>Modifier L'Utilisateur : </span>
+  <button class="btn-dialog-close"
+    mat-stroked-button
+    (click)="onClose()"
+    tabindex="1"><mat-icon>clear</mat-icon></button>
 </mat-toolbar>
+<form [formGroup]="myForm"
+  class="normal-form"
+  (submit)="onUpdate()"
+  >
+  <mat-grid-list cols="2"
+    rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <input type="hidden"
+          formControlName="id" />
+        <mat-form-field>
+          <input formControlName="username"
+            matInput
+            placeholder="Username" />
+          <mat-error>This field is Required </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="name"
+            matInput
+            placeholder="Name" />
+          <mat-error>This field is Required </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input formControlName="email"
+            matInput
+            placeholder="Email" />
+          <mat-error *ngIf="myForm.controls['email'].errors?.['required']">This field is required</mat-error>
+          <mat-error *ngIf="myForm.controls['email'].errors?.['email']">Invalid email form</mat-error>
+        </mat-form-field>
+
+
+
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="controles-container">
+        <label for="gender">Gender : </label>
+        <mat-radio-group formControlName="gender">
+          <mat-radio-button value="Male">Male</mat-radio-button>
+          <mat-radio-button value="Female">Female</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field>
+          <mat-select formControlName="roles"
+            placeholder="Roles">
+            <mat-option>None</mat-option>
+            <mat-option value="ADMIN">Admin</mat-option>
+            <mat-option value="WORKER">Ouvrier</mat-option>
+            <mat-option value="USER">Etudiant</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div *ngIf="myForm.controls['roles'].value === 'WORKER'">
+          <label for="poste">Poste : </label>
+          <mat-radio-group formControlName="poste">
+            <mat-radio-button value="Technicien">Technicien</mat-radio-button>
+            <mat-radio-button value="Plombier">Plombier</mat-radio-button>
+            <mat-radio-button value="Electricien">Electricien</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <mat-form-field>
+          <input formControlName="date"
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Birthday" />
+          <mat-datepicker-toggle matSuffix
+            [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>This field is Required </mat-error>
+        </mat-form-field>
+
+        <div class="button-row">
+          <button mat-raised-button
+            color="primary"
+            type="submit">Submit</button>
+          <a mat-raised-button
+            color="warn"
+            (click)="clearForm()">Clear</a>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>

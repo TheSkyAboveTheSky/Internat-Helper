@@ -72,6 +72,8 @@ export class UserListComponent implements OnInit {
     this.dialog.open(UserAddFormComponent, config);
   }
   onEdit(row: any) {
+    this.userService.fillEditUserForm(row);
+    console.log(row);
     const config: MatDialogConfig = new MatDialogConfig();
     config.autoFocus = true;
     config.width = '60%';

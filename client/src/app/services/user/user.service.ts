@@ -31,19 +31,19 @@ export class UserService {
       date:'',
       poste:'',
       roles:'',
-      name:'',
+      name:'test',
     };
     this.userForm.setValue(user);
   }
   fillEditUserForm(user:any):void{
     const data = {
-      id: user["_id"],
+      id: user["id"],
       username: user["username"],
       email: user["email"],
       gender: user["gender"],
       date: user["date"],
       poste: user["poste"],
-      roles: user["roles"],
+      roles: user["roles"][0].name,
       name: user["name"],
     };
     this.userForm.setValue(data);
@@ -61,9 +61,11 @@ export class UserService {
     return this.http.post('http://localhost:8080/api/auth/signup', user,{headers});
   }
 
-  updateUser(id: string, user: UserModel): Observable<any> {
-
-    return this.http.put(`${USER_URL}/${id}`, user);
+  updateUser(id: string, user: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    user.password=null;
+    user.roles=null;
+    return this.http.put(`${USER_URL}/${id}`, user,{headers});
   }
 
   deleteUser(id: string): Observable<any> {
