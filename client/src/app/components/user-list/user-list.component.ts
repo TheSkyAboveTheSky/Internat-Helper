@@ -52,7 +52,7 @@ export class UserListComponent implements OnInit {
   calculateAge(dateOfBirth: string): number {
     const today: Date = new Date(); 
     const birthDate: Date = new Date(dateOfBirth); 
-    let age: number = today.getFullYear() - birthDate.getFullYear(); // 
+    let age: number = today.getFullYear() - birthDate.getFullYear(); 
     const hasBirthdayPassed: boolean =
       today.getMonth() > birthDate.getMonth() ||
       (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());

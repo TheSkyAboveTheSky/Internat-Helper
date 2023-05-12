@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="19712916-5dd9-40aa-98df-d729fab4fea9" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/client/src/app/components/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/components/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/components/show-problem-details/show-problem-details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/components/show-problem-details/show-problem-details.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/components/show-problem-details/show-problem-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/components/show-problem-details/show-problem-details.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/components/user-forms/user-add-form/user-add-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/components/user-forms/user-add-form/user-add-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/components/user-forms/user-add-form/user-add-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/components/user-forms/user-add-form/user-add-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/components/user-list/user-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/components/user-list/user-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/components/user-list/user-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/components/user-list/user-list.component.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="origin" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2P1CSPXcROxSn9uQUHJruPNZU1W" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;origin&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Said Mounji/3-Codes/Projet JEE/Projet-JEE&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="SpringBootMongodbLoginApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.server.SpringBootMongodbLoginApplication" />
+      <module name="demo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SpringBootMongodbLoginApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="19712916-5dd9-40aa-98df-d729fab4fea9" name="Changes" comment="" />
+      <created>1682615202217</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682615202217</updated>
+    </task>
+    <task id="LOCAL-00001" summary="update">
+      <created>1683673074366</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683673074367</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/origin" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
+  </component>
+</project>

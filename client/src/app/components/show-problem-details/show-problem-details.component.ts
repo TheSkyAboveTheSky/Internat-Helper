@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProblemService } from '../../services/problem/problem.service';
 import { Problem } from 'src/app/models/problem';
 import { ProblemDetails } from 'src/app/models/problem';
@@ -7,6 +7,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ShowProblemImageDialogComponent } from '../show-problem-image-dialog/show-problem-image-dialog.component';
 import { ImageProcessingService } from '../../services/image-processing/image-processing.service';
 import { map } from 'rxjs/operators';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 
 @Component({
@@ -25,7 +28,9 @@ export class ShowProblemDetailsComponent implements OnInit {
     'Images',
     'Situation'
   ];
-
+  DataSource!: MatTableDataSource<any>;
+  @ViewChild('paginator') paginator!: MatPaginator;
+  @ViewChild(MatSort) sorter!:MatSort;
   constructor(
     private problemService: ProblemService,
     public imagesDialog: MatDialog,
@@ -34,6 +39,9 @@ export class ShowProblemDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProblems();
+    this.DataSource = new MatTableDataSource(this.problemDetails);
+    this.DataSource.sort = this.sorter;
+    this.DataSource.paginator = this.paginator;
   }
   initializeDefaultSelectedOptions(): void {
     for (const problem of this.problemDetails) {
@@ -47,6 +55,7 @@ export class ShowProblemDetailsComponent implements OnInit {
       .getAllProblems()
       .pipe(
         map((problems: ProblemDetails[]) =>
+        
           problems.map((problem: ProblemDetails) =>
           this.imageProcessingService.createImages(problem)
           )

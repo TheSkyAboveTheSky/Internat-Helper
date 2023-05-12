@@ -39,11 +39,12 @@
             </mat-select>
           </mat-form-field>
 
-          <div *ngIf="myForm.controls['roles'].value === 'MOD'">
+          <div *ngIf="myForm.controls['roles'].value === 'OUVRIER'">
             <label for="poste">Poste : </label>
             <mat-radio-group formControlName="poste">
               <mat-radio-button value="Technicien">Technicien</mat-radio-button>
               <mat-radio-button value="Plombier">Plombier</mat-radio-button>
+              <mat-radio-button value="Electricien">Electricien</mat-radio-button>
             </mat-radio-group>
           </div>
  

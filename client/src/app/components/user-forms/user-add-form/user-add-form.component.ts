@@ -34,7 +34,7 @@ export class UserAddFormComponent implements OnInit {
   }
   roles:String[]=[
     "ADMIN",
-    "MOD",
+    "OUVRIER",
     "USER"
   ]
 

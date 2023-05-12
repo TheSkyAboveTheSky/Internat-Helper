@@ -66,8 +66,8 @@
         *matHeaderCellDef>Gender</th>
       <td mat-cell
         *matCellDef="let element;let i =index;"> 
-        <span class="badge badge-danger" *ngIf="element.Gender == 'homme'">{{element.Gender}}</span> 
-        <span class="badge badge-success" *ngIf="element.Gender == 'femme'">{{element.Gender}}</span> 
+        <span class="badge badge-danger" *ngIf="element.Gender == 'male'">{{element.Gender}}</span> 
+        <span class="badge badge-success" *ngIf="element.Gender == 'female'">{{element.Gender}}</span> 
       </td>
     </ng-container>
     <ng-container matColumnDef="poste">
