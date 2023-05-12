@@ -47,11 +47,16 @@ public class User {
     @Size(max = 120)
     private String poste;
 
+    @NotBlank
+    private String gender;
 
+    public String getGender() {
+        return gender;
+    }
 
-
-
-
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getName() {
         return name;
@@ -60,7 +65,6 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
 
 
 
@@ -115,6 +119,27 @@ public class User {
         this.poste = poste;
         this.date = date;
 
+    }
+
+    public User(String username, String email, String date, Set<Role> roles, String name, String password, String poste, String gender) {
+        this.username = username;
+        this.email = email;
+        this.date = date;
+        this.roles = roles;
+        this.name = name;
+        this.password = password;
+        this.poste = poste;
+        this.gender = gender;
+    }
+
+    public User(String username, String email, String date, Set<Role> roles, String password, String poste, String gender) {
+        this.username = username;
+        this.email = email;
+        this.date = date;
+        this.roles = roles;
+        this.password = password;
+        this.poste = poste;
+        this.gender = gender;
     }
 
     public String getId() {

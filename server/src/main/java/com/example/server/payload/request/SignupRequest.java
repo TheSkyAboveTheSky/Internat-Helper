@@ -29,6 +29,9 @@ public class SignupRequest {
     @Size(max = 50)
     private String poste;
 
+    @NotBlank
+    private String gender;
+
 
     public void setRoles(Set<String> roles) {
         this.roles = roles;
@@ -47,6 +50,14 @@ public class SignupRequest {
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getUsername() {
         return username;

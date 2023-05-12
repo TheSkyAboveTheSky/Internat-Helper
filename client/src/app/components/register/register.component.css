@@ -1,0 +1,34 @@
+.gender-options {
+  display: flex;
+  gap: 20px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+  display: none;
+}
+
+.radio-option .radio-label {
+  margin-left: 5px;
+}
+
+.radio-option input[type="radio"] + .radio-label:before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid #999;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.radio-option input[type="radio"]:checked + .radio-label:before {
+  background-color: #2196f3;
+  border-color: #2196f3;
+}
