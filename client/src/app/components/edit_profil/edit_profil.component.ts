@@ -17,6 +17,7 @@ export class EditProfilComponent implements OnInit {
     email: null,
     poste: null,
     date: null,
+    gender:null,
   };
 
   constructor(
@@ -33,6 +34,8 @@ export class EditProfilComponent implements OnInit {
     this.form.email = this.currentUser.email;
     this.form.poste = this.currentUser.poste;
     this.form.date = this.currentUser.date;
+    this.form.gender=this.currentUser.gender;
+
     this.getImageUrl();
   }
   getImageUrl(): void {
@@ -45,9 +48,9 @@ export class EditProfilComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { name, email, poste, date } = this.form;
+    const { name, email, poste, date,gender } = this.form;
 
-    this.editProfilService.editProfil(name, email, poste, date).subscribe({
+    this.editProfilService.editProfil(name, email, poste, date,gender).subscribe({
       next: (data) => {
         localStorage.setItem('user', JSON.stringify(data));
         this.tokenStorage.saveToken(data.accessToken);

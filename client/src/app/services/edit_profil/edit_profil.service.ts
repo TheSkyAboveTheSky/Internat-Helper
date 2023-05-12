@@ -18,7 +18,8 @@ export class EditProfilService {
     email: string,
     name: string,
     poste: string,
-    date: string
+    date: Date,
+    gender: string,
   ): Observable<any> {
     return this.http.put(
       EDIT_API + user.username,
@@ -27,6 +28,7 @@ export class EditProfilService {
         name,
         poste,
         date,
+        gender,
       },
       httpOptions
     );

@@ -1,49 +1,48 @@
 <div class="container" *ngIf="currentUser; else loggedOut">
   <header class="jumbotron">
-    <h3>
+    <h3 class="profile-heading">
       <strong>{{ currentUser.username }}</strong> Profile
     </h3>
   </header>
-  <img id="profile-img" [src]="retrievedImage || '//ssl.gstatic.com/accounts/ui/avatar_2x.png'" alt="">
+  <div class="profile-details">
+    <img id="profile-img" [src]="retrievedImage || '//ssl.gstatic.com/accounts/ui/avatar_2x.png'" alt="">
 
-  <form action="javascript:void(0)" (submit)="onSubmit()" method="post">
-    <p>
-      <strong>Email:</strong>
-      <input
-        type="text"
-        name="email"
-        [(ngModel)]="form.email"
-        value="{{ currentUser.email }}"
-      />
-    </p>
-    <p>
-      <strong>Name:</strong>
-      <input
-        type="text"
-        name="name"
-        [(ngModel)]="form.name"
-        value="{{ currentUser.name }}"
-      />
-    </p>
-    <p>
-      <strong>Poste:</strong>
-      <select name="poste" [(ngModel)]="form.poste" value="currentUser.poste">
-        <option value="technicien">technicien</option>
-        <option value="manager">manager</option>
-      </select>
-    </p>
-    <p>
-      <strong>Date de naissance:</strong>
-      <input
-        type="date"
-        name="date"
-        [(ngModel)]="form.date"
-        value="currentUser.date"
-      />
-    </p>
+    <form class="profile-form" (submit)="onSubmit()" method="post">
+      <p>
+        <strong>Email:</strong>
+        <input type="text" name="email" [(ngModel)]="form.email" value="{{ currentUser.email }}" />
+      </p>
+      <p>
+        <strong>Name:</strong>
+        <input type="text" name="name" [(ngModel)]="form.name" value="{{ currentUser.name }}" />
+      </p>
+      <p>
+        <strong>Gender:</strong>
+        <select name="gender" [(ngModel)]="form.gender" value="currentUser.gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </p>
+      <p>
+        <strong>Poste:</strong>
+        <select name="poste" [(ngModel)]="form.poste" value="currentUser.poste">
+          <option value="technicien">Technicien</option>
+          <option value="plombier">Plombier</option>
+          <option value="electricien">Electricien</option>
+        </select>
+      </p>
+      <p>
+        <strong>Date de naissance:</strong>
+        <input type="date" name="date" [(ngModel)]="form.date" value="currentUser.date" />
+      </p>
 
-    <button type="submit">Click to edit</button>
-  </form>
+      <button type="submit" class="edit-button">Click to Edit</button>
+    </form>
+  </div>
 </div>
 
-<ng-template #loggedOut> Please login. </ng-template>
+<ng-template #loggedOut>
+  <div class="logged-out">
+    Please login.
+  </div>
+</ng-template>
