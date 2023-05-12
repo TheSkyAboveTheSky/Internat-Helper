@@ -1,11 +1,13 @@
 package com.example.server.models;
 
 import java.awt.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
@@ -26,8 +28,8 @@ public class User {
     @Email
     private String email;
 
-    @Size(max = 120)
-    private String date;
+    @NotNull
+    private Date date;
 
     @DBRef
     private Set<Role> roles = new HashSet<>();
@@ -49,6 +51,17 @@ public class User {
 
     @NotBlank
     private String gender;
+
+    public User(String username, String email, String name, String poste, String gender, Date date, String encode) {
+        this.username=username;
+        this.email=email;
+        this.name=name;
+        this.poste=poste;
+        this.gender=gender;
+        this.date= date;
+        this.password=encode;
+
+    }
 
     public String getGender() {
         return gender;
@@ -77,11 +90,11 @@ public class User {
         this.poste = poste;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -102,7 +115,7 @@ public class User {
         this.password = password;
     }
 
-    public User(String username, String email, String name, String password, String poste, String date) {
+    public User(String username, String email, String name, String password, String poste, Date date) {
         this.username = username;
         this.email = email;
         this.name = name;
@@ -111,7 +124,7 @@ public class User {
         this.date = date;
     }
 
-    public User(String username, String email, String name, String password, String poste, String date,byte[] picByte ) {
+    public User(String username, String email, String name, String password, String poste, Date date,byte[] picByte ) {
         this.username = username;
         this.email = email;
         this.name = name;
@@ -121,7 +134,7 @@ public class User {
 
     }
 
-    public User(String username, String email, String date, Set<Role> roles, String name, String password, String poste, String gender) {
+    public User(String username, String email, Date date, Set<Role> roles, String name, String password, String poste, String gender) {
         this.username = username;
         this.email = email;
         this.date = date;
@@ -132,7 +145,7 @@ public class User {
         this.gender = gender;
     }
 
-    public User(String username, String email, String date, Set<Role> roles, String password, String poste, String gender) {
+    public User(String username, String email, Date date, Set<Role> roles, String password, String poste, String gender) {
         this.username = username;
         this.email = email;
         this.date = date;

@@ -16,43 +16,41 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-
-
 @RequestMapping("/api/problem")
 public class ProblemController {
-    @Autowired
-    ProblemRepository problemRepository;
+    private final ProblemRepository problemRepository;
+    private final UserRepository userRepository;
+    private final ImageRepository imageRepository;
 
     @Autowired
-    UserRepository userRepository;
+    public ProblemController(ProblemRepository problemRepository, UserRepository userRepository, ImageRepository imageRepository) {
+        this.problemRepository = problemRepository;
+        this.userRepository = userRepository;
+        this.imageRepository = imageRepository;
+    }
 
-    @Autowired
-    ImageRepository imageRepository;
-
-
-    @PostMapping(value = {"/addProblem"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(value = "/addProblem", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Problem addProblem(@ModelAttribute AddProblemRequest addProblemRequest) {
-
-
-        Problem problem = new Problem(addProblemRequest.getName(), addProblemRequest.getDescription(), addProblemRequest.getRoomName(),"Non completé");
+        Problem problem = new Problem(addProblemRequest.getName(), addProblemRequest.getDescription(), addProblemRequest.getRoomName(), "Non completé");
 
         User user = userRepository.findById(addProblemRequest.getReportedById())
-                .orElseThrow(() -> new RuntimeException("user with id:" + addProblemRequest.getReportedById() + "does not exist"));
+                .orElseThrow(() -> new RuntimeException("User with id: " + addProblemRequest.getReportedById() + " does not exist"));
 
         problem.setReportedBy(user);
-
 
         try {
             List<MultipartFile> files = addProblemRequest.getImages();
             problem.setImages(uploadImage(files));
             problemRepository.save(problem);
 
-            return new Problem(problem.getId(),problem.getName(),problem.getDescription(),problem.getRoomName(),problem.getImages(),problem.getReportedBy(),problem.getState());
+            return problem;
         } catch (IOException e) {
             System.out.println(e.getMessage());
             return null;
@@ -61,15 +59,12 @@ public class ProblemController {
 
     @PostMapping(value = "/addImage", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<String> addImage(@ModelAttribute AddProblemRequest addProblemRequest) throws IOException {
-        // Enregistrez les images dans la base de données
         List<ImageProblem> images = uploadImage(addProblemRequest.getImages());
         imageRepository.saveAll(images);
         return ResponseEntity.ok().body("File(s) received successfully");
     }
 
-
-
-    public List<ImageProblem> uploadImage(List<MultipartFile> files) throws IOException {
+    private List<ImageProblem> uploadImage(List<MultipartFile> files) throws IOException {
         List<ImageProblem> imageProblems = new ArrayList<>();
         if (files != null) {
             for (MultipartFile file : files) {
@@ -82,25 +77,20 @@ public class ProblemController {
                 );
             }
         }
-
         return imageRepository.saveAll(imageProblems);
     }
 
-
-
-    @GetMapping({"/all"})
+    @GetMapping("/all")
     public List<Problem> getAllProblems() {
-
         return problemRepository.findAll();
     }
 
-    @GetMapping({"/getAllImages"})
+    @GetMapping("/getAllImages")
     public List<ImageProblem> getAllImages() {
         return imageRepository.findAll();
-
-
     }
-    @PutMapping ("/{id}")
+
+    @PutMapping("/state/{id}")
     public Problem updateProblemState(@PathVariable String id, @RequestBody String newState) {
         Problem problem = problemRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -108,9 +98,36 @@ public class ProblemController {
         problemRepository.save(problem);
         return problem;
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteProblem(@PathVariable String id) {
+        Problem problem = problemRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        problemRepository.delete(problem);
+        return ResponseEntity.ok().body("Problem deleted successfully");
+    }
+
     @GetMapping("/{id}")
-    public Optional<Problem> getProblem(@PathVariable String id)
-    {
+    public Optional<Problem> getProblem(@PathVariable String id) {
         return problemRepository.findById(id);
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateProblem(@PathVariable String id, @RequestBody Problem updatedProblem) {
+        Problem problem = problemRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        problem.setName(updatedProblem.getName());
+        problem.setDescription(updatedProblem.getDescription());
+        problem.setRoomName(updatedProblem.getRoomName());
+        problem.setState(updatedProblem.getState());
+        problem.setImages(updatedProblem.getImages());
+        problem.setReportedBy(updatedProblem.getReportedBy());
+
+        problemRepository.save(problem);
+
+        return ResponseEntity.ok().body("Problem updated successfully");
+    }
+
 }
+
+
+

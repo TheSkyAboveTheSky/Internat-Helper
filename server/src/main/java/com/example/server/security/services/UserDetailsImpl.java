@@ -1,6 +1,7 @@
 package com.example.server.security.services;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -25,7 +26,16 @@ public class UserDetailsImpl implements UserDetails {
 
     private String poste;
 
-    private String date;
+    private Date date;
+    private String gender;
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getPoste() {
         return poste;
@@ -35,11 +45,11 @@ public class UserDetailsImpl implements UserDetails {
         this.poste = poste;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -48,7 +58,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(String id, String username, String email, String name, String password, String poste, String date,
+    public UserDetailsImpl(String id, String username, String email, String name, String password, String poste, Date date,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;

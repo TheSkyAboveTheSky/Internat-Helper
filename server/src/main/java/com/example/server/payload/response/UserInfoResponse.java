@@ -3,6 +3,7 @@ package com.example.server.payload.response;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 public class UserInfoResponse {
@@ -14,7 +15,7 @@ public class UserInfoResponse {
 
     private String poste;
 
-    private String date;
+    private Date date;
 
 
 
@@ -26,11 +27,11 @@ public class UserInfoResponse {
         this.poste = poste;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -45,7 +46,7 @@ public class UserInfoResponse {
         this.name = name;
     }
 
-    public UserInfoResponse(String id, String username, String email, String name, String poste, String date, Collection<? extends GrantedAuthority> authorities, List<String> roles) {
+    public UserInfoResponse(String id, String username, String email, String name, String poste, Date date, Collection<? extends GrantedAuthority> authorities, List<String> roles) {
         this.id = id;
         this.username = username;
         this.email = email;

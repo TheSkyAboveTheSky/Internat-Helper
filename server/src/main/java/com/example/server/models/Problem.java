@@ -38,6 +38,16 @@ public class Problem {
         this.state = state;
     }
 
+    public Problem(String name, String description, String roomName, String state) {
+        this.name = name;
+        this.description = description;
+        this.roomName = roomName;
+        this.state = state;
+    }
+
+    public Problem() {
+    }
+
 
     public String getState() {
         return state;
@@ -117,16 +127,4 @@ public class Problem {
         this.roles = roles;
     }
 
-    public Problem(String name, String description, String roomName, String state){
-        this.name = name;
-        this.description = description;
-        this.roomName = roomName;
-        this.state= state;
-        this.reportedBy = reportedBy;
-        this.images = images;
-
-    }
-
-    public Problem() {
-    }
 }

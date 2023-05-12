@@ -1,6 +1,7 @@
 package com.example.server.payload.request;
 
 import javax.validation.constraints.*;
+import java.util.Date;
 import java.util.Set;
 
 public class SignupRequest {
@@ -32,6 +33,16 @@ public class SignupRequest {
     @NotBlank
     private String gender;
 
+    @NotNull
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public void setRoles(Set<String> roles) {
         this.roles = roles;
