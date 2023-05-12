@@ -1,3 +1,4 @@
+
 .user-profile {
   position: relative;
   display: flex;
@@ -51,24 +52,4 @@
 
 .dropdown a:hover {
   background-color: #f0f0f0;
-}
-/* Adjust body height to fill viewport */
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Content wrapper */
-.content-wrapper {
-  flex: 1;
-}
-
-/* Footer styles */
-.footer {
-  background-color: #ffc107;
-  color: #fff;
-  position: sticky;
-  bottom: 0;
-  padding: 20px 0;
 }

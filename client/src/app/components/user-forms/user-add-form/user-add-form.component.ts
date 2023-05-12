@@ -3,33 +3,32 @@ import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from 'src/app/Material.Module';
 import { MatDialogRef } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user/user.service';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
   selector: 'app-user-add-form',
   templateUrl: './user-add-form.component.html',
   styleUrls: ['./user-add-form.component.css'],
-  standalone:true,
-  imports:[CommonModule,MaterialModule,ReactiveFormsModule,FormsModule]
+  standalone: true,
+  imports: [CommonModule, MaterialModule, ReactiveFormsModule, FormsModule],
 })
 export class UserAddFormComponent implements OnInit {
   window: any;
 
   constructor(
-    public dialogRef:MatDialogRef<UserAddFormComponent>,
-    private service:UserService
-    ) { 
-    
-  }
+    public dialogRef: MatDialogRef<UserAddFormComponent>,
+    private service: UserService,
+    private notificationService: NotificationService
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
   myForm = this.service.userForm;
-  onClose(): void{
+  onClose(): void {
     this.clearForm();
     this.dialogRef.close();
   }
-  clearForm():void{
+  clearForm(): void {
     this.myForm.reset();
     this.service.initializeUserForm();
   }
@@ -40,13 +39,13 @@ export class UserAddFormComponent implements OnInit {
           console.log(response.data);
         },
         (error) => {
-          console.log(error);
+          this.notificationService.error(error);
         }
       );
       this.clearForm();
       this.onClose();
+      this.notificationService.success('Added with Success!');
       window.location.reload();
     }
   }
-
 }

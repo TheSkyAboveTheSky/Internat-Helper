@@ -30,6 +30,7 @@ import { UserAddFormComponent } from './components/user-forms/user-add-form/user
 import { UserEditFormComponent } from './components/user-forms/user-edit-form/user-edit-form.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { UserDeleteFormComponent } from './components/user-forms/user-delete-form/user-delete-form.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,7 @@ import { UnauthorizedComponent } from './components/unauthorized/unauthorized.co
     MatDialogModule,
   ],
   providers: [],
-  entryComponents:[UserAddFormComponent,UserEditFormComponent,
+  entryComponents:[UserAddFormComponent,UserEditFormComponent,UserDeleteFormComponent
   ],
   bootstrap: [AppComponent],
 })

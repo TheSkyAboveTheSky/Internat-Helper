@@ -9,6 +9,8 @@ import { UserAddFormComponent } from '../user-forms/user-add-form/user-add-form.
 import { UserEditFormComponent } from '../user-forms/user-edit-form/user-edit-form.component';
 import { FormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/user/user.service';
+import { NotificationService } from 'src/app/services/notification/notification.service';
+import { DialogService } from 'src/app/services/dialog/dialog.service';
 @Component({
   selector: 'app-user-list',
   imports: [CommonModule, MaterialModule,FormsModule],
@@ -20,7 +22,9 @@ export class UserListComponent implements OnInit {
   users:any;
   constructor
     (private dialog: MatDialog,
-    private userService:UserService ) {}
+    private userService:UserService,
+    private notification:NotificationService,
+    private dialogService:DialogService ) {}
   displayedColumns: string[] = [
     'icon',
     'username',
@@ -82,11 +86,26 @@ export class UserListComponent implements OnInit {
   }
   onDelete(row:any)
   {
-    this.userService.deleteUser(row).subscribe((response)=>{
-      console.log(response);
-    },(error)=>{
-      console.log(error);
-    });
-    window.location.reload();
+    this.dialogService.openConfirmDialog()
+    .afterClosed()
+    .subscribe(
+      (response) =>{
+        if(response){
+          this.userService.deleteUser(row).subscribe(
+            (response) =>{
+              console.log(response);
+            },
+            (error)=>{
+              console.log(error);
+            }
+          );
+          this.notification.warn("! Deleted successfully");
+                }
+              },(error) => {
+                this.notification.error("Error deleting employee");
+              },()=>{
+                window.location.reload();
+              }
+            )
   }
 }

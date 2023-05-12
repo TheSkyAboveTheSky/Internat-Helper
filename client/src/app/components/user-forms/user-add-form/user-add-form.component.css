@@ -21,3 +21,15 @@ mat-radio-group mat-radio-button{
   padding: 0px !important;
   margin-left: 80%;
 }
+snack-bar-container.success {
+  background-color: rgb(30, 216, 30);
+  color:azure;
+}
+snack-bar-container.error {
+  background-color:crimson;
+  color:azure;
+}
+snack-bar-container.warn {
+  background-color:orange;
+  color:azure;
+}

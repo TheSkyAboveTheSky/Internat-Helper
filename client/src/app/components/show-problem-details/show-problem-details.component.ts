@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 
 @Component({
@@ -31,10 +32,12 @@ export class ShowProblemDetailsComponent implements OnInit {
   DataSource!: MatTableDataSource<any>;
   @ViewChild('paginator') paginator!: MatPaginator;
   @ViewChild(MatSort) sorter!:MatSort;
+
   constructor(
     private problemService: ProblemService,
     public imagesDialog: MatDialog,
-    private imageProcessingService: ImageProcessingService
+    private imageProcessingService: ImageProcessingService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -89,9 +92,10 @@ export class ShowProblemDetailsComponent implements OnInit {
     const selectedState = this.selectedOption[problemId];
     try{
       this.problemService.updateProblem(problemId,selectedState);
+      this.notificationService.success('Updated with Success!');
       window.location.reload();
     }catch(error){
-      alert(error);
+      this.notificationService.error(error);
     }
 
   }
