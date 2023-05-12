@@ -12,6 +12,8 @@ import { BoardUserComponent } from './components/board-user/board-user.component
 import { EditImageComponent } from './components/edit_image/edit_image.component';
 import { AddNewProblemComponent } from './components/add-new-problem/add-new-problem.component';
 import { ShowProblemDetailsComponent } from './components/show-problem-details/show-problem-details.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -27,6 +29,8 @@ const routes: Routes = [
   { path: 'addNewProblem', component: AddNewProblemComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'showProblemDetails', component: ShowProblemDetailsComponent },
+  { path: 'notfound', component: NotfoundComponent },
+  { path: 'unauthorized', component: UnauthorizedComponent },
 ];
 
 @NgModule({

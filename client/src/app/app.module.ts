@@ -28,6 +28,8 @@ import { ShowProblemImageDialogComponent } from './components/show-problem-image
 import {MatDialogModule} from '@angular/material/dialog';
 import { UserAddFormComponent } from './components/user-forms/user-add-form/user-add-form.component';
 import { UserEditFormComponent } from './components/user-forms/user-edit-form/user-edit-form.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +45,8 @@ import { UserEditFormComponent } from './components/user-forms/user-edit-form/us
     AddNewProblemComponent,
     ShowProblemDetailsComponent,
     ShowProblemImageDialogComponent,
+    NotfoundComponent,
+    UnauthorizedComponent,
   ],
   imports: [
     BrowserModule,
