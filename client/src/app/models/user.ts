@@ -2,8 +2,9 @@ export interface UserModel {
   id: string;
   username:string;
   email: string;
-  gender:['male','female'];
+  gender:['Male','Female'];
   date: Date;
   poste : string;
-  roles :[string];
+  name:string;
+  roles :[['WORKER'],['ADMIN'],['USER']];
 }

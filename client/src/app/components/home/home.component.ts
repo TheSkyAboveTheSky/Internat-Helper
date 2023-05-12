@@ -12,15 +12,6 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.userService.getPublicContent().subscribe({
-      next: (data) => {
-        this.content = data;
-      },
-      error: (err) => {
-        this.content = JSON.parse(err.error).message;
-      },
-    });
-
     this.userService.getAllUsers().subscribe({
       next: (data) => {
         localStorage.setItem('users', JSON.stringify(data));

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserModel } from 'src/app/models/user';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 
-const API_URL = 'http://localhost:8080/api/test/';
 const USER_URL = 'http://localhost:8080/api/users';
 
 @Injectable({
@@ -20,17 +19,19 @@ export class UserService {
     gender: new FormControl(''),
     date: new FormControl('',Validators.required),
     poste: new FormControl(''),
-    roles: new FormControl(''),
+    roles: new FormControl([[]]),
+    name: new FormControl('',Validators.required),
   });
   initializeUserForm():void{
     const user = {
       id:'',
-      username:'',
-      email:'',
-      gender:'male',
+      username:'Test',
+      email:'ok@example',
+      gender:'Male',
       date:'',
       poste:'',
       roles:'',
+      name:'',
     };
     this.userForm.setValue(user);
   }
@@ -42,26 +43,32 @@ export class UserService {
       gender: user["gender"],
       date: user["date"],
       poste: user["poste"],
-      roles: user["roles"]
+      roles: user["roles"],
+      name: user["name"],
     };
     this.userForm.setValue(data);
-  }
-  getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
-  }
-
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
-  }
-
-  getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
-  }
-
-  getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
   getAllUsers(): Observable<any> {
     return this.http.get(USER_URL);
   }
+  getUser(id: string): Observable<any> {
+    return this.http.get(`${USER_URL}/${id}`);
+  }
+  createUser(user: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    user.roles = [user.roles];
+    user.password="azerty";
+    return this.http.post('http://localhost:8080/api/auth/signup', user,{headers});
+  }
+
+  updateUser(id: string, user: UserModel): Observable<any> {
+
+    return this.http.put(`${USER_URL}/${id}`, user);
+  }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`${USER_URL}/${id}`);
+  }
+  
+
 }

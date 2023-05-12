@@ -78,4 +78,13 @@ export class UserListComponent implements OnInit {
     config.height = '40%';
     this.dialog.open(UserEditFormComponent, config);
   }
+  onDelete(row:any)
+  {
+    this.userService.deleteUser(row).subscribe((response)=>{
+      console.log(response);
+    },(error)=>{
+      console.log(error);
+    });
+    window.location.reload();
+  }
 }

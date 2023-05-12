@@ -91,7 +91,9 @@
         </a>
         <a mat-icon-button
           class="btn"
-          style="color: red;">
+          style="color: red;"
+          (click)="onDelete(element.id)"
+          >
           <mat-icon>delete</mat-icon>
         </a>
       </td>

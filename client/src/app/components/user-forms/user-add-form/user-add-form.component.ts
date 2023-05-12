@@ -13,6 +13,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
   imports:[CommonModule,MaterialModule,ReactiveFormsModule,FormsModule]
 })
 export class UserAddFormComponent implements OnInit {
+  window: any;
 
   constructor(
     public dialogRef:MatDialogRef<UserAddFormComponent>,
@@ -32,10 +33,20 @@ export class UserAddFormComponent implements OnInit {
     this.myForm.reset();
     this.service.initializeUserForm();
   }
-  roles:String[]=[
-    "ADMIN",
-    "OUVRIER",
-    "USER"
-  ]
+  onSubmit() {
+    if (this.myForm.valid) {
+      this.service.createUser(this.myForm.value).subscribe(
+        (response) => {
+          console.log(response.data);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      this.clearForm();
+      this.onClose();
+      window.location.reload();
+    }
+  }
 
 }

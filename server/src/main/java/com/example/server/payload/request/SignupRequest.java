@@ -26,7 +26,7 @@ public class SignupRequest {
         this.poste = poste;
     }
 
-    @NotBlank
+
     @Size(max = 50)
     private String poste;
 
