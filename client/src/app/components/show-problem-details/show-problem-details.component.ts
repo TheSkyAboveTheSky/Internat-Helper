@@ -39,9 +39,6 @@ export class ShowProblemDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProblems();
-    this.DataSource = new MatTableDataSource(this.problemDetails);
-    this.DataSource.sort = this.sorter;
-    this.DataSource.paginator = this.paginator;
   }
   initializeDefaultSelectedOptions(): void {
     for (const problem of this.problemDetails) {
@@ -66,6 +63,9 @@ export class ShowProblemDetailsComponent implements OnInit {
           console.log(problemsWithImages);
           this.problemDetails = problemsWithImages;
           this.initializeDefaultSelectedOptions();
+          this.DataSource = new MatTableDataSource(this.problemDetails);
+          this.DataSource.sort = this.sorter;
+          this.DataSource.paginator = this.paginator;
         },
         (error: HttpErrorResponse) => {
           console.log(error);
@@ -89,6 +89,7 @@ export class ShowProblemDetailsComponent implements OnInit {
     const selectedState = this.selectedOption[problemId];
     try{
       this.problemService.updateProblem(problemId,selectedState);
+      window.location.reload();
     }catch(error){
       alert(error);
     }
