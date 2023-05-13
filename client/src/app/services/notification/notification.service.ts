@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable} from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 @Injectable({
-  providedIn: 'root',
-})
+  providedIn: 'root',})
 export class NotificationService {
   constructor(private snackbar: MatSnackBar) {}
 
   config: MatSnackBarConfig = {
-    duration: 3500,
+    duration: 90000,
     verticalPosition: 'top',
     horizontalPosition: 'right',
+    panelClass:'notification'
   };
 
   success(msg: any) {

@@ -190,32 +190,27 @@
                       </div>
                     </div>
                     <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-film fa-lg me-3 fa-fw"></i>
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
                         <div class="form-group">
                           <label for="gender">Gender</label>
-                          <div class="gender-options">
-                            <label class="radio-option">
-                              <input type="radio"
-                                name="gender"
-                                value="male"
-                                [(ngModel)]="form.gender"
-                                required>
-                              <span class="radio-label">Male</span>
-                            </label>
-                            <label class="radio-option">
-                              <input type="radio"
-                                name="gender"
-                                value="female"
-                                [(ngModel)]="form.gender"
-                                required>
-                              <span class="radio-label">Female</span>
-                            </label>
-                          </div>
-                          <div class="alert alert-danger"
-                            role="alert"
-                            *ngIf="f.submitted">
-                            Gender is required!
+                          <select type="text"
+                            class="form-control"
+                            name="gender"
+                            [(ngModel)]="form.gender"
+                            required
+                            minlength="3"
+                            maxlength="20"
+                            #gender="ngModel">
+                            <option value=""
+                              disabled
+                              selected>Select your option</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                          <div class="alert-danger"
+                            *ngIf="gender.errors && f.submitted">
+                            <div *ngIf="gender.errors['required']">Gender is required</div>
                           </div>
                         </div>
                       </div>

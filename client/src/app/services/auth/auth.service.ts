@@ -32,7 +32,7 @@ export class AuthService {
     password: string,
     date:Date,
     gender: string,
-    role: string,
+    roles: string,
   ): Observable<any> {
     return this.http.post(
       AUTH_API + 'signup',
@@ -41,10 +41,10 @@ export class AuthService {
         email,
         name,
         poste,
-        password,
-        date,
         gender,
-        role
+        date,
+        password,
+        roles
       },
       httpOptions
     );
