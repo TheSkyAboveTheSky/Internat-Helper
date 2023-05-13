@@ -1,0 +1,21 @@
+version: "3"
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge
