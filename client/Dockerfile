@@ -1,31 +1,25 @@
-# Use an official Node runtime as a parent image
 FROM node:18.10-alpine as build
 
-# Set the working directory to /app
-WORKDIR /app
+# Set the working directory
+WORKDIR /usr/local/app
 
-# Install the Angular CLI globally
-RUN npm install -g @angular/cli
+# Add the source code to app
+COPY ./ /usr/local/app/
 
-# Copy package.json and install dependencies
-COPY ./package.json .
+# Install all the dependencies
 RUN yarn install
 
-# Copy all source files and build the app
-COPY . .
-RUN ng build --configuration=production
+# Generate the build of the application
+RUN yarn build
 
-# Use an official Nginx runtime as the parent image
-FROM nginx:latest as runtime
 
-# Copy the build files to the default Nginx html directory
-COPY --from=build /app/dist/client /usr/share/nginx/html
+# Stage 2: Serve app with nginx server
 
-# Copy the Nginx configuration file
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Use official nginx image as the base image
+FROM nginx:latest
+
+# Copy the build output to replace the default nginx contents.
+COPY --from=build ./dist/client /usr/share/nginx/html
 
 # Expose port 4200
 EXPOSE 4200
-
-# Start Nginx and serve the app
-CMD ["nginx", "-g", "daemon off;"]
