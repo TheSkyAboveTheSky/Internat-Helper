@@ -2,7 +2,8 @@ pipeline {
   agent any
   
   stages {
-    stage('deploy image') {dir('server') {
+    stage('deploy image') {
+      dir('client') {
           bat 'docker build --no-cache -t oussamarhouch/projet-jee:frontend .'
           bat 'docker login -u oussamarhouch -p Oussama2002.'
           bat 'docker pull oussamarhouch/projet-jee:frontend'
