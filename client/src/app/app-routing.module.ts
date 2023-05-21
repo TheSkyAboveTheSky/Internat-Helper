@@ -14,6 +14,7 @@ import { AddNewProblemComponent } from './components/add-new-problem/add-new-pro
 import { ShowProblemDetailsComponent } from './components/show-problem-details/show-problem-details.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -24,12 +25,12 @@ const routes: Routes = [
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
-  { path: 'users', component: UserListComponent },
+  { path: 'users', component: UserListComponent,canActivate:[AuthGuard] },
   { path: 'edit_image', component: EditImageComponent },
-  {path:'addProblem',component:AddNewProblemComponent},
+  { path: 'addProblem', component: AddNewProblemComponent },
   { path: 'showProblemDetails', component: ShowProblemDetailsComponent },
-  { path: 'notfound', component: NotfoundComponent },
   { path: 'unauthorized', component: UnauthorizedComponent },
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
