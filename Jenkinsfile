@@ -1,18 +1,18 @@
 pipeline {
   agent any
 
-  stages {
-    stage("Clone the project") {
-      steps {
-        git branch: '*/main', url: 'https://github.com/TheSkyAboveTheSky/Projet-JEE'
-      }
-    }
-
-    stage("Compilation") {
-      steps {
-        sh "./server/mvnw clean install -DskipTests"
-      }
-    }
+ stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'cd server && mvn clean package'
+            }
+        }
 
     stage("Tests and Deployment") {
       stages {
