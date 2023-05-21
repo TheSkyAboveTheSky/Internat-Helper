@@ -2,6 +2,12 @@ pipeline {
   agent any
 
   stages {
+    
+    stage('Deploy NGINX') {
+      steps {
+        sh 'docker run -d -p 80:80 --name my-nginx-container nginx'
+      }
+    }
     stage('Deploy Image') {
       steps {
         dir('client') {
@@ -13,10 +19,6 @@ pipeline {
       }
     }
     
-    stage('Deploy NGINX') {
-      steps {
-        sh 'docker run -d -p 80:80 --name my-nginx-container nginx'
-      }
-    }
+    
   }
 }
