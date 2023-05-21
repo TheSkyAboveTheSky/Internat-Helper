@@ -15,20 +15,24 @@ import { ShowProblemDetailsComponent } from './components/show-problem-details/s
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { AuthGuard } from './auth.guard';
+import { AdminGuard } from './admin.guard';
+import { StudentGuard } from './student.guard';
+import { WorkerGuard } from './worker.guard';
+
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'edit_profil', component: EditProfilComponent },
-  { path: 'user', component: BoardUserComponent },
-  { path: 'mod', component: BoardModeratorComponent },
-  { path: 'admin', component: BoardAdminComponent },
-  { path: 'users', component: UserListComponent,canActivate:[AuthGuard] },
-  { path: 'edit_image', component: EditImageComponent },
-  { path: 'addProblem', component: AddNewProblemComponent },
-  { path: 'showProblemDetails', component: ShowProblemDetailsComponent },
+  { path: 'register', component: RegisterComponent},
+  { path: 'profile', component: ProfileComponent ,canActivate:[AuthGuard]},
+  { path: 'edit_profil', component: EditProfilComponent ,canActivate:[AuthGuard]},
+  { path: 'user', component: BoardUserComponent ,canActivate:[AuthGuard,StudentGuard]},
+  { path: 'worker', component: BoardModeratorComponent ,canActivate:[WorkerGuard]},
+  { path: 'admin', component: BoardAdminComponent, canActivate:[AdminGuard] },
+  { path: 'users', component: UserListComponent,canActivate:[AdminGuard] },
+  { path: 'edit_image', component: EditImageComponent,canActivate:[AuthGuard] },
+  { path: 'addProblem', component: AddNewProblemComponent ,canActivate:[AdminGuard,StudentGuard]},
+  { path: 'showProblemDetails', component: ShowProblemDetailsComponent,canActivate:[WorkerGuard,AdminGuard] },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '**', component: NotfoundComponent },
 ];
