@@ -5,7 +5,8 @@ pipeline {
     stage('Deploy NGINX') {
       steps {
         dir('client') {
-          bat 'docker run -d -p 80:80 --name my-nginx-container -v $(pwd):/usr/share/nginx/html nginx'
+          bat 'docker pull nginx'
+          bat 'docker run -d -p 80:80 --name nginx -v $(pwd):/usr/share/nginx/html nginx'
         }
       }
     }
