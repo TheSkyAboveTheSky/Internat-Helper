@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage("Clone the project") {
       steps {
-        git branch: 'main', url: 'https://github.com/TheSkyAboveTheSky/Projet-JEE'
+        git branch: '*/main', url: 'https://github.com/TheSkyAboveTheSky/Projet-JEE'
       }
     }
 
