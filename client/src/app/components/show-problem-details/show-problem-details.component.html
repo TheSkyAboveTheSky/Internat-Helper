@@ -6,14 +6,14 @@
     matSort>
     <ng-container matColumnDef="Problem Id">
       <th mat-header-cell
-        class="table-dark"
+        class="table-light"
         *matHeaderCellDef>#</th>
       <td mat-cell
         *matCellDef="let element;let i =index;"> {{i+1}} </td>
     </ng-container>
     <ng-container matColumnDef="Problem Name">
       <th mat-header-cell
-        class="table-dark"
+        class="table-light"
         mat-sort-header
         *matHeaderCellDef>Problem Name</th>
       <td mat-cell
@@ -21,7 +21,7 @@
     </ng-container>
     <ng-container matColumnDef="Problem Description">
       <th mat-header-cell
-        class="table-dark"
+        class="table-light"
         mat-sort-header
         *matHeaderCellDef>Problem Description</th>
       <td mat-cell
@@ -29,23 +29,23 @@
     </ng-container>
     <ng-container matColumnDef="Problem roomName">
       <th mat-header-cell
-        class="table-dark"
+        class="table-light"
         *matHeaderCellDef>Problem Room Number</th>
       <td mat-cell
         *matCellDef="let element;let i =index;"> {{element.roomName}} </td>
     </ng-container>
     <ng-container matColumnDef="Problem reportedByname">
       <th mat-header-cell
-        class="table-dark"
+        class="table-light"
         *matHeaderCellDef>Problem reported By</th>
         <td mat-cell *matCellDef="let element; let i = index;">
-          <span class="badge badge-primary">{{element.reportedByname ? element.reportedByname.name : 'Unknown'}}</span>
+          <span class="badge bg-primary">{{element.reportedByname ? element.reportedByname.name : 'Unknown'}}</span>
         </td>
         
     </ng-container>
     <ng-container matColumnDef="Images">
       <th mat-header-cell
-        class="table-dark"
+        class="table-light"
         *matHeaderCellDef>Images</th>
       <td mat-cell
         *matCellDef="let element;let i =index;">
@@ -58,7 +58,7 @@
     </ng-container>
     <ng-container matColumnDef="Situation">
       <th mat-header-cell
-        class="table-dark"
+        class="table-light"
         *matHeaderCellDef>Situation</th>
       <td mat-cell
         *matCellDef="let element;let i =index;"> <select [(ngModel)]="selectedOption[element.id]"
@@ -74,8 +74,8 @@
       *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <mat-paginator #paginator
-    [pageSize]="10"
-    [pageSizeOptions]="[1,2,3,5,10]"
+    [pageSize]="3"
+    [pageSizeOptions]="[1,2,3,5]"
     aria-label="Select page"
     showFirstLastButtons></mat-paginator>
 </div>
