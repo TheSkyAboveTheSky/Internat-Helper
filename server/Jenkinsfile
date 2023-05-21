@@ -2,26 +2,27 @@ pipeline {
   agent any
   
   stages {
-  
-    
     stage('Build') {
       steps {
-        bat 'cd server'
-        bat 'mvn clean package'
+        dir('server') {
+          bat 'mvn clean package'
+        }
       }
     }
     
     stage('Test') {
       steps {
-        bat 'cd server'
-        bat 'mvn test'
+        dir('server') {
+          bat 'mvn test'
+        }
       }
     }
     
     stage('Deploy') {
       steps {
-        bat 'cd server'
-        bat 'mvn deploy'
+        dir('server') {
+          bat 'mvn deploy'
+        }
       }
     }
   }
