@@ -21,7 +21,6 @@ pipeline {
             sh "./server/mvnw test -Punit"
           }
         }
-
         stage("Deployment") {
           steps {
             sh 'nohup ./server/mvnw spring-boot:run -Dserver.port=8080 &'
