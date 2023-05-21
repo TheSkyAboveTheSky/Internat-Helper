@@ -5,6 +5,7 @@ pipeline {
     stage('build app'){
       steps {
         dir('client') {
+          bat('yarn install')
           bat('yarn build')
         }
       }
