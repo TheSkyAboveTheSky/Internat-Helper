@@ -6,19 +6,19 @@ pipeline {
     
     stage('Build') {
       steps {
-        bat 'mvn clean package'
+        bat '/server/mvn clean package'
       }
     }
     
     stage('Test') {
       steps {
-        bat 'mvn test'
+        bat '/server/mvn test'
       }
     }
     
     stage('Deploy') {
       steps {
-        bat 'mvn deploy'
+        bat '/server/mvn deploy'
       }
     }
   }
