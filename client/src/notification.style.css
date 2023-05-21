@@ -1,0 +1,17 @@
+.notification {
+  background-color: #333;
+  color: #fff;
+  font-size: 14px;
+}
+
+.success {
+  background-color: #5cb85c;
+}
+
+.error {
+  background-color: #d9534f;
+}
+
+.warn {
+  background-color: #f0ad4e;
+}
