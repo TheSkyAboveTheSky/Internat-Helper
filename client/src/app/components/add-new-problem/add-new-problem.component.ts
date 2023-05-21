@@ -37,10 +37,10 @@ export class AddNewProblemComponent implements OnInit {
     this.currentUser = this.tokenStorageService.getUser();
 
     this.problem.reportedBy = this.currentUser.id;
-    if (this.currentUser.poste !== 'etudiant') {
+/*     if (this.currentUser.poste !== 'etudiant') {
       // Redirect the user to another page
       this.router.navigate(['/home']);
-    }
+    } */
   }
 
   addProblem(problemForm: NgForm) {
