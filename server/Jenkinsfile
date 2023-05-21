@@ -2,11 +2,7 @@ pipeline {
   agent any
   
   stages {
-    stage('Checkout') {
-      steps {
-        git 'https://github.com/TheSkyAboveTheSky/Projet-JEE.git'
-      }
-    }
+  
     
     stage('Build') {
       steps {
