@@ -1,16 +1,29 @@
 pipeline {
-    agent any
-    tools {
-        maven "MAVEN"
-        jdk "JDK"
+  agent any
+  
+  stages {
+    stage('Checkout') {
+      steps {
+        git 'https://github.com/TheSkyAboveTheSky/Projet-JEE.git'
+      }
     }
-    stages {
-        stage('Initialize'){
-            steps{
-                echo "PATH = ${M2_HOME}/bin:${PATH}"
-                echo "M2_HOME = /opt/maven"
-            }
-        }
-     }
- 
+    
+    stage('Build') {
+      steps {
+        sh 'server/mvn clean package'
+      }
+    }
+    
+    stage('Test') {
+      steps {
+        sh 'server/mvn test'
+      }
+    }
+    
+    stage('Deploy') {
+      steps {
+        sh 'server/mvn deploy'
+      }
+    }
+  }
 }
