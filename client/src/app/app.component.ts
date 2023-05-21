@@ -10,12 +10,11 @@ import { O } from '@angular/cdk/keycodes';
 export class AppComponent {
   private roles: string[] = [];
   isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
   username?: string;
   isUser = false;
   isStudent = false;
-  isOuvrier = false;
+  isWorker = false;
+  isAdmin = false;
 
   constructor(private tokenStorageService: TokenStorageService) {}
 
@@ -23,24 +22,14 @@ export class AppComponent {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.isUser = !!this.tokenStorageService.getToken();
 
-    if (this.isUser) {
-      console.log(`Bienvenue, ${this.username}!`);
-    }
 
     if (this.isLoggedIn) {
-      if (
-        JSON.parse(localStorage.getItem('user') || '{}')['poste'] == 'etudiant'
-      ) {
-        this.isStudent = true;
-      } else {
-        this.isOuvrier = true;
-      }
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
 
-      this.isUser = this.roles.includes('ROLE_USER');
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.isStudent = this.roles.includes('ROLE_USER');
+      this.isAdmin = this.roles.includes('ROLE_ADMIN');
+      this.isWorker = this.roles.includes('ROLE_WORKER');
 
       this.username = user.username;
     }
@@ -51,3 +40,4 @@ export class AppComponent {
     window.location.reload();
   }
 }
+ 
