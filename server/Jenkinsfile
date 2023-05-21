@@ -2,27 +2,30 @@ pipeline {
   agent any
   
   stages {
-    stage('Checkout') {
-      steps {
-        git 'https://github.com/TheSkyAboveTheSky/Projet-JEE.git'
-      }
-    }
-    
     stage('Build') {
       steps {
-        sh 'server/mvn clean package'
+        dir('server') {
+          bat 'mvn clean package'
+        }
       }
     }
     
     stage('Test') {
       steps {
-        sh 'server/mvn test'
+        dir('server') {
+          bat 'mvn test'
+        }
       }
     }
     
     stage('Deploy') {
       steps {
-        sh 'server/mvn deploy'
+        dir('server') {
+          bat 'docker build --no-cache -t oussamarhouch/projet-jee:backend .'
+          bat 'docker login -u oussamarhouch -p Oussama2002.'
+          bat 'docker pull oussamarhouch/projet-jee:backend'
+          bat 'docker push oussamarhouch/projet-jee:backend'
+        }
       }
     }
   }
