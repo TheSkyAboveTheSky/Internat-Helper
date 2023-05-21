@@ -21,6 +21,7 @@ pipeline {
     stage('Deploy') {
       steps {
         dir('server') {
+          bat 'docker image rm oussamarhouch/projet-jee:backend'
           bat 'docker build --no-cache -t oussamarhouch/projet-jee:backend .'
           bat 'docker push oussamarhouch/projet-jee:backend'
         }
