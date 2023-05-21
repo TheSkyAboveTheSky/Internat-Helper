@@ -21,7 +21,8 @@ pipeline {
     stage('Deploy') {
       steps {
         dir('server') {
-          bat 'mvn deploy'
+          bat 'docker build -t oussamarhouch/projet-jee:backend .'
+          bat 'docker push oussamarhouch/projet-jee:backend'
         }
       }
     }
