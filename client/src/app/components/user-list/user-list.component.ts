@@ -46,6 +46,7 @@ export class UserListComponent implements OnInit {
     this.userService.getAllUsers().subscribe((response) =>{
       this.users = response;
       this.DataSource = new MatTableDataSource(this.users);
+      console.log(this.users);
       this.DataSource.sort = this.sorter;
       this.DataSource.paginator = this.paginator;
     },
@@ -102,7 +103,7 @@ export class UserListComponent implements OnInit {
           this.notification.warn("! Deleted successfully");
                 }
               },(error) => {
-                this.notification.error("Error deleting employee");
+                this.notification.error("Error deleting User");
               },()=>{
                 window.location.reload();
               }

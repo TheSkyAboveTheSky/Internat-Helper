@@ -7,49 +7,52 @@
           (ngSubmit)="addProblem(problemForm)"
           enctype="multipart/form-data"
         >
-          <mat-form-field appearance="outline">
-            <mat-label>Problem Name</mat-label>
+          <div class="form-floating mb-3">
             <input
-              matInput
+              type="text"
+              class="form-control"
+              id="problemName"
               placeholder="Problem Name"
               [(ngModel)]="problem.name"
               name="problemName"
             />
-          </mat-form-field>
+            <label for="problemName">Problem Name</label>
+          </div>
 
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-label>Problem Description</mat-label>
+          <div class="form-floating mb-3">
             <textarea
-              matInput
+              class="form-control"
+              id="problemDescription"
               placeholder="Problem Description"
               [(ngModel)]="problem.description"
               name="problemDescription"
             ></textarea>
-          </mat-form-field>
+            <label for="problemDescription">Problem Description</label>
+          </div>
 
-          <mat-form-field appearance="outline">
-            <mat-label>Problem Room</mat-label>
+          <div class="form-floating mb-3">
             <input
-              matInput
-              placeholder="Problem Room"
+              type="text"
+              class="form-control"
+              id="problemRoom"
               placeholder="Problem Room"
               [(ngModel)]="problem.roomName"
               name="problemRoom"
             />
-          </mat-form-field>
+            <label for="problemRoom">Problem Room</label>
+          </div>
 
           <strong>{{ currentUser.email }}</strong>
 
           <div align="end">
             <button
               type="submit"
-              mat-stroked-button
-              color="primary"
+              class="btn btn-primary"
               style="margin-right: 5px"
             >
               Add Problem
             </button>
-            <button mat-stroked-button color="primary">Clear</button>
+            <button class="btn btn-primary">Clear</button>
           </div>
         </form>
       </div>
@@ -59,9 +62,7 @@
           <div class="dropzone">
             <div class="text-wrapper">
               <div class="centered">
-                <a (click)="selectFile.click()" class="browse-button"
-                  >browse
-                </a>
+                <a (click)="selectFile.click()" class="browse-button">browse</a>
                 a file
               </div>
             </div>
@@ -77,16 +78,16 @@
         </div>
         <div class="mt-5">
           <div class="row">
-            <mat-grid-list cols="4" rowHeight="1:1">
-              <mat-grid-tile *ngFor="let file of problem.images; let i = index">
-                <div style="position: relative">
-                  <span class="btn-remove-image" (click)="removeImages(i)">
-                    x
-                  </span>
-                  <img [src]="file.url" width="100px" height="100px" />
+            <div class="col">
+              <div class="row g-2">
+                <div class="col" *ngFor="let file of problem.images; let i = index">
+                  <div class="position-relative">
+                    <span class="btn-remove-image" (click)="removeImages(i)">x</span>
+                    <img [src]="file.url" class="img-thumbnail" />
+                  </div>
                 </div>
-              </mat-grid-tile>
-            </mat-grid-list>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -67,6 +67,6 @@ import { UserDeleteFormComponent } from './components/user-forms/user-delete-for
   providers: [],
   entryComponents:[UserAddFormComponent,UserEditFormComponent,UserDeleteFormComponent
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent,HomeComponent],
 })
 export class AppModule {}

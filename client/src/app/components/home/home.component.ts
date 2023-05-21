@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,10 @@ import { UserService } from 'src/app/services/user/user.service';
 export class HomeComponent implements OnInit {
   content?: string;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private notificationService: NotificationService,
+  ) {}
 
   ngOnInit(): void {
     this.userService.getAllUsers().subscribe({
@@ -17,5 +21,6 @@ export class HomeComponent implements OnInit {
         localStorage.setItem('users', JSON.stringify(data));
       },
     });
+    this.notificationService.success('WOW');
   }
 }
