@@ -10,7 +10,7 @@ pipeline {
 
     stage("Compilation") {
       steps {
-        sh "./server/mvnw clean install -DskipTests"
+        bat "./server/mvnw clean install -DskipTests"
       }
     }
 
@@ -18,12 +18,12 @@ pipeline {
       stages {
         stage("Running unit tests") {
           steps {
-            sh "./server/mvnw test -Punit"
+            bat "./server/mvnw test -Punit"
           }
         }
         stage("Deployment") {
           steps {
-            sh 'nohup ./server/mvnw spring-boot:run -Dserver.port=8080 &'
+            bat 'nohup ./server/mvnw spring-boot:run -Dserver.port=8080 &'
           }
         }
       }
