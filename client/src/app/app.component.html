@@ -7,21 +7,25 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isStudent">
           <a href="/home" class="nav-link" routerLink="home">Home</a>
         </li>
-        <li class="nav-item" *ngIf="isStudent">
-          <a href="/addNewProblem" class="nav-link" routerLink="addNewProblem">Add problem</a>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a href="/home" class="nav-link" routerLink="home">Home</a>
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn">
+        <li class="nav-item" *ngIf="isWorker">
+          <a href="/home" class="nav-link" routerLink="home">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin" >
+          <a href="/users" class="nav-link" routerLink="users">User List</a>
+        </li>
+        <li class="nav-item" *ngIf="isStudent || isAdmin">
+          <a href="/addProblem" class="nav-link" routerLink="addProblem">Add problem</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin || isWorker">
           <a href="/showProblemDetails" class="nav-link" routerLink="showProblemDetails">Problem Details</a>
         </li>
-        <li class="nav-item" *ngIf="showAdminBoard">
-          <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
-        </li>
-        <li class="nav-item" *ngIf="showModeratorBoard">
-          <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
-        </li>
+        
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" *ngIf="!isLoggedIn">
@@ -30,17 +34,13 @@
         <li class="nav-item" *ngIf="!isLoggedIn">
           <a href="/login" class="nav-link" routerLink="login">Login</a>
         </li>
-        <li class="nav-item dropdown" *ngIf="isLoggedIn">
-          <a href class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Profile
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a href="/profile" class="dropdown-item" routerLink="profile">My Profile</a>
-            <div class="dropdown-divider"></div>
-            <a href class="dropdown-item" (click)="logout()">Logout</a>
-          </div>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a href="/profile" class="nav-link" routerLink="profile">My Profile</a>
         </li>
+        <li class="nav-item" *ngIf="isLoggedIn">
+          <a href class="nav-link" (click)="logout()">Logout</a>
+        </li>
+
       </ul>
     </div>
   </nav>
