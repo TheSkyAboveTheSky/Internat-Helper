@@ -10,6 +10,11 @@ The Projet JEE repository contains a Java web application built using JEE techno
 
 https://github.com/TheSkyAboveTheSky/Projet-JEE/assets/110478984/56b72d67-f66c-4c1b-b0a2-6c5ae3bfb1e9
 
+## Rapport
+
+[Rapport Projet_JEE.pdf](https://github.com/TheSkyAboveTheSky/Projet-JEE/files/11530273/Rapport.Projet_JEE.pdf)
+
+
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/TheSkyAboveTheSky/Projet-JEE.git`
