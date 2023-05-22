@@ -15,7 +15,7 @@ pipeline {
       steps {
         dir('client') {
           bat 'docker pull nginx'
-          bat 'docker run -d -p 80:80 --name my-nginx-container -v %cd%:/usr/share/nginx/html nginx:latest'
+          bat 'docker run -d -p 80:80 --name my-nginx-container -v %cd%:/usr/share/nginx/html nginx:v1'
         }
       }
     }
