@@ -1,0 +1,34 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Build App') {
+      steps {
+        dir('client') {
+          bat('yarn install')
+          bat('yarn build')
+        }
+      }
+    }
+    
+    stage('Deploy NGINX') {
+      steps {
+        dir('client') {
+          bat 'docker pull nginx'
+          bat 'docker run -d -p 80:80 --name my-nginx-container -v %cd%:/usr/share/nginx/html nginx:latest'
+        }
+      }
+    }
+    
+    stage('Deploy Image') {
+      steps {
+        dir('client') {
+          bat 'docker build --no-cache -t oussamarhouch/projet-jee:frontend .'
+          bat 'docker login -u oussamarhouch -p Oussama2002.'
+          bat 'docker pull oussamarhouch/projet-jee:frontend'
+          bat 'docker push oussamarhouch/projet-jee:frontend'
+        }
+      }
+    }
+  }
+}
