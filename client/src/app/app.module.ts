@@ -31,6 +31,10 @@ import { UserEditFormComponent } from './components/user-forms/user-edit-form/us
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { UserDeleteFormComponent } from './components/user-forms/user-delete-form/user-delete-form.component';
+import { AuthGuard } from './auth.guard';
+import { StudentGuard } from './guards/student/student.guard';
+import { AdminGuard } from './guards/admin/admin.guard';
+import { WorkerGuard } from './guards/worker/worker.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +68,7 @@ import { UserDeleteFormComponent } from './components/user-forms/user-delete-for
     MaterialModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [AuthGuard,StudentGuard,AdminGuard,WorkerGuard],
   entryComponents:[UserAddFormComponent,UserEditFormComponent,UserDeleteFormComponent
   ],
   bootstrap: [AppComponent,HomeComponent],

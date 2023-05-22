@@ -15,9 +15,9 @@ import { ShowProblemDetailsComponent } from './components/show-problem-details/s
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { AuthGuard } from './auth.guard';
-import { AdminGuard } from './admin.guard';
-import { StudentGuard } from './student.guard';
-import { WorkerGuard } from './worker.guard';
+import { AdminGuard } from './guards/admin/admin.guard';
+import { StudentGuard } from './guards/student/student.guard';
+import { WorkerGuard } from './guards/worker/worker.guard';
 
 
 const routes: Routes = [
