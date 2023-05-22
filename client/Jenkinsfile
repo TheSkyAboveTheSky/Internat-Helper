@@ -14,10 +14,6 @@ pipeline {
     stage('Deploy NGINX') {
       steps {
         dir('client') {
-          // Delete existing nginx image
-          bat 'docker rmi nginx:latest'
-          
-          // Pull and run the updated nginx image
           bat 'docker pull nginx'
           bat 'docker run -d -p 80:80 --name my-nginx-container -v %cd%:/usr/share/nginx/html nginx:latest'
         }
