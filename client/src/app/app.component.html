@@ -16,8 +16,11 @@
         <li class="nav-item" *ngIf="isWorker">
           <a href="/home" class="nav-link" routerLink="home">Home</a>
         </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a href="/users" class="nav-link" routerLink="users">User List</a>
+        </li>
         <li class="nav-item" *ngIf="isStudent || isAdmin">
-          <a href="/addNewProblem" class="nav-link" routerLink="addNewProblem">Add problem</a>
+          <a href="/addProblem" class="nav-link" routerLink="addProblem">Add problem</a>
         </li>
         <li class="nav-item" *ngIf="isAdmin || isWorker">
           <a href="/showProblemDetails" class="nav-link" routerLink="showProblemDetails">Problem Details</a>
