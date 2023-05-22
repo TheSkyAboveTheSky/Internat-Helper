@@ -6,11 +6,9 @@ This is a Java Enterprise Edition (JEE) project repository.
 
 The Projet JEE repository contains a Java web application built using JEE technologies. The project aims to demonstrate various JEE concepts and best practices.
 
-## Features
+## Video Demo
 
-- Feature 1: Description of feature 1.
-- Feature 2: Description of feature 2.
-- Feature 3: Description of feature 3.
+https://github.com/TheSkyAboveTheSky/Projet-JEE/assets/110478984/56b72d67-f66c-4c1b-b0a2-6c5ae3bfb1e9
 
 ## Installation
 
@@ -46,10 +44,5 @@ Contributions to the project are welcome! If you find any issues or have ideas f
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Video Demo
-
-
-
-https://github.com/TheSkyAboveTheSky/Projet-JEE/assets/110478984/56b72d67-f66c-4c1b-b0a2-6c5ae3bfb1e9
 
 
