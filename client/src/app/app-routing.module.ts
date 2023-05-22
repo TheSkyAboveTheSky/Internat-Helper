@@ -14,7 +14,7 @@ import { AddNewProblemComponent } from './components/add-new-problem/add-new-pro
 import { ShowProblemDetailsComponent } from './components/show-problem-details/show-problem-details.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth/auth.guard';
 import { AdminGuard } from './guards/admin/admin.guard';
 import { StudentGuard } from './guards/student/student.guard';
 import { WorkerGuard } from './guards/worker/worker.guard';
