@@ -19,20 +19,39 @@ import { AdminGuard } from './guards/admin/admin.guard';
 import { StudentGuard } from './guards/student/student.guard';
 import { WorkerGuard } from './guards/worker/worker.guard';
 
-
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent},
-  { path: 'profile', component: ProfileComponent ,canActivate:[AuthGuard]},
-  { path: 'edit_profil', component: EditProfilComponent ,canActivate:[AuthGuard]},
-  { path: 'user', component: BoardUserComponent ,canActivate:[StudentGuard]},
-  { path: 'worker', component: BoardModeratorComponent ,canActivate:[WorkerGuard]},
-  { path: 'admin', component: BoardAdminComponent, canActivate:[AdminGuard] },
-  { path: 'users', component: UserListComponent,canActivate:[AdminGuard] },
-  { path: 'edit_image', component: EditImageComponent,canActivate:[AuthGuard] },
-  { path: 'addProblem', component: AddNewProblemComponent ,canActivate:[AuthGuard]},
-  { path: 'showProblemDetails', component: ShowProblemDetailsComponent,canActivate:[AuthGuard] },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'edit_profil',
+    component: EditProfilComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'user', component: BoardUserComponent, canActivate: [StudentGuard] },
+  {
+    path: 'worker',
+    component: BoardModeratorComponent,
+    canActivate: [WorkerGuard],
+  },
+  { path: 'admin', component: BoardAdminComponent, canActivate: [AdminGuard] },
+  { path: 'users', component: UserListComponent, canActivate: [AdminGuard] },
+  {
+    path: 'edit_image',
+    component: EditImageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'addProblem',
+    component: AddNewProblemComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'showProblemDetails',
+    component: ShowProblemDetailsComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '**', component: NotfoundComponent },
 ];

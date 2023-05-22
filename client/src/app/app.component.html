@@ -1,8 +1,15 @@
 <div id="app">
-  <nav class="navbar navbar-expand-lg" style="background-color: blanchedalmond;">
+  <nav class="navbar navbar-expand-lg" style="background-color: blanchedalmond">
     <img src="../assets/images/logo.png" href="#" class="navbar-brand icon" />
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
@@ -16,16 +23,22 @@
         <li class="nav-item" *ngIf="isWorker">
           <a href="/home" class="nav-link" routerLink="home">Home</a>
         </li>
-        <li class="nav-item" *ngIf="isAdmin" >
+        <li class="nav-item" *ngIf="isAdmin">
           <a href="/users" class="nav-link" routerLink="users">User List</a>
         </li>
         <li class="nav-item" *ngIf="isStudent || isAdmin">
-          <a href="/addProblem" class="nav-link" routerLink="addProblem">Add problem</a>
+          <a href="/addProblem" class="nav-link" routerLink="addProblem"
+            >Add problem</a
+          >
         </li>
         <li class="nav-item" *ngIf="isAdmin || isWorker">
-          <a href="/showProblemDetails" class="nav-link" routerLink="showProblemDetails">Problem Details</a>
+          <a
+            href="/showProblemDetails"
+            class="nav-link"
+            routerLink="showProblemDetails"
+            >Problem Details</a
+          >
         </li>
-        
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item" *ngIf="!isLoggedIn">
@@ -35,39 +48,46 @@
           <a href="/login" class="nav-link" routerLink="login">Login</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
-          <a href="/profile" class="nav-link" routerLink="profile">My Profile</a>
+          <a href="/profile" class="nav-link" routerLink="profile"
+            >My Profile</a
+          >
         </li>
         <li class="nav-item" *ngIf="isLoggedIn">
           <a href class="nav-link" (click)="logout()">Logout</a>
         </li>
-
       </ul>
     </div>
   </nav>
 
-  <div class="container mt-4" style="height:79vh">
+  <div class="container mt-4" style="height: 79vh">
     <router-outlet></router-outlet>
   </div>
-<footer class="footer text-light" style="margin-top:15rem;background-color: blanchedalmond;">
-  <div class="container" style="color:black">
-    <div class="row">
-      <div class="col-md-6">
-        <p>&copy; 2023 Projet JEE.</p>
-      </div>
-      <div class="col-md-3">
-        <a href="https://github.com/TheSkyAboveTheSky/Projet-JEE" style="text-decoration: none;color:black;">Source Code</a>
-      </div>
-      <div class="col-md-3">
-        <p>Founders: <br>
-          Said MOUNJI, <br>
-          Faimazahraa Ouahmane, <br>
-          Mouad Toubil, <br>
-          Oussama Rouch
-        </p>
+  <footer
+    class="footer text-light"
+    style="margin-top: 15rem; background-color: blanchedalmond"
+  >
+    <div class="container" style="color: black">
+      <div class="row">
+        <div class="col-md-6">
+          <p>&copy; 2023 Projet JEE.</p>
+        </div>
+        <div class="col-md-3">
+          <a
+            href="https://github.com/TheSkyAboveTheSky/Projet-JEE"
+            style="text-decoration: none; color: black"
+            >Source Code</a
+          >
+        </div>
+        <div class="col-md-3">
+          <p>
+            Founders: <br />
+            Said MOUNJI, <br />
+            Faimazahraa Ouahmane, <br />
+            Mouad Toubil, <br />
+            Oussama Rhouch
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
-
-
+  </footer>
 </div>
