@@ -63,7 +63,6 @@ export class ShowProblemDetailsComponent implements OnInit {
       )
       .subscribe(
         (problemsWithImages: ProblemDetails[]) => {
-          console.log(problemsWithImages);
           this.problemDetails = problemsWithImages;
           this.initializeDefaultSelectedOptions();
           this.DataSource = new MatTableDataSource(this.problemDetails);
@@ -77,8 +76,6 @@ export class ShowProblemDetailsComponent implements OnInit {
   }
 
   showImages(problem: Problem): void {
-    console.log(problem);
-    console.log(problem.images);
     this.imagesDialog.open(ShowProblemImageDialogComponent, {
       data: {
         images: problem.images,

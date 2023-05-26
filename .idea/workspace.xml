@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19712916-5dd9-40aa-98df-d729fab4fea9" name="Changes" comment="update">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/components/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/components/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/components/show-problem-details/show-problem-details.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/components/show-problem-details/show-problem-details.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/services/problem/problem.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/services/problem/problem.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

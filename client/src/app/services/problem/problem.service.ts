@@ -46,13 +46,13 @@ export class ProblemService {
   }
   public updateProblem(id:String,data:String)
   {
-    return this.httpClient.put<Problem>(`${UPDATE_PROBLEM_API}/${id}`, data)
+    return this.httpClient.put<Problem>(`${UPDATE_PROBLEM_API}/state/${id}`, data)
     .subscribe(
       (response: Problem) => {
         console.log(response);
       },
       (error: any) => {
-        alert(error);
+        console.log(error);
       }
     );
   }
