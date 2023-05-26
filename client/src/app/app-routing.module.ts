@@ -18,6 +18,8 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { AdminGuard } from './guards/admin/admin.guard';
 import { StudentGuard } from './guards/student/student.guard';
 import { WorkerGuard } from './guards/worker/worker.guard';
+import { AdminOrUserGuard } from './guards/admin-or-user/admin-or-user.guard';
+import { AdminOrWorkerGuard } from './guards/admin-or-worker/admin-or-worker.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -46,12 +48,12 @@ const routes: Routes = [
   {
     path: 'addProblem',
     component: AddNewProblemComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminOrUserGuard],
   },
   {
     path: 'showProblemDetails',
     component: ShowProblemDetailsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AdminOrWorkerGuard],
   },
   { path: 'unauthorized', component: UnauthorizedComponent },
   { path: '**', component: NotfoundComponent },

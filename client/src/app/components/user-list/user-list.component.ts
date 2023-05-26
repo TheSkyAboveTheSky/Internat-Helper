@@ -100,7 +100,7 @@ export class UserListComponent implements OnInit {
               console.log(error);
             }
           );
-          this.notification.warn("! Deleted successfully");
+          this.notification.success("! Deleted successfully");
                 }
               },(error) => {
                 this.notification.error("Error deleting User");
