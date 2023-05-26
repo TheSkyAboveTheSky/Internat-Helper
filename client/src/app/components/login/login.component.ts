@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage/token-storage.service';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -38,14 +40,15 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user', JSON.stringify(data));
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+        if (this.isLoggedIn){
+          this.notificationService.success(`Logged in as ${this.roles}`);
+        }
       },
       error: (err) => {
-        this.errorMessage = err.error.message;
+        this.notificationService.error(err.error.message);
         this.isLoginFailed = true;
       },
     });

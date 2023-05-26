@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19712916-5dd9-40aa-98df-d729fab4fea9" name="Changes" comment="update" />
+    <list default="true" id="19712916-5dd9-40aa-98df-d729fab4fea9" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,14 +36,15 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;origin&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Said Mounji/3-Codes/Projet JEE/Projet-JEE&quot;
+    &quot;last_opened_file_path&quot;: &quot;D:/Said Mounji/3-Codes/Projet-JEE/server&quot;
   }
 }</component>
   <component name="RunManager">
-    <configuration name="SpringBootMongodbLoginApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Internat Helper" type="Application" factoryName="Application" temporary="true">
       <option name="ALTERNATIVE_JRE_PATH" value="19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="com.example.server.SpringBootMongodbLoginApplication" />
+      <option name="MAIN_CLASS_NAME" value="com.example.server.InternatHelper" />
+      <module name="demo" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.server.*" />
@@ -53,7 +57,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SpringBootMongodbLoginApplication" />
+        <item itemvalue="Application.Internat Helper" />
       </list>
     </recent_temporary>
   </component>

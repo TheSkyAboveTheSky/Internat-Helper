@@ -63,13 +63,6 @@
                       <button class="btn btn-primary btn-block">Login</button>
 
                     </div>
-                    <div class="form-group">
-                      <div class="alert alert-danger"
-                        role="alert"
-                        *ngIf="f.submitted && isLoginFailed">
-                        Login failed: {{ errorMessage }}
-                      </div>
-                    </div>
                   </form>
                 </div>
                 <div class="col-md-6 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
@@ -82,10 +75,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="alert alert-success"
-      *ngIf="isLoggedIn">
-      Logged in as {{ roles }}.
     </div>
   </section>
 </div>

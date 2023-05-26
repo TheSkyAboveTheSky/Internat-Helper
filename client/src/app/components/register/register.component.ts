@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private notificationService:NotificationService) {}
 
   ngOnInit(): void {}
 
@@ -38,11 +39,13 @@ export class RegisterComponent implements OnInit {
           console.log(data);
           this.isSuccessful = true;
           this.isSignUpFailed = false;
+          if(this.isSuccessful){
+            this.notificationService.success("Registered Successfully")
+          }
         },
         error: (err) => {
-          console.log(err);
-          this.errorMessage = err.error.message;
           this.isSignUpFailed = true;
+          this.notificationService.error(err.error.message);
         },
       });
   }
