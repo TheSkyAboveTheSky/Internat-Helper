@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const EDIT_API = 'http://localhost:8080/api/auth/edit_profil/';
+const EDIT_API = 'http://localhost:8080/api/users/';
 const user = JSON.parse(localStorage.getItem('user') || '{}');
 
 const httpOptions = {
@@ -22,7 +22,7 @@ export class EditProfilService {
     gender: string,
   ): Observable<any> {
     return this.http.put(
-      EDIT_API + user.username,
+      EDIT_API + user.id,
       {
         email,
         name,
