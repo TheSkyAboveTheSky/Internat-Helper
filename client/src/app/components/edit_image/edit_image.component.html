@@ -3,11 +3,11 @@
     <div class="profile-img-wrapper">
       <img id="profile-img" [src]="retrievedImage || '//ssl.gstatic.com/accounts/ui/avatar_2x.png'" alt="">
       <div class="overlay">
-        <button class="btn btn-primary" (click)="showEditForm()">Edit Profile Picture</button>
+        <button class="btn btn-primary edit-profile-button" (click)="showEditForm()">Edit Profile Picture</button>
       </div>
     </div>
   </div>
-  <div class="col-md-8" *ngIf="showForm">
+  <div class="col-md-8 profile-form" *ngIf="showForm">
     <form>
       <div class="form-group">
         <input type="file" (change)="onFileSelected($event)" class="form-control-file" id="profileImage" name="profileImage" />

@@ -21,11 +21,12 @@ import { WorkerGuard } from './guards/worker/worker.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  {path:'home',component:HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
-    path: 'edit_profil',
+    path: 'edit_profile',
     component: EditProfilComponent,
     canActivate: [AuthGuard],
   },

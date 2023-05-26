@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = getUser();
+    this.currentUser.date=this.calculateAge(this.currentUser.date);
     this.getImageUrl();
   }
 
@@ -85,6 +86,20 @@ export class ProfileComponent implements OnInit {
           profileImg.setAttribute('src', this.retrievedImage);
         }
       });
+  }
+  calculateAge(dateOfBirth: string): number {
+    const today: Date = new Date(); 
+    const birthDate: Date = new Date(dateOfBirth); 
+    let age: number = today.getFullYear() - birthDate.getFullYear(); 
+    const hasBirthdayPassed: boolean =
+      today.getMonth() > birthDate.getMonth() ||
+      (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+
+    if (!hasBirthdayPassed) {
+      age--;
+    }
+
+    return age;
   }
 
 }

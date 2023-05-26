@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
+        this.reloadPage();
         if (this.isLoggedIn){
           this.notificationService.success(`Logged in as ${this.roles}`);
         }

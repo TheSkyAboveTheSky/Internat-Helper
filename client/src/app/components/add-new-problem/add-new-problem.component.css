@@ -1,42 +1,115 @@
-.mat-grid-tile {
-  border: 1px solid #eee;
+.container {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card {
+  padding: 15px;
+}
+
+.form-floating {
+  position: relative;
+}
+
+.form-floating label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 14px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.form-floating input,
+.form-floating textarea {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.form-floating input:focus,
+.form-floating textarea:focus {
+  outline: none;
+  border-color: #6c757d;
+}
+
+.form-floating input:focus+label,
+.form-floating textarea:focus+label,
+.form-floating input:not(:placeholder-shown)+label,
+.form-floating textarea:not(:placeholder-shown)+label {
+  font-size: 12px;
+  top: -10px;
+  color: #6c757d;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.dropzone {
+  height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.text-wrapper {
+  text-align: center;
+}
+
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #999;
+}
+
+.browse-button {
+  text-decoration: none;
+  color: #007bff;
+  margin-bottom: 5px;
+}
+
+.img-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: relative;
 }
 
 .btn-remove-image {
   position: absolute;
-  cursor: pointer;
-  top: -10px;
-  right: -10px;
-  background-color: red;
-  color: white;
-  border-radius: 50%;
+  top: -8px;
+  right: -8px;
   width: 20px;
-  height: auto;
-  text-align: center;
-}
-
-.dropzone {
-  height: 150px;
-  min-width: 100px;
-  display: table;
-  background-color: #eeeeee;
-  width: 300px;
-  border: dashed 1px #aaa;
-  border-radius: 10px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.text-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.centered {
-  text-align: center;
-}
-
-.browse-button {
-  color: blue;
+  height: 20px;
+  background-color: #f2f2f2;
+  color: #999;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
   cursor: pointer;
+}
+
+.btn-remove-image:hover {
+  background-color: #ccc;
+  color: #fff;
 }

@@ -8,6 +8,7 @@ import { FileHandle } from 'src/app/models/file-handler';
 import { TokenStorageService } from 'src/app/services/token-storage/token-storage.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/services/notification/notification.service';
 
 @Component({
   selector: 'app-add-new-problem',
@@ -30,6 +31,7 @@ export class AddNewProblemComponent implements OnInit {
     private problemService: ProblemService,
     private tokenStorageService: TokenStorageService,
     private sanitizer: DomSanitizer,
+    private notificationService: NotificationService,
     private router: Router
   ) {}
 
@@ -37,10 +39,6 @@ export class AddNewProblemComponent implements OnInit {
     this.currentUser = this.tokenStorageService.getUser();
 
     this.problem.reportedBy = this.currentUser.id;
-/*     if (this.currentUser.poste !== 'etudiant') {
-      // Redirect the user to another page
-      this.router.navigate(['/home']);
-    } */
   }
 
   addProblem(problemForm: NgForm) {
@@ -48,17 +46,13 @@ export class AddNewProblemComponent implements OnInit {
     const problemFormData = this.prepareFormData(this.problem);
     this.problemService.addProblem(problemFormData).subscribe(
       (response: Problem) => {
+        this.notificationService.success("Problem Added successfully");
         problemForm.reset();
       },
       (error: HttpErrorResponse) => {
-        console.log(error);
+        this.notificationService.error(error);
       }
     );
-
-    console.log(problemFormData);
-    console.log(this.problem);
-    console.log(this.problem.images);
-    console.log(problemFormData);
   }
   prepareFormData(problem: Problem): FormData {
     const formData = new FormData();

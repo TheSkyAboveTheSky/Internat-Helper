@@ -28,7 +28,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
      var { username, email, name, poste, password,date,role,gender } = this.form;
-     console.log(username, email, name, poste, password, date, role);
      role=[role];
      name=username;
      poste = poste || null;
